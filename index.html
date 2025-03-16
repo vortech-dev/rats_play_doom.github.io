@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
-<!--
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Dimension by HTML5 UP</title>
+ <!--
+ 	Dimension by HTML5 UP
+ 	html5up.net | @ajlkn
+ 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+ -->
+ <html>
+ 	<head>
+    <title>Dimension by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -49,495 +49,253 @@
 			}
 		</style>
 	
-	</head>
-	<body  style="background-image: url('images/background.png')">
+ 	
+ 	</head>
+ 	<body class="is-preload" style="background-image: url('images/background.png')">
+ 
+ 		<!-- Wrapper -->
+ 			<div id="wrapper">
+ 
+ 				<!-- Header -->
+ 					<header id="header">
+ 						
+ 						<div class="content">
+ 							<div class="inner">
+ 								<p>Valami rovid dolog a projektrol</p>
+ 							</div></div>
+               <nav>
+                 <ul>
+                   <li><a href="#intro">Idea</a></li>
+                   <li><a href="#work">Hardware</a></li>
+                   <li><a href="#contact">Software</a></li>
+                   <li><a href="#about">Results</a></li>
+                   <!--<li><a href="#elements">Elements</a></li>-->
+                  </ul>
+                </nav>
+                <div class="contact-container">
+                  <div class="contact-card">
+                    <img src="man1.jpg" alt="Man 1">
+                    <h3>John Doe</h3>
+                    <p>Email: john.doe@example.com</p>
+                    <p>Phone: +1234567890</p>
+                  </div>
+                  <div class="contact-card">
+                    <img src="man2.jpg" alt="Man 2">
+                    <h3>Mike Smith</h3>
+                    <p>Email: mike.smith@example.com</p>
+                    <p>Phone: +0987654321</p>
+                  </div>
+                  <div class="contact-card">
+                    <img src="man3.jpg" alt="Man 3">
+                    <h3>James Brown</h3>
+                    <p>Email: james.brown@example.com</p>
+                    <p>Phone: +1122334455</p>
+                  </div>
+                
+ 					</header>
+ 
+ 				<!-- Main -->
+ 					<div id="main">
+ 
+ 						<!-- Intro -->
+             <article id="intro">
+              <h2 class="major">Rats Playing DOOM: The Idea</h2>
+                <p>Rats are one of the most trainable creatures on Earth for different kinds of tasks.
+                  We wanted to teach them to play DOOM using a headset for rats and different inputs for movement and shooting.
+                </p>								
+                <section>
+                <h2>The project</h2>
+                <p> 
+                    The goal was set we needed to find a way to make it. Hardest part was that we needed completely custom made 
+                    hardware for the rats. So we used a ball to imitate the ground moving under the rat.
+                    For the shoot input a trigger was made. Finally the rats can play because a vr headset is 
+                    displaying the visuals.
+                </p>
+                <div class="image-container">
+                  <!-- Replace 'training-image.jpg' with your actual image file name -->
+                  <div style="text-align: center;"><img src="images/figure1.jpg" alt="Rats training to play DOOM"></div>
+                  <p><em>Figure 1: Rats learning the game through a sugar-water reward system.</em></p>
+                </div>
+                </section>
+              
+                <section>
+                <h2>V1</h2>
+                
+                </section>
+              
+                <section>
+                <h2>V2</h2>
+                
+                </section>
+                <section>
+                <h2>Vision</h2>
+                <p>The most interesting idea we had was that we could use this to get the rats to play by only using their minds.
+                  We potentially could scan the brain of the rats and look for the activity of the brain during the game.
+                   After that we could train an AI model to pair the brain activity of the rats to the inputs. In the long run,
+                   with enough data, we could make the rats play without the inputs and only scanning their brain activity.
+                </p>
+                </section>
+                <footer>
+                <p>If you are interested in the hardware of the project you can fint it <a href="#about">here</a>.</p>
+                                </footer>
+            </article>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+          <!-- Work -->
+            <article id="work">
+              <h2 class="major">Rats Play Doom: Hardware</h2>
+              <section>
+                
+                <h2>Visuals</h2>
+                <p>The headset is designed to suit the rats' field of vision. It displays the image of the game.
+                  An oled screen is put into the headset. This ensures that the rats are able to see everything needed for them to play the game.
+                </p>
+                <div class="container">
+                  <canvas id="headsetCanvas" class="renderCanvas"></canvas>
+                  <img src="images/headset.jpg" alt="Headset photo">
+                </div>
+                
+              </section>
+              <section>
+                <h2>Reward circuit</h2>
+                <p>
+                  We needed something that tells the rat whether they are playing well. We did this by using water mixed with sugar. The idea was that 
+                  everytime the rats do something good (shoots a monsters, advances to the next area etc.) then the they get a little bit of the water. This would reinforce the rats to play the game.
+                </p>
+                <p>
+                  The parts for the system are: mixer, pump, dispenser and the pumps. The mixer would be in a little container filled with
+                  sugar and water. Before the gaming session the sugar and water would be added to the container 
+                  and during it the mixer wuld continously mix them in order to have enough sugar in the water. 
+                  After the mixing is done the pump would sip out the water into the tubes and forward it into the dispenser.
+                  The dispenser is located on the headset where the rats can sip the water.
+                </p>
 
-				<!-- Header -->
-					<header id="header">
-						
-						<div class="content">
-							<div class="inner">
-								<p>Rats play Doom</p>
-							</div>
-						</div>
-						<nav class="content">
-							<ul>
-								<li><a href="#intro">Idea</a></li>
-								<li><a href="#work">Hardware</a></li>
-								<li><a href="#contact">Software</a></li>
-								<li><a href="#about">Results</a></li>
-								<!--<li><a href="#elements">Elements</a></li>-->
-							</ul>
-						</nav>
-						<div class="contact-container">
-							<div class="contact-card">
-								<img src="man1.jpg" alt="Man 1">
-								<h3>John Doe</h3>
-								<p>Email: john.doe@example.com</p>
-								<p>Phone: +1234567890</p>
-							</div>
-							<div class="contact-card">
-								<img src="man2.jpg" alt="Man 2">
-								<h3>Mike Smith</h3>
-								<p>Email: mike.smith@example.com</p>
-								<p>Phone: +0987654321</p>
-							</div>
-							<div class="contact-card">
-								<img src="man3.jpg" alt="Man 3">
-								<h3>James Brown</h3>
-								<p>Email: james.brown@example.com</p>
-								<p>Phone: +1122334455</p>
-							</div>
-						</div>
-					</header>
+              </section>
+              <section>
+                <h2>Trigger</h2>
+                <p>The rats needed somthing to shoot with. The problem was that their paws are used in the movement
+                  so we need another method. We decided to make a trigger which the rats can push down with their heads.
+                  This makes it so that they can shoot when it is needed but relatively little movement and energy to use it.
+                </p>
+                <div class="container">
+                  <canvas id="triggerCanvas" class="renderCanvas"></canvas>
+                  <img src="images/trigger.jpg" width="50" height="50">
+                </div> 						
+                
+              </section>
+              <section>
+                <h2>Movement</h2>
+                <p>We modelled the rats' movement with a ball. 
+                  If the rat wanted to move forward it can push the ball backwards thus staying in the same place. 
+                  Sensors would record the movement of the ball and update the game according to the 
+                  displacement of the ball. The ball has two modes: one whare engines  can rotate it and the other where ball bearings 
+                  allow for smooth controls.
+                </p>
+                <div class="container" >
+                  <canvas id="standCanvas" class="renderCanvas"></canvas>
+                  <img src="images/stand.jpg">
+              </div>
+              
+                <p>Two sensors were mounted arund the ball for the movement.</p>
+                <div class="container">
+                  <canvas id="sensorCanvas" class="renderCanvas"></canvas>
+                  <img src="images/sensor.jpg">
+              </div>
+            
+            
+            </section>
+            <script>
+              window.addEventListener('DOMContentLoaded', function () {
+                // Create a closure to keep variables contained
+                (function() {
+                  
+                  canvases = ["headsetCanvas", "triggerCanvas","standCanvas", "sensorCanvas"]
+                  
+                  glbFiles = ["full_headset_guide.glb", "trigger.glb", "stand.glb", "sensor.glb"]
 
-				<!-- Main -->
-					<div id="main">
+                  for(let i = 0; i<canvases.length;i++){
+                  
+                  
+                  const canvas = document.getElementById(canvases[i]); 
+                  const engine = new BABYLON.Engine(canvas, true);
+                  engine.setHardwareScalingLevel(0.5); // Renders at 200% resolution
 
-						<!-- Intro -->
-							<article id="intro">
-								<h2 class="major">Rats Playing DOOM: The Idea</h2>
-									<p>Rats are one of the most trainable creatures on Earth for different kinds of tasks.
-										We wanted to teach them to play DOOM using a headset for rats and different inputs for movement and shooting.
-									</p>								
-								  <section>
-									<h2>The project</h2>
-									<p> 
-											The goal was set we needed to find a way to make it. Hardest part was that we needed completely custom made 
-											hardware for the rats. So we used a ball to imitate the ground moving under the rat.
-											For the shoot input a trigger was made. Finally the rats can play because a vr headset is 
-											displaying the visuals.
-									</p>
-									<div class="image-container">
-									  <!-- Replace 'training-image.jpg' with your actual image file name -->
-									  <div style="text-align: center;"><img src="images/figure1.jpg" alt="Rats training to play DOOM"></div>
-									  <p><em>Figure 1: Rats learning the game through a sugar-water reward system.</em></p>
-									</div>
-								  </section>
-								
-								  <section>
-									<h2>V1</h2>
-									
-								  </section>
-								
-								  <section>
-									<h2>V2</h2>
-									
-								  </section>
-								  <section>
-									<h2>Vision</h2>
-									<p>The most interesting idea we had was that we could use this to get the rats to play by only using their minds.
-										We potentially could scan the brain of the rats and look for the activity of the brain during the game.
-										 After that we could train an AI model to pair the brain activity of the rats to the inputs. In the long run,
-										 with enough data, we could make the rats play without the inputs and only scanning their brain activity.
-									</p>
-								  </section>
-								  <footer>
-									<p>If you are interested in the hardware of the project you can fint it <a href="#about">here</a>.</p>
-																  </footer>
-							</article>
+                  const createScene = function () {
+                    const scene = new BABYLON.Scene(engine);
 
-						<!-- Work -->
-							<article id="work">
-								<h2 class="major">Rats Play Doom: Hardware</h2>
-								<section>
-									
-									<h2>Visuals</h2>
-									<p>The headset is designed to suit the rats' field of vision. It displays the image of the game.
-										An oled screen is put into the headset. This ensures that the rats are able to see everything needed for them to play the game.
-									</p>
-									<div class="container">
-										<canvas id="headsetCanvas" class="renderCanvas"></canvas>
-										<img src="images/headset.jpg" alt="Headset photo">
-									</div>
-									
-								</section>
-								<section>
-									<h2>Reward circuit</h2>
-									<p>
-										We needed something that tells the rat whether they are playing well. We did this by using water mixed with sugar. The idea was that 
-										everytime the rats do something good (shoots a monsters, advances to the next area etc.) then the they get a little bit of the water. This would reinforce the rats to play the game.
-									</p>
-									<p>
-										The parts for the system are: mixer, pump, dispenser and the pumps. The mixer would be in a little container filled with
-										sugar and water. Before the gaming session the sugar and water would be added to the container 
-										and during it the mixer wuld continously mix them in order to have enough sugar in the water. 
-										After the mixing is done the pump would sip out the water into the tubes and forward it into the dispenser.
-										The dispenser is located on the headset where the rats can sip the water.
-									</p>
+                    // Camera
+                    const camera = new BABYLON.ArcRotateCamera(
+                    canvases[i] + "Camera",
+                    BABYLON.Tools.ToRadians(180), // Alpha (horizontal angle)
+                    BABYLON.Tools.ToRadians(30), // Beta (vertical angle)
+                    20,                  // Radius (distance from target)
+                    new BABYLON.Vector3(0, 0, 0), // Target position (center of the scene)
+                    scene);
+                    camera.attachControl(canvas, true);
 
-								</section>
-								<section>
-									<h2>Trigger</h2>
-									<p>The rats needed somthing to shoot with. The problem was that their paws are used in the movement
-										so we need another method. We decided to make a trigger which the rats can push down with their heads.
-										This makes it so that they can shoot when it is needed but relatively little movement and energy to use it.
-									</p>
-									<div class="container">
-										<canvas id="triggerCanvas" class="renderCanvas"></canvas>
-										<img src="images/trigger.jpg" width="50" height="50">
-									</div> 						
-									
-								</section>
-								<section>
-									<h2>Movement</h2>
-									<p>We modelled the rats' movement with a ball. 
-										If the rat wanted to move forward it can push the ball backwards thus staying in the same place. 
-										Sensors would record the movement of the ball and update the game according to the 
-										displacement of the ball. The ball has two modes: one whare engines  can rotate it and the other where ball bearings 
-										allow for smooth controls.
-									</p>
-									<div class="container" >
-										<canvas id="standCanvas" class="renderCanvas"></canvas>
-										<img src="images/stand.jpg">
-								</div>
-								
-									<p>Two sensors were mounted arund the ball for the movement.</p>
-									<div class="container">
-										<canvas id="sensorCanvas" class="renderCanvas"></canvas>
-										<img src="images/sensor.jpg">
-								</div>
-							
-							
-							</section>
-							<script>
-								window.addEventListener('DOMContentLoaded', function () {
-									// Create a closure to keep variables contained
-									(function() {
-										
-										canvases = ["headsetCanvas", "triggerCanvas","standCanvas", "sensorCanvas"]
-										
-										glbFiles = ["full_headset_guide.glb", "trigger.glb", "stand.glb", "sensor.glb"]
+                    // Light
+                    const light = new BABYLON.HemisphericLight("headsetLight", 
+                      new BABYLON.Vector3(0, 1, 0), scene);
 
-										for(let i = 0; i<canvases.length;i++){
-										
-										
-										const canvas = document.getElementById(canvases[i]); 
-										const engine = new BABYLON.Engine(canvas, true);
-										engine.setHardwareScalingLevel(0.5); // Renders at 200% resolution
+                    // Load GLB/GLTF model
+                    BABYLON.SceneLoader.Append("./blender/", glbFiles[i], scene, function (scene) {
+                      console.log(glbFiles[i] + " model loaded successfully");
+                    });
 
-										const createScene = function () {
-											const scene = new BABYLON.Scene(engine);
+                    return scene;
+                  };
 
-											// Camera
-											const camera = new BABYLON.ArcRotateCamera(
-											canvases[i] + "Camera",
-											BABYLON.Tools.ToRadians(180), // Alpha (horizontal angle)
-											BABYLON.Tools.ToRadians(30), // Beta (vertical angle)
-											20,                  // Radius (distance from target)
-											new BABYLON.Vector3(0, 0, 0), // Target position (center of the scene)
-											scene);
-											camera.attachControl(canvas, true);
+                  const scene = createScene();
+                  engine.runRenderLoop(function () {
+                    scene.render();
+                  });
 
-											// Light
-											const light = new BABYLON.HemisphericLight("headsetLight", 
-												new BABYLON.Vector3(0, 1, 0), scene);
-
-											// Load GLB/GLTF model
-											BABYLON.SceneLoader.Append("./blender/", glbFiles[i], scene, function (scene) {
-												console.log(glbFiles[i] + " model loaded successfully");
-											});
-
-											return scene;
-										};
-
-										const scene = createScene();
-										engine.runRenderLoop(function () {
-											scene.render();
-										});
-
-										window.addEventListener("resize", function () {
-											engine.resize();
-										});
-									}	})(); // End IIFE
-								
-								});
-								</script>
-							
-						</article>
-
-						<!-- About -->
-							<article id="about">
-								<h2 class="major">About</h2>
-								<span class="image main"><img src="images/black.jpg" alt="" /></span>
-								<p>hardveres dolgok </p>
-								
-								<iframe width="640" height="480" 
-    src="https://sketchfab.com/3d-models/ray-gun-fc0703bc4ddc47d8b7098ff3ce5e4bbb" 
-    frameborder="0" allowfullscreen>
-</iframe>
-							</article>
-
-						<!-- Contact -->
-							<article id="contact">
-								<h2 class="major">About</h2>
-								<span class="image main"><img src="images/black.jpg" alt="" /></span>
-								<p>szoftveres dolgok </p>
-							</article>
-
-						<!-- Elements -->
-							<article id="elements">
-								<h2 class="major">Elements</h2>
-
-								<section>
-									<h3 class="major">Text</h3>
-									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-									<hr />
-									<h2>Heading Level 2</h2>
-									<h3>Heading Level 3</h3>
-									<h4>Heading Level 4</h4>
-									<h5>Heading Level 5</h5>
-									<h6>Heading Level 6</h6>
-									<hr />
-									<h4>Blockquote</h4>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-									<h4>Preformatted</h4>
-									<pre><code>i = 0;
-
-while (!deck.isInOrder()) {
-    print 'Iteration ' + i;
-    deck.shuffle();
-    i++;
-}
-
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-								</section>
-
-								<section>
-									<h3 class="major">Lists</h3>
-
-									<h4>Unordered</h4>
-									<ul>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
-
-									<h4>Alternate</h4>
-									<ul class="alt">
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
-
-									<h4>Ordered</h4>
-									<ol>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis viverra.</li>
-										<li>Felis enim feugiat.</li>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis lorem.</li>
-										<li>Felis enim et feugiat.</li>
-									</ol>
-									<h4>Icons</h4>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-									</ul>
-
-									<h4>Actions</h4>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-								</section>
-
-								<section>
-									<h3 class="major">Table</h3>
-									<h4>Default</h4>
-									<div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-
-									<h4>Alternate</h4>
-									<div class="table-wrapper">
-										<table class="alt">
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-								</section>
-
-								<section>
-									<h3 class="major">Buttons</h3>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Primary</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button">Default</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
-										<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-									</ul>
-									<ul class="actions">
-										<li><span class="button primary disabled">Disabled</span></li>
-										<li><span class="button disabled">Disabled</span></li>
-									</ul>
-								</section>
-
-								<section>
-									<h3 class="major">Form</h3>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="demo-name">Name</label>
-												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
-											</div>
-											<div class="field half">
-												<label for="demo-email">Email</label>
-												<input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
-											</div>
-											<div class="field">
-												<label for="demo-category">Category</label>
-												<select name="demo-category" id="demo-category">
-													<option value="">-</option>
-													<option value="1">Manufacturing</option>
-													<option value="1">Shipping</option>
-													<option value="1">Administration</option>
-													<option value="1">Human Resources</option>
-												</select>
-											</div>
-											<div class="field half">
-												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-												<label for="demo-priority-low">Low</label>
-											</div>
-											<div class="field half">
-												<input type="radio" id="demo-priority-high" name="demo-priority">
-												<label for="demo-priority-high">High</label>
-											</div>
-											<div class="field half">
-												<input type="checkbox" id="demo-copy" name="demo-copy">
-												<label for="demo-copy">Email me a copy</label>
-											</div>
-											<div class="field half">
-												<input type="checkbox" id="demo-human" name="demo-human" checked>
-												<label for="demo-human">Not a robot</label>
-											</div>
-											<div class="field">
-												<label for="demo-message">Message</label>
-												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</form>
-								</section>
-
-							</article>
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright"><a></a>.</p>
-					</footer>
-
-			</div>
-
-		<!-- BG -->
-			<div id="bg"></div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>
+                  window.addEventListener("resize", function () {
+                    engine.resize();
+                  });
+                }	})(); // End IIFE
+              
+              });
+              </script>
+            
+          </article>
+ 
+ 						<!-- About -->
+ 							<article id="about">
+ 								<h2 class="major">About</h2>
+ 								<span class="image main"><img src="images/black.jpg" alt="" /></span>
+ 								<p>hardveres dolgok </p>
+ 								
+ 							>
+ </iframe>
+ 							</article>
+ 
+ 						<!-- Contact -->
+ 							<article id="contact">
+ 								<h2 class="major">About</h2>
+ 								<span class="image main"><img src="images/black.jpg" alt="" /></span>
+ 								<p>szoftveres dolgok </p>
+ 							</article>
+ 
+ 						
+ 
+ 					</div>
+ 
+ 				<!-- Footer -->
+ 					<footer id="footer">
+ 						<p class="copyright"><a></a>.</p>
+ 					</footer>
+ 
+ 			</div>
+ 
+ 		<!-- BG -->
+ 			<div id="bg"></div>
+ 
+ 		<!-- Scripts -->
+ 			<script src="assets/js/jquery.min.js"></script>
+ 			<script src="assets/js/browser.min.js"></script>
+ 			<script src="assets/js/breakpoints.min.js"></script>
+ 			<script src="assets/js/util.js"></script>
+ 			<script src="assets/js/main.js"></script>
+ 
+ 	</body>
+ </html>
