@@ -14,7 +14,7 @@
 		<script src="https://cdn.babylonjs.com/babylon.js"></script>
 		<script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
 		<style>
-			 .container {
+			 .imgcontainer {
 				display: flex;          /* Horizontal layout */
 				align-items: center;    /* Aligns content vertically */
 				gap: 20px;              /* Adds spacing between items */
@@ -149,9 +149,9 @@
                 <p>The headset is designed to suit the rats' field of vision. It displays the image of the game.
                   An oled screen is put into the headset. This ensures that the rats are able to see everything needed for them to play the game.
                 </p>
-                <div class="container">
+                <div class="imgcontainer">
                   <canvas id="headsetCanvas" class="renderCanvas"></canvas>
-                  <img src="images/headset.jpg" alt="Headset photo">
+                  <img src="images/headset.jpg" width="50" height="50">
                 </div>
                 
               </section>
@@ -176,7 +176,7 @@
                   so we need another method. We decided to make a trigger which the rats can push down with their heads.
                   This makes it so that they can shoot when it is needed but relatively little movement and energy to use it.
                 </p>
-                <div class="container">
+                <div class="imgcontainer">
                   <canvas id="triggerCanvas" class="renderCanvas"></canvas>
                   <img src="images/trigger.jpg" width="50" height="50">
                 </div> 						
@@ -190,13 +190,13 @@
                   displacement of the ball. The ball has two modes: one whare engines  can rotate it and the other where ball bearings 
                   allow for smooth controls.
                 </p>
-                <div class="container" >
+                <div class="imgcontainer" >
                   <canvas id="standCanvas" class="renderCanvas"></canvas>
                   <img src="images/stand.jpg">
               </div>
               
                 <p>Two sensors were mounted arund the ball for the movement.</p>
-                <div class="container">
+                <div class="imgcontainer">
                   <canvas id="sensorCanvas" class="renderCanvas"></canvas>
                   <img src="images/sensor.jpg">
               </div>
@@ -291,11 +291,13 @@
  			<div id="bg"></div>
  
  		<!-- Scripts -->
- 			<script src="assets/js/jquery.min.js"></script>
- 			<script src="assets/js/browser.min.js"></script>
- 			<script src="assets/js/breakpoints.min.js"></script>
- 			<script src="assets/js/util.js"></script>
- 			<script src="assets/js/main.js"></script>
+     
+      <script src="assets/js/browser.min.js"></script>
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <script src="assets/js/breakpoints.min.js"></script>
+        
+        <script src="assets/js/main.js"></script>
  
  	</body>
  </html>
