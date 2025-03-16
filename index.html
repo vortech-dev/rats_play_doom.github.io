@@ -10,24 +10,60 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+		<script src="https://cdn.babylonjs.com/babylon.js"></script>
+		<script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+		<style>
+			 .container {
+				display: flex;          /* Horizontal layout */
+				align-items: center;    /* Aligns content vertically */
+				gap: 20px;              /* Adds spacing between items */
+				margin-bottom: 30px;  
+				  /* Add space between containers */
+			}
+
+			.renderCanvas {
+				width: 300px;           /* Fixed width instead of viewport percentage */
+				height: 300px;          /* Fixed height */
+				border: 2px solid #555; 
+				display: block;         /* Ensures proper layout */
+			}
+
+        img {
+            width: 250px;          /* Image width */
+            height: auto;          /* Maintain aspect ratio */
+            border: 2px solid #555; 
+            border-radius: 8px;    /* Rounded corners for style */
+        }
+		.model-container {
+				width: 100%;
+				margin-bottom: 40px;
+				clear: both;
+			}
+			
+			/* Add labels for clarity */
+			.model-label {
+				text-align: center;
+				margin-top: 10px;
+				font-weight: bold;
+			}
+		</style>
+	
 	</head>
-	<body class="is-preload">
+	<body  style="background-image: url('images/background.png')">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
-						<div >
-							<span ><img src="images/logo.png" width=100 /></span>
-						</div>
+						
 						<div class="content">
 							<div class="inner">
-								<p>Valami rovid dolog a projektrol</p>
+								<p>Rats play Doom</p>
 							</div>
 						</div>
-						<nav>
+						<nav class="content">
 							<ul>
 								<li><a href="#intro">Idea</a></li>
 								<li><a href="#work">Hardware</a></li>
@@ -36,6 +72,26 @@
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
 						</nav>
+						<div class="contact-container">
+							<div class="contact-card">
+								<img src="man1.jpg" alt="Man 1">
+								<h3>John Doe</h3>
+								<p>Email: john.doe@example.com</p>
+								<p>Phone: +1234567890</p>
+							</div>
+							<div class="contact-card">
+								<img src="man2.jpg" alt="Man 2">
+								<h3>Mike Smith</h3>
+								<p>Email: mike.smith@example.com</p>
+								<p>Phone: +0987654321</p>
+							</div>
+							<div class="contact-card">
+								<img src="man3.jpg" alt="Man 3">
+								<h3>James Brown</h3>
+								<p>Email: james.brown@example.com</p>
+								<p>Phone: +1122334455</p>
+							</div>
+						</div>
 					</header>
 
 				<!-- Main -->
@@ -45,20 +101,16 @@
 							<article id="intro">
 								<h2 class="major">Rats Playing DOOM: The Idea</h2>
 									<p>Rats are one of the most trainable creatures on Earth for different kinds of tasks.
-										We wanted to see whether we could use the (nem emlekszem, milyen eszkozzel lett volna merve az agyi aktivitas, a neve kene ide) 
-										on them in order to play Doom.
-										We introduce the plan on this page for the game to work.
+										We wanted to teach them to play DOOM using a headset for rats and different inputs for movement and shooting.
 									</p>								
 								  <section>
-									<h2>Phase 1: Training the Rats</h2>
-									<p>In the first phase of our project aims at teaching the rats to play DOOM.
-										The rats are placed before a screen which displays the game. 
-										They have two different inputs for playing the game: the trigger and the ball.
-										If the trigger is moved the player shoots in the game.
-										Meanwhile the ball is used to simulate the moving floor under them. With this we can pair the rat's movement to the gameplay. 
-										We use a reward system involving water mixed with sugar. 
-										Each time a rat performs a desired action in the game, it receives a small reward. 
-										Over time, the rats learn to associate their in-game actions with the reward, thereby reinforcing their behavior.</p>
+									<h2>The project</h2>
+									<p> 
+											The goal was set we needed to find a way to make it. Hardest part was that we needed completely custom made 
+											hardware for the rats. So we used a ball to imitate the ground moving under the rat.
+											For the shoot input a trigger was made. Finally the rats can play because a vr headset is 
+											displaying the visuals.
+									</p>
 									<div class="image-container">
 									  <!-- Replace 'training-image.jpg' with your actual image file name -->
 									  <div style="text-align: center;"><img src="images/figure1.jpg" alt="Rats training to play DOOM"></div>
@@ -67,31 +119,22 @@
 								  </section>
 								
 								  <section>
-									<h2>Phase 2: Brain Activity Analysis</h2>
-									<p>Once the rats have mastered the controls, we move on to the next phase of the project.
-										We attach a sensor to the head of the rats while playing.
-										The goal is to measure the activity of the rat's brain.
-										Ide le kene irni, hogy hogyan lett volna szkennelve az agy
-										</p>
-									<div class="image-container">
-									  <!-- Replace 'brain-scanner-image.jpg' with your actual image file name -->
-									  <div style="text-align: center;"><img src="images/overlall_pic.jpg" width="400"  alt="Brain scanner attached to a rat for neural activity analysis">
-									  </div><p><em>Figure 2: Monitoring neural activity as the rats engage in the game.</em></p>
-									</div>
+									<h2>V1</h2>
+									
 								  </section>
 								
 								  <section>
-									<h2>Phase 3: Playing without physical controls</h2>
-									<p>Finally the rats play without the physical controls being connected to the game.
-										Ide egy leiras kene arrol hogy ez hogyan mukodott volna
-									</p>
-									<div class="image-container">
-									  <!-- Replace 'neural-control-image.jpg' with your actual image file name -->
-									  <div style="text-align: center;"><img src="images/mouse_human_evo.jpg" width="500" alt="Illustration of rats controlling DOOM through neural signals">
-									  </div><p><em>Figure 3: The transition to neural control.</em></p>
-									</div>
+									<h2>V2</h2>
+									
 								  </section>
-								
+								  <section>
+									<h2>Vision</h2>
+									<p>The most interesting idea we had was that we could use this to get the rats to play by only using their minds.
+										We potentially could scan the brain of the rats and look for the activity of the brain during the game.
+										 After that we could train an AI model to pair the brain activity of the rats to the inputs. In the long run,
+										 with enough data, we could make the rats play without the inputs and only scanning their brain activity.
+									</p>
+								  </section>
 								  <footer>
 									<p>If you are interested in the hardware of the project you can fint it <a href="#about">here</a>.</p>
 																  </footer>
@@ -99,29 +142,122 @@
 
 						<!-- Work -->
 							<article id="work">
-								<h2 class="major">Rats Play Doom: The Hardware</h2>
+								<h2 class="major">Rats Play Doom: Hardware</h2>
 								<section>
-									<h2>The Headset</h2>
-									<p style="line-height: 1;">The headset has three different parts: the screen, the water dispenser and the nozzles.</p>
-									<p style="line-height: 1;">The screen is for displaying the game for the rats. It is bent in order to better suit it to vision of the rats.</p>
-									<p style="line-height: 1;">The water dispenser is placed at the middle of the headset directly to the mouth of the rat. Its goal is to have a positive feedback loop that can give reward relatively fast.</p>
-									<p style="line-height: 1;">Finally the nozzles are for signalling things like the rat hitting a wall.</p>
-								</section>
-								<section>
-									<h2>The Trigger</h2>
-									<p>It is a small lever that can be pulled by the rat. It's purpose is to serve as the "shooting button". When the rat pulls the lever it triggers the shooting mechanism
-										of the software. Afterwards the springs bring the lever up into the original position.
+									
+									<h2>Visuals</h2>
+									<p>The headset is designed to suit the rats' field of vision. It displays the image of the game.
+										An oled screen is put into the headset. This ensures that the rats are able to see everything needed for them to play the game.
 									</p>
+									<div class="container">
+										<canvas id="headsetCanvas" class="renderCanvas"></canvas>
+										<img src="images/headset.jpg" alt="Headset photo">
+									</div>
+									
 								</section>
 								<section>
-									<h2>The Mixer</h2>
-									<p>This mixes the water with sugar and does not allow the sugar to settle down at the bottom of the bottle.</p>
+									<h2>Reward circuit</h2>
+									<p>
+										We needed something that tells the rat whether they are playing well. We did this by using water mixed with sugar. The idea was that 
+										everytime the rats do something good (shoots a monsters, advances to the next area etc.) then the they get a little bit of the water. This would reinforce the rats to play the game.
+									</p>
+									<p>
+										The parts for the system are: mixer, pump, dispenser and the pumps. The mixer would be in a little container filled with
+										sugar and water. Before the gaming session the sugar and water would be added to the container 
+										and during it the mixer wuld continously mix them in order to have enough sugar in the water. 
+										After the mixing is done the pump would sip out the water into the tubes and forward it into the dispenser.
+										The dispenser is located on the headset where the rats can sip the water.
+									</p>
+
 								</section>
 								<section>
-									<h2>The Ball and the Sensors</h2>
-									<p></p>
+									<h2>Trigger</h2>
+									<p>The rats needed somthing to shoot with. The problem was that their paws are used in the movement
+										so we need another method. We decided to make a trigger which the rats can push down with their heads.
+										This makes it so that they can shoot when it is needed but relatively little movement and energy to use it.
+									</p>
+									<div class="container">
+										<canvas id="triggerCanvas" class="renderCanvas"></canvas>
+										<img src="images/trigger.jpg" width="50" height="50">
+									</div> 						
+									
 								</section>
-							</article>
+								<section>
+									<h2>Movement</h2>
+									<p>We modelled the rats' movement with a ball. 
+										If the rat wanted to move forward it can push the ball backwards thus staying in the same place. 
+										Sensors would record the movement of the ball and update the game according to the 
+										displacement of the ball. The ball has two modes: one whare engines  can rotate it and the other where ball bearings 
+										allow for smooth controls.
+									</p>
+									<div class="container" >
+										<canvas id="standCanvas" class="renderCanvas"></canvas>
+										<img src="images/stand.jpg">
+								</div>
+								
+									<p>Two sensors were mounted arund the ball for the movement.</p>
+									<div class="container">
+										<canvas id="sensorCanvas" class="renderCanvas"></canvas>
+										<img src="images/sensor.jpg">
+								</div>
+							
+							
+							</section>
+							<script>
+								window.addEventListener('DOMContentLoaded', function () {
+									// Create a closure to keep variables contained
+									(function() {
+										
+										canvases = ["headsetCanvas", "triggerCanvas","standCanvas", "sensorCanvas"]
+										
+										glbFiles = ["full_headset_guide.glb", "trigger.glb", "stand.glb", "sensor.glb"]
+
+										for(let i = 0; i<canvases.length;i++){
+										
+										
+										const canvas = document.getElementById(canvases[i]); 
+										const engine = new BABYLON.Engine(canvas, true);
+										engine.setHardwareScalingLevel(0.5); // Renders at 200% resolution
+
+										const createScene = function () {
+											const scene = new BABYLON.Scene(engine);
+
+											// Camera
+											const camera = new BABYLON.ArcRotateCamera(
+											canvases[i] + "Camera",
+											BABYLON.Tools.ToRadians(180), // Alpha (horizontal angle)
+											BABYLON.Tools.ToRadians(30), // Beta (vertical angle)
+											20,                  // Radius (distance from target)
+											new BABYLON.Vector3(0, 0, 0), // Target position (center of the scene)
+											scene);
+											camera.attachControl(canvas, true);
+
+											// Light
+											const light = new BABYLON.HemisphericLight("headsetLight", 
+												new BABYLON.Vector3(0, 1, 0), scene);
+
+											// Load GLB/GLTF model
+											BABYLON.SceneLoader.Append("./blender/", glbFiles[i], scene, function (scene) {
+												console.log(glbFiles[i] + " model loaded successfully");
+											});
+
+											return scene;
+										};
+
+										const scene = createScene();
+										engine.runRenderLoop(function () {
+											scene.render();
+										});
+
+										window.addEventListener("resize", function () {
+											engine.resize();
+										});
+									}	})(); // End IIFE
+								
+								});
+								</script>
+							
+						</article>
 
 						<!-- About -->
 							<article id="about">
