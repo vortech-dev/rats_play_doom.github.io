@@ -14,16 +14,21 @@
 		<script src="https://cdn.babylonjs.com/babylon.js"></script>
 		<script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
 		<style>
-#bg {
-    background-image: url("../../images/background.png");
-    background-position: center;
-    background-size: 100% auto; /* Ensures sharpness */
-    background-repeat: no-repeat;
-    z-index: 1;
-    width: 100vw;
-    height: 100vh;
-}
-
+			#bg:after {
+			-moz-transform: scale(1.125);
+			-webkit-transform: scale(1.125);
+			-ms-transform: scale(1.125);
+			transform: scale(1.125);
+			-moz-transition: -moz-transform 0.325s ease-in-out, -moz-filter 0.325s ease-in-out;
+			-webkit-transition: -webkit-transform 0.325s ease-in-out, -webkit-filter 0.325s ease-in-out;
+			-ms-transition: -ms-transform 0.325s ease-in-out, -ms-filter 0.325s ease-in-out;
+			transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out;
+			background-image: url("../../images/background.png");
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			z-index: 1;
+		}
 			 .container {
 				display: flex;          /* Horizontal layout */
 				align-items: center;    /* Aligns content vertically */
@@ -309,7 +314,6 @@
 								<span class="image main"><img src="images/black.jpg" alt="" /></span>
 								<p>hardveres dolgok </p>
 								
-</iframe>
 							</article>
 
 						<!-- Contact -->
