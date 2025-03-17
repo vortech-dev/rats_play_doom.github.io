@@ -1111,7 +1111,6 @@ input, select, textarea {
 		-webkit-transform: scale(1.0);
 		-ms-transform: scale(1.0);
 		transform: scale(1.0);
-		-webkit-backface-visibility: hidden;
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -1131,19 +1130,11 @@ input, select, textarea {
 		}
 
 		#bg:before {
-			-moz-transition: background-color 2.5s ease-in-out;
-			-webkit-transition: background-color 2.5s ease-in-out;
-			-ms-transition: background-color 2.5s ease-in-out;
-			transition: background-color 2.5s ease-in-out;
-			-moz-transition-delay: 0.75s;
-			-webkit-transition-delay: 0.75s;
-			-ms-transition-delay: 0.75s;
-			transition-delay: 0.75s;
-			background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/overlay.png");
-			background-size: auto,
+			
+			background-image:  url("../../images/background.png");
+			background-size: cover,
  256px 256px;
-			background-position: center,
- center;
+			background-position: center center;
 			background-repeat: no-repeat,
  repeat;
 			z-index: 2;
@@ -1152,18 +1143,10 @@ input, select, textarea {
 		
 
 		body.is-article-visible #bg:after {
-			-moz-transform: scale(1.0825);
-			-webkit-transform: scale(1.0825);
-			-ms-transform: scale(1.0825);
-			transform: scale(1.0825);
-			-moz-filter: blur(0.2rem);
-			-webkit-filter: blur(0.2rem);
-			-ms-filter: blur(0.2rem);
-			filter: blur(0.2rem);
+			
 		}
 
 		body.is-preload #bg:before {
-			background-image: url(images/background.png);
 		}
 
 /* Wrapper */
@@ -1537,11 +1520,30 @@ input, select, textarea {
 			border-radius: 4px;
 			opacity: 0;
 		}
+		#main article.hardware {
+			-moz-transform: translateY(0.25rem);
+			-webkit-transform: translateY(0.25rem);
+			-ms-transform: translateY(0.25rem);
+			transform: translateY(0.25rem);
+			-moz-transition: opacity 0.325s ease-in-out, -moz-transform 0.325s ease-in-out;
+			-webkit-transition: opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out;
+			-ms-transition: opacity 0.325s ease-in-out, -ms-transform 0.325s ease-in-out;
+			transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
+			padding: 110rem 2.5rem 1.5rem 2.5rem ;
+			position: relative;
+			width: 40rem;
+			max-width: 100%;
+			background-color: rgba(27, 31, 34, 0.85);
+			border-radius: 4px;
+			opacity: 0;
+		}
+
 
 			#main article.active {
 				-moz-transform: translateY(0);
 				-webkit-transform: translateY(0);
-				-ms-transform: translateY(0);
+				-moz-transform: translateY(0);
+
 				transform: translateY(0);
 				opacity: 1;
 			}

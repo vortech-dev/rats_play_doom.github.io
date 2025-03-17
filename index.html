@@ -141,7 +141,7 @@
             </article>
 
           <!-- Work -->
-            <article id="work">
+            <article id="work" class="hardware">
               <h2 class="major">Rats Play Doom: Hardware</h2>
               <section>
                 
@@ -168,7 +168,7 @@
                   After the mixing is done the pump would sip out the water into the tubes and forward it into the dispenser.
                   The dispenser is located on the headset where the rats can sip the water.
                 </p>
-
+                
               </section>
               <section>
                 <h2>Trigger</h2>
@@ -193,16 +193,16 @@
                 <div class="imgcontainer" >
                   <canvas id="standCanvas" class="renderCanvas"></canvas>
                   <img src="images/stand.jpg">
-              </div>
-              
+                </div>
+                
                 <p>Two sensors were mounted arund the ball for the movement.</p>
                 <div class="imgcontainer">
                   <canvas id="sensorCanvas" class="renderCanvas"></canvas>
                   <img src="images/sensor.jpg">
-              </div>
-            
-            
-            </section>
+                </div>
+                
+                
+              </section>
             <script>
               window.addEventListener('DOMContentLoaded', function () {
                 // Create a closure to keep variables contained
@@ -216,6 +216,9 @@
                   
                   
                   const canvas = document.getElementById(canvases[i]); 
+                  canvas.addEventListener('wheel', function (event) {
+                    event.preventDefault(); 
+                    }, { passive: false });
                   const engine = new BABYLON.Engine(canvas, true);
                   engine.setHardwareScalingLevel(0.5); // Renders at 200% resolution
 
@@ -225,9 +228,9 @@
                     // Camera
                     const camera = new BABYLON.ArcRotateCamera(
                     canvases[i] + "Camera",
-                    BABYLON.Tools.ToRadians(180), // Alpha (horizontal angle)
-                    BABYLON.Tools.ToRadians(30), // Beta (vertical angle)
-                    20,                  // Radius (distance from target)
+                    BABYLON.Tools.ToRadians(90), // Alpha (horizontal angle)
+                    BABYLON.Tools.ToRadians(90), // Beta (vertical angle)
+                    30,                  // Radius (distance from target)
                     new BABYLON.Vector3(0, 0, 0), // Target position (center of the scene)
                     scene);
                     camera.attachControl(canvas, true);
