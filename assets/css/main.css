@@ -1277,7 +1277,7 @@ input, select, textarea {
 			border-top-width: 1px;
 			border-bottom-width: 1px;
 			max-width: 100%;
-			background-color:  rgba(0,0,0,0.5);
+			background-color: rgba(27, 31, 34, 0.85);
 		}
 
 			#header .content .inner {
@@ -1292,6 +1292,7 @@ input, select, textarea {
 				padding: 3rem 2rem;
 				max-height: 40rem;
 				overflow: hidden;
+				background-color: rgba(27, 31, 34, 0.85);
 			}
 
 				#header .content .inner > :last-child {
@@ -1314,6 +1315,7 @@ input, select, textarea {
 			list-style: none;
 			padding-left: 0;
 			border: solid 1px #ff0000;
+			background-color: rgba(27, 31, 34, 0.85);
 			border-radius: 4px;
 		}
 
@@ -1537,6 +1539,23 @@ input, select, textarea {
 			border-radius: 4px;
 			opacity: 0;
 		}
+		#main article.intro {
+			-moz-transform: translateY(0.25rem);
+			-webkit-transform: translateY(0.25rem);
+			-ms-transform: translateY(0.25rem);
+			transform: translateY(0.25rem);
+			-moz-transition: opacity 0.325s ease-in-out, -moz-transform 0.325s ease-in-out;
+			-webkit-transition: opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out;
+			-ms-transition: opacity 0.325s ease-in-out, -ms-transform 0.325s ease-in-out;
+			transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
+			padding: 10rem 2.5rem 1.5rem 2.5rem ;
+			position: relative;
+			width: 40rem;
+			max-width: 100%;
+			background-color: rgba(27, 31, 34, 0.85);
+			border-radius: 4px;
+			opacity: 0;
+		}
 
 
 			#main article.active {
@@ -1666,8 +1685,8 @@ input, select, textarea {
 		}
 		
 		.contact-card {
-			background-color: rgba(0,0,0,0.5);
-			border-radius: 8px;
+			background-color: rgba(27, 31, 34, 0.85);
+						border-radius: 8px;
 			padding: 20px;
 			text-align: center;
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
