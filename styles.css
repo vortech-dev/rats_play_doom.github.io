@@ -439,7 +439,7 @@ body > footer {
         font-size: 2.5em; /* Smaller title on mobile */
     }
     nav a {
-        margin: 5px 2px; /* Tighter spacing on mobile */
+        margin: 5px 1px; /* Tighter horizontal spacing on mobile */
         padding: 3px 6px;
         font-size: 0.9em;
     }
