@@ -183,6 +183,13 @@ figure {
     text-align: center;
 }
 
+/* Remove link styling from images within figures */
+figure a {
+    text-decoration: none;
+    border: none; /* Remove potential link borders */
+    display: inline-block; /* Ensure the link wraps the image correctly */
+}
+
 img {
     max-width: 100%;
     height: auto;
