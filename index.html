@@ -54,7 +54,7 @@
         <section id="intro">
             <h2>Intro</h2>
             <p>We built a complete VR setup from scratch to let rats play DOOM. The system includes a motion-tracked treadmill ball, a panoramic headset, an input trigger, and a reward circuit. All hardware and software components are open sourced, including 3D-printable designs, circuit diagrams, firmware, and control software.</p>
-            <p>The first version (v1) was built in New York by Viktor, who trained rats to walk through a corridor in DOOM using a simpler rig. That version was featured on Vice and PC Gamer. After moving back home, the project was paused. Public interest reignited development, leading to v2, a more advanced and modular version built in collaboration with electrical engineer Sándor Makra.</p>
+            <p>The first version (v1) was built in New York by Viktor, who trained rats to walk through a corridor in DOOM using a simpler rig. That version was featured on Vice and PC Gamer. After moving back home, the project was paused. Public interest reignited development, leading to v2, a more advanced and modular version built in collaboration with electrical engineer Sándor Makra. Akos Blaschek later assisted significantly in documenting the project for open-sourcing, aiming to enable others to replicate and build upon this work.</p>
 
             <h3>V1</h3>
             <ul>
@@ -63,6 +63,10 @@
                 <li>Minimal sensors and mechanics</li>
                 <li>No panoramic screen</li>
             </ul>
+            <figure>
+                <img src="images/v1.jpg" alt="Rat VR Setup Version 1" class="content-image-small">
+                <figcaption>Rat VR Setup Version 1</figcaption>
+            </figure>
 
             <h3>V2</h3>
             <ul>
@@ -73,9 +77,13 @@
                 <li>Modular 3D-printable components</li>
                 <li>Improved electronics reliability and safety</li>
             </ul>
+            <figure>
+                <img src="images/v2.jpg" alt="Rat VR Setup Version 2" class="content-image-small">
+                <figcaption>Rat VR Setup Version 2</figcaption>
+            </figure>
 
             <figure>
-                <img src="images/placeholder_setup_side.png" alt="Full setup from side showing rat on ball, screen around, trigger, and water tube.">
+                <img src="images/rat_vr_setup.png" alt="Full setup from side showing rat on ball, screen around, trigger, and water tube." class="content-image-small">
                 <figcaption>Full setup from side showing rat on ball, screen around, trigger, and water tube.</figcaption>
             </figure>
 
@@ -89,11 +97,12 @@
             <article>
                 <h3>Visual Interface</h3>
                 <p>The headset wraps around the rat’s head with a foldable AMOLED screen. It maximizes immersion without obstructing whisker space. The screen supports Full HD resolution.</p>
+                <p>The headset frame also integrates several sensory components: two small air nozzles are positioned near the left and right whiskers, capable of delivering targeted air puffs on command (e.g., signaling wall collisions in-game). The frame provides a secure mounting point for the reward system's dispenser tube, placing it near the rat's mouth. Additionally, the design includes placeholders for miniature speakers near each ear, intended for future implementation of stereo audio cues.</p>
                 <div class="viewer-container">
                     <canvas id="headsetCanvas"></canvas>
                     <figure>
-                        <img src="images/placeholder_headset_above.png" alt="Headset close-up from above.">
-                        <figcaption>Headset close-up from above.</figcaption>
+                        <img src="images/headset.jpg" alt="Headset close-up from above." class="content-image-large">
+                        <figcaption>Headset close-up.</figcaption>
                     </figure>
                 </div>
                  <p class="model-label">3D Model: Headset</p>
@@ -106,7 +115,7 @@
                  <div class="viewer-container">
                     <canvas id="standCanvas"></canvas>
                     <figure>
-                        <img src="images/placeholder_ball_mount.png" alt="Ball mount showing driven/undriven modes and sensor placement.">
+                        <img src="images/stand.jpg" alt="Ball mount showing driven/undriven modes and sensor placement." class="content-image-large">
                         <figcaption>Ball mount showing driven/undriven modes and sensor placement.</figcaption>
                     </figure>
                 </div>
@@ -120,7 +129,7 @@
                  <div class="viewer-container">
                      <canvas id="triggerCanvas"></canvas>
                     <figure>
-                        <img src="images/placeholder_trigger_lever.png" alt="Close-up of trigger lever with encoder and motor.">
+                        <img src="images/trigger.jpg" alt="Close-up of trigger lever with encoder and motor." class="content-image-large">
                         <figcaption>Close-up of trigger lever with encoder and motor.</figcaption>
                     </figure>
                 </div>
@@ -138,7 +147,7 @@
                 </ul>
                 <p>This setup ensures accurate, repeatable reward delivery with minimal delay. The reward is synchronized with game events to reinforce desired behaviors.</p>
                 <figure>
-                    <img src="images/placeholder_reward_circuit.png" alt="Reward circuit with labeled mixer, pump, valve, and dispenser.">
+                    <img src="images/placeholder_reward_circuit.png" alt="Reward circuit with labeled mixer, pump, valve, and dispenser." class="content-image-large">
                     <figcaption>Reward circuit diagram.</figcaption>
                 </figure>
             </article>

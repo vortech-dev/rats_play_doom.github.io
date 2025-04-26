@@ -16,7 +16,7 @@
 # Variables
 --------------------------------------------------------------*/
 :root {
-    --color-background: #1a1a1a; /* Dark background */
+    --color-background: #3c3c3c; /* Even lighter dark gray */
     --color-text: #c0c0c0; /* Silver/Gray text */
     --color-header: #9d1a0a; /* Dark Red like DOOM logo */
     --color-accent: #d4750f; /* Orangey-brown accent */
@@ -187,6 +187,24 @@ img {
     height: auto;
     border: 2px solid var(--color-border);
     background-color: #000; /* BG for transparent parts */
+}
+
+/* Style for enlarged content images */
+.content-image-large {
+    transform: scale(1.4);
+    transform-origin: center center; /* Ensure scaling originates from the center */
+    /* Add margin to compensate for scaling if needed, or adjust container */
+    margin-top: 40px; /* Example margin adjustment */
+    margin-bottom: 40px; /* Example margin adjustment */
+}
+
+/* Style for smaller content images (V1/V2) */
+.content-image-small {
+    width: 70%; /* Reduce size by 30% */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Needed for margin auto centering */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 figcaption {
