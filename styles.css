@@ -103,6 +103,44 @@ h1 {
     animation: funky-title-anim 3s ease-in-out infinite;
 }
 
+/* Style for the links moved outside the absolute container */
+.header-info-link {
+    display: block; /* Ensure they stack vertically */
+    text-align: center; /* Center align the text */
+    margin: 5px auto; /* Add some vertical spacing and center block */
+    color: var(--color-text); /* Match general text color or choose another */
+    font-size: 0.9em;
+    text-decoration: none;
+    /* Add hover effect if desired */
+}
+
+.header-info-link:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+/* Apply logo sizing and styling within header-info-links */
+.header-info-link img.contact-logo {
+    height: 1em; /* Match original logo size */
+    vertical-align: text-bottom; /* Align nicely with text */
+    margin-right: 0.3em; /* Add a little space before text */
+    /* Resetting properties potentially inherited or interfering */
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.header-info-link img.contact-logo.invert-logo {
+    background-color: white; /* Match original invert style */
+    padding: 1px; /* Match original invert style */
+}
+
+/* Adjustments for specific header-info-links if needed */
+#contact-email.header-info-link,
+#contact-vice.header-info-link {
+    margin-top: 10px; /* Add a bit more space above email/vice */
+}
+
 h2 {
     font-size: 2em;
     border-bottom: 2px solid var(--color-border);
