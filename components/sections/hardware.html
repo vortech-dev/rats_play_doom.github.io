@@ -1,0 +1,60 @@
+<article id="hardware" class="hardware">
+  <h2 class="major">Rats Play Doom: Hardware</h2>
+  <section>
+    <h2>Visuals</h2>
+    <p>The headset is designed to suit the rats' field of vision. It displays the image of the game.
+      An oled screen is put into the headset. This ensures that the rats are able to see everything needed for them to play the game.
+    </p>
+    <div class="imgcontainer">
+      <canvas id="headsetCanvas" class="renderCanvas"></canvas>
+      <img src="images/headset.jpg" width="50" height="50">
+    </div>
+  </section>
+  
+  <section>
+    <h2>Reward circuit</h2>
+    <p>
+      We needed something that tells the rat whether they are playing well. We did this by using water mixed with sugar. The idea was that 
+      everytime the rats do something good (shoots a monsters, advances to the next area etc.) then the they get a little bit of the water. This would reinforce the rats to play the game.
+    </p>
+    <p>
+      The parts for the system are: mixer, pump, dispenser and the pumps. The mixer would be in a little container filled with
+      sugar and water. Before the gaming session the sugar and water would be added to the container 
+      and during it the mixer wuld continously mix them in order to have enough sugar in the water. 
+      After the mixing is done the pump would sip out the water into the tubes and forward it into the dispenser.
+      The dispenser is located on the headset where the rats can sip the water.
+    </p>
+  </section>
+  
+  <section>
+    <h2>Trigger</h2>
+    <p>The rats needed somthing to shoot with. The problem was that their paws are used in the movement
+      so we need another method. We decided to make a trigger which the rats can push down with their heads.
+      This makes it so that they can shoot when it is needed but relatively little movement and energy to use it.
+    </p>
+    <div class="imgcontainer">
+      <canvas id="triggerCanvas" class="renderCanvas"></canvas>
+      <img src="images/trigger.jpg" width="50" height="50">
+    </div> 						
+  </section>
+  
+  <section>
+    <h2>Movement</h2>
+    <p>We modelled the rats' movement with a ball. 
+      If the rat wanted to move forward it can push the ball backwards thus staying in the same place. 
+      Sensors would record the movement of the ball and update the game according to the 
+      displacement of the ball. The ball has two modes: one whare engines  can rotate it and the other where ball bearings 
+      allow for smooth controls.
+    </p>
+    <div class="imgcontainer" >
+      <canvas id="standCanvas" class="renderCanvas"></canvas>
+      <img src="images/stand.jpg">
+    </div>
+    
+    <p>Two sensors were mounted arund the ball for the movement.</p>
+    <div class="imgcontainer">
+      <canvas id="sensorCanvas" class="renderCanvas"></canvas>
+      <img src="images/sensor.jpg">
+    </div>
+  </section>
+</article>

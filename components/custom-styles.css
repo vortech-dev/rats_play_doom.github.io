@@ -1,0 +1,169 @@
+.imgcontainer {
+  display: flex;          /* Horizontal layout */
+  align-items: center;    /* Aligns content vertically */
+  gap: 20px;              /* Adds spacing between items */
+  margin-bottom: 30px;  
+  /* Add space between containers */
+}
+
+.renderCanvas {
+  width: 300px;           /* Fixed width instead of viewport percentage */
+  height: 300px;          /* Fixed height */
+  border: 2px solid #555; 
+  display: block;         /* Ensures proper layout */
+}
+
+img {
+  width: 250px;          /* Image width */
+  height: auto;          /* Maintain aspect ratio */
+  border: 2px solid #555; 
+  border-radius: 8px;    /* Rounded corners for style */
+}
+
+.model-container {
+  width: 100%;
+  margin-bottom: 40px;
+  clear: both;
+}
+
+/* Add labels for clarity */
+.model-label {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.contact-card {
+  background-color: rgba(27, 31, 34, 0.85);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+}
+
+.contact-card img {
+  width: 100%;
+  border-radius: 50%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.contact-card h3 {
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+.contact-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Close button styling */
+.close {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  text-indent: 4rem;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+.close:before {
+  transition: background-color 0.2s ease-in-out;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  background-position: center;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='20px' height='20px' viewBox='0 0 20 20' zoomAndPan='disable'%3E%3Cstyle%3Eline %7B stroke: %23ff0000%3B stroke-width: 1%3B %7D%3C/style%3E%3Cline x1='2' y1='2' x2='18' y2='18' /%3E%3Cline x1='18' y1='2' x2='2' y2='18' /%3E%3C/svg%3E");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+}
+
+.close:hover:before {
+  background-color: rgba(255, 255, 255, 0.075);
+}
+
+.close:active:before {
+  background-color: rgba(255, 255, 255, 0.175);
+}
+
+/* Article styling and display */
+#main {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 100%;
+  z-index: 3;
+}
+
+#main article {
+  display: none;
+  opacity: 0;
+  transform: translateY(0.25rem);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  padding: 4.5rem 2.5rem 1.5rem 2.5rem;
+  position: relative;
+  width: 40rem;
+  max-width: 100%;
+  background-color: rgba(27, 31, 34, 0.85);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+#main article.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fix for image sizes in articles */
+article img {
+  width: auto;
+  max-width: 100%;
+}
+
+/* Ensure the header displays properly */
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 100%;
+}
+
+/* Fix for hardware section */
+article.hardware {
+  min-height: 200vh;
+  overflow-y: auto;
+}
+
+/* Footer styling */
+#footer {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* Override background image in main CSS */
+#bg:before {
+  background-image: url("../images/background.png") !important;
+  background-size: cover !important;
+}

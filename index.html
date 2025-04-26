@@ -1,315 +1,175 @@
-<!DOCTYPE HTML>
- <!--
- 	Rats Play Doom
- -->
- <html>
- 	<head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rats Play Doom</title>
     <link rel="icon" href="images/logo.png" type="image/x-icon">
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		
-		<script src="https://cdn.babylonjs.com/babylon.js"></script>
-		<script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
-		<style>
-			 .imgcontainer {
-				display: flex;          /* Horizontal layout */
-				align-items: center;    /* Aligns content vertically */
-				gap: 20px;              /* Adds spacing between items */
-				margin-bottom: 30px;  
-				  /* Add space between containers */
-			}
+    <link rel="stylesheet" href="styles.css">
 
-			.renderCanvas {
-				width: 300px;           /* Fixed width instead of viewport percentage */
-				height: 300px;          /* Fixed height */
-				border: 2px solid #555; 
-				display: block;         /* Ensures proper layout */
-			}
+    <!-- Babylon.js for 3D viewer -->
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
 
-        img {
-            width: 250px;          /* Image width */
-            height: auto;          /* Maintain aspect ratio */
-            border: 2px solid #555; 
-            border-radius: 8px;    /* Rounded corners for style */
-        }
-		.model-container {
-				width: 100%;
-				margin-bottom: 40px;
-				clear: both;
-			}
-			
-			/* Add labels for clarity */
-			.model-label {
-				text-align: center;
-				margin-top: 10px;
-				font-weight: bold;
-			}
-		</style>
-	
- 	
- 	</head>
- 	<body class="is-preload" style="background-image: url('images/background.png')">
- 
- 		<!-- Wrapper -->
- 			<div id="wrapper">
- 
- 				<!-- Header -->
- 					<header id="header">
- 						
- 						<div class="content">
- 							<div class="inner">
- 								<p>Rats Play Doom</p>
- 							</div></div>
-               <nav>
-                 <ul>
-                   <li><a href="#intro">Intro</a></li>
-                   <li><a href="#hardware">Hardware</a></li>
-                   <li><a href="#software">Software</a></li>
-                   <li><a href="#results">Results</a></li>
-                   <!--<li><a href="#elements">Elements</a></li>-->
-                  </ul>
-                </nav>
-                <div class="contact-container">
-                  <div class="contact-card">
-                    <img src="man1.jpg" alt="Man 1">
-                    <h3>John Doe</h3>
-                    <p>Email: john.doe@example.com</p>
-                    <p>Phone: +1234567890</p>
-                  </div>
-                  <div class="contact-card">
-                    <img src="man2.jpg" alt="Man 2">
-                    <h3>Mike Smith</h3>
-                    <p>Email: mike.smith@example.com</p>
-                    <p>Phone: +0987654321</p>
-                  </div>
-                  <div class="contact-card">
-                    <img src="man3.jpg" alt="Man 3">
-                    <h3>James Brown</h3>
-                    <p>Email: james.brown@example.com</p>
-                    <p>Phone: +1122334455</p>
-                  </div>
-                
- 					</header>
- 
- 				<!-- Main -->
- 					<div id="main">
- 
- 						<!-- Intro -->
-             <article id="intro" class="intro">
-              <h2 class="major">Rats Playing DOOM: Intro</h2>
-                <p>Rats are one of the most trainable creatures on Earth for different kinds of tasks.
-                  We set out to make them play Doom. 
-                </p>								
-                <div >
-                  <!-- Replace 'training-image.jpg' with your actual image file name -->
-                  <div style="text-align: center;"><img src="images/rat_vr_setup.png" alt="The setup" style="width: 1000px; max-width: 100%; height: auto;"></div>
-                  <p><em>The different inputs for the rats.</em></p>
+    <!-- Local JS for 3D viewer -->
+    <script defer src="assets/js/util.js"></script>
+    <script defer src="assets/js/main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Rats Play DOOM</h1>
+        <nav>
+            <a href="#intro">Intro</a>
+            <a href="#hardware">Hardware</a>
+            <a href="#software">Software</a>
+            <a href="#results">Results</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="intro">
+            <h2>Intro</h2>
+            <p>We built a complete VR setup from scratch to let rats play DOOM. The system includes a motion-tracked treadmill ball, a panoramic headset, an input trigger, and a reward circuit. All hardware and software components are open sourced, including 3D-printable designs, circuit diagrams, firmware, and control software.</p>
+            <p>The first version (v1) was built in New York by Viktor, who trained rats to walk through a corridor in DOOM using a simpler rig. That version was featured on Vice and PC Gamer. After moving back home, the project was paused. Public interest reignited development, leading to v2, a more advanced and modular version built in collaboration with electrical engineer Sándor Makra.</p>
+
+            <h3>V1</h3>
+            <ul>
+                <li>Basic ball setup</li>
+                <li>Rats trained to run forward</li>
+                <li>Minimal sensors and mechanics</li>
+                <li>No panoramic screen</li>
+            </ul>
+
+            <h3>V2</h3>
+            <ul>
+                <li>New ball driver mechanism for smoother movement</li>
+                <li>Foldable AMOLED screen with 180° horizontal and 80° vertical FOV, Full HD resolution</li>
+                <li>Upgraded sensors for movement tracking</li>
+                <li>Reinforced feeder system with mixing motor</li>
+                <li>Modular 3D-printable components</li>
+                <li>Improved electronics reliability and safety</li>
+            </ul>
+
+            <figure>
+                <img src="images/placeholder_setup_side.png" alt="Full setup from side showing rat on ball, screen around, trigger, and water tube.">
+                <figcaption>Full setup from side showing rat on ball, screen around, trigger, and water tube.</figcaption>
+            </figure>
+
+            <h3>Limitations</h3>
+            <p>We reached the point of rat habituation but didn’t start training. Our rats (Todd, Kojima, Gabe) aged out before full testing. The setup works, but behavioral validation is pending.</p>
+        </section>
+
+        <section id="hardware">
+            <h2>Hardware</h2>
+
+            <article>
+                <h3>Visual Interface</h3>
+                <p>The headset wraps around the rat’s head with a foldable AMOLED screen. It maximizes immersion without obstructing whisker space. The screen supports Full HD resolution.</p>
+                <div class="viewer-container">
+                    <canvas id="headsetCanvas"></canvas>
+                    <figure>
+                        <img src="images/placeholder_headset_above.png" alt="Headset close-up from above.">
+                        <figcaption>Headset close-up from above.</figcaption>
+                    </figure>
                 </div>
-                <p>
-                  We made a setup where the rats could learn the game. A monitor would display the game.
-                  The rats can move using the ball which simulates them walking.
-                  They have a trigger which they can use to shoot.
-                </p>
-                
-              
-                <section>
-                <h2>V1</h2>
-                
-                </section>
-              
-                <section>
-                <h2>V2</h2>
-                
-                </section>
-                <section>
-                  <h2>Limitations</h2>
-                  
-                  </section>
-                  <section>
-                <section>
-                  
-                <h2>Vision</h2>
-                <p>The most interesting idea we had was that we could use this to get the rats to play by only using their minds.
-                  We potentially could scan the brain of the rats and look for the activity of the brain during the game.
-                   After that we could train an AI model to pair the brain activity of the rats to the inputs. In the long run,
-                   with enough data, we could make the rats play without the inputs and only scanning their brain activity.
-                </p>
-                </section>
-                <footer>
-                <p>If you are interested in the hardware of the project you can fint it <a href="#hardware">here</a>.</p>
-                </footer>
+                 <p class="model-label">3D Model: Headset</p>
             </article>
 
-          <!-- Work -->
-            <article id="hardware" class="hardware">
-              <h2 class="major">Rats Play Doom: Hardware</h2>
-              <section>
-                
-                <h2>Visuals</h2>
-                <p>The headset is designed to suit the rats' field of vision. It displays the image of the game.
-                  An oled screen is put into the headset. This ensures that the rats are able to see everything needed for them to play the game.
-                </p>
-                <div class="imgcontainer">
-                  <canvas id="headsetCanvas" class="renderCanvas"></canvas>
-                  <img src="images/headset.jpg" width="50" height="50">
+            <article>
+                <h3>Locomotion</h3>
+                <p>Movement is captured via a free-spinning ball under the rat. Rotary sensors track displacement and convert it into game motion. The ball can also be driven by motors.</p>
+                <p>These motors are used during training to roll the ball and simulate movement paths before a reward. This guides the rat on where to go, helping form movement-action associations. Like the trigger, this allows for programmatic training sequences with minimal initial input from the animal.</p>
+                 <div class="viewer-container">
+                    <canvas id="standCanvas"></canvas>
+                    <figure>
+                        <img src="images/placeholder_ball_mount.png" alt="Ball mount showing driven/undriven modes and sensor placement.">
+                        <figcaption>Ball mount showing driven/undriven modes and sensor placement.</figcaption>
+                    </figure>
                 </div>
-                
-              </section>
-              <section>
-                <h2>Reward circuit</h2>
-                <p>
-                  We needed something that tells the rat whether they are playing well. We did this by using water mixed with sugar. The idea was that 
-                  everytime the rats do something good (shoots a monsters, advances to the next area etc.) then the they get a little bit of the water. This would reinforce the rats to play the game.
-                </p>
-                <p>
-                  The parts for the system are: mixer, pump, dispenser and the pumps. The mixer would be in a little container filled with
-                  sugar and water. Before the gaming session the sugar and water would be added to the container 
-                  and during it the mixer wuld continously mix them in order to have enough sugar in the water. 
-                  After the mixing is done the pump would sip out the water into the tubes and forward it into the dispenser.
-                  The dispenser is located on the headset where the rats can sip the water.
-                </p>
-                
-              </section>
-              <section>
-                <h2>Trigger</h2>
-                <p>The rats needed somthing to shoot with. The problem was that their paws are used in the movement
-                  so we need another method. We decided to make a trigger which the rats can push down with their heads.
-                  This makes it so that they can shoot when it is needed but relatively little movement and energy to use it.
-                </p>
-                <div class="imgcontainer">
-                  <canvas id="triggerCanvas" class="renderCanvas"></canvas>
-                  <img src="images/trigger.jpg" width="50" height="50">
-                </div> 						
-                
-              </section>
-              <section>
-                <h2>Movement</h2>
-                <p>We modelled the rats' movement with a ball. 
-                  If the rat wanted to move forward it can push the ball backwards thus staying in the same place. 
-                  Sensors would record the movement of the ball and update the game according to the 
-                  displacement of the ball. The ball has two modes: one whare engines  can rotate it and the other where ball bearings 
-                  allow for smooth controls.
-                </p>
-                <div class="imgcontainer" >
-                  <canvas id="standCanvas" class="renderCanvas"></canvas>
-                  <img src="images/stand.jpg">
+                 <p class="model-label">3D Model: Stand/Ball</p>
+            </article>
+
+            <article>
+                <h3>Trigger Input</h3>
+                <p>The shooting input is a custom-built hand-operated lever. Rats pull it with their paws to fire. The lever is held in place by small springs, encased in a 3D-printed housing. It includes a rotary encoder to detect motion and a stepper motor to actuate it.</p>
+                <p>The motor allows programmatic control—pulling the lever to demonstrate shooting. This enables training by pairing visual cues with mechanical motion, reinforcing the association before the rat initiates the action on its own.</p>
+                 <div class="viewer-container">
+                     <canvas id="triggerCanvas"></canvas>
+                    <figure>
+                        <img src="images/placeholder_trigger_lever.png" alt="Close-up of trigger lever with encoder and motor.">
+                        <figcaption>Close-up of trigger lever with encoder and motor.</figcaption>
+                    </figure>
                 </div>
-                
-                <p>Two sensors were mounted arund the ball for the movement.</p>
-                <div class="imgcontainer">
-                  <canvas id="sensorCanvas" class="renderCanvas"></canvas>
-                  <img src="images/sensor.jpg">
-                </div>
-                
-                
-              </section>
-            <script>
-              window.addEventListener('DOMContentLoaded', function () {
-                // Create a closure to keep variables contained
-                (function() {
-                  
-                  canvases = ["headsetCanvas", "triggerCanvas","standCanvas", "sensorCanvas"]
-                  
-                  glbFiles = ["full_headset_guide.glb", "trigger.glb", "stand.glb", "sensor.glb"]
+                <p class="model-label">3D Model: Trigger</p>
+            </article>
 
-                  for(let i = 0; i<canvases.length;i++){
-                  
-                  
-                  const canvas = document.getElementById(canvases[i]); 
-                  canvas.addEventListener('wheel', function (event) {
-                    event.preventDefault(); 
-                    }, { passive: false });
-                  const engine = new BABYLON.Engine(canvas, true);
-                  engine.setHardwareScalingLevel(0.5); // Renders at 200% resolution
+            <article>
+                <h3>Reward System</h3>
+                <p>Positive in-game actions trigger a liquid reward: sugar water delivered through a precise dispensing mechanism. The system consists of:</p>
+                <ul>
+                    <li>Mixer: Continuously stirs the sugar solution to maintain even concentration</li>
+                    <li>Pump + Pressure Sensor: Keeps the line under constant pressure</li>
+                    <li>Solenoid Valve: Magnetic valve that opens to release exact 10 µL doses</li>
+                    <li>Dispenser: Positioned near the mouth for easy access</li>
+                </ul>
+                <p>This setup ensures accurate, repeatable reward delivery with minimal delay. The reward is synchronized with game events to reinforce desired behaviors.</p>
+                <figure>
+                    <img src="images/placeholder_reward_circuit.png" alt="Reward circuit with labeled mixer, pump, valve, and dispenser.">
+                    <figcaption>Reward circuit diagram.</figcaption>
+                </figure>
+            </article>
 
-                  const createScene = function () {
-                    const scene = new BABYLON.Scene(engine);
+            <article>
+                <h3>Limitations</h3>
+                <p>The current system assumes basic rat mobility and grooming behavior. Fine-tuning might be needed for rats of different sizes or temperaments. Trigger placement and reward tube flow may need calibration per subject.</p>
+            </article>
+        </section>
 
-                    // Camera
-                    const camera = new BABYLON.ArcRotateCamera(
-                    canvases[i] + "Camera",
-                    BABYLON.Tools.ToRadians(90), // Alpha (horizontal angle)
-                    BABYLON.Tools.ToRadians(90), // Beta (vertical angle)
-                    30,                  // Radius (distance from target)
-                    new BABYLON.Vector3(0, 0, 0), // Target position (center of the scene)
-                    scene);
-                    camera.attachControl(canvas, true);
+        <section id="software">
+            <h2>Software</h2>
+            <p>The setup is controlled through a modular Python system. The main entry point is <code>arena_scenario.py</code>, which runs the full control loop.</p>
+            <p>The system includes:</p>
+            <ul>
+                <li>Motion capture: Reads movement from optical flow sensors mounted around the treadmill ball.</li>
+                <li>Locomotion control: Drives the ball motors to guide the rat during training.</li>
+                <li>Trigger input: Reads lever pulls, detects voluntary shooting actions.</li>
+                <li>Reward delivery: Dispenses precise 10 μL sugar water rewards via a controlled solenoid valve and maintains constant line pressure.</li>
+                <li>DOOM integration: Interfaces with a modified ViZDoom environment for real-time closed-loop behavior.</li>
+                <li>Training logic: Enforces demonstrations and delivers rewards based on game state and rat behavior.</li>
+            </ul>
+            <p>The software runs on a PC and communicates with a Raspberry Pi via TCP sockets. The Pi handles real-time sensor reading, ball actuation, and reward control; the PC processes the sensor data, runs the game, and sends high-level commands to the Pi.</p>
+            <p>All major components—movement tracking, ball driving, trigger detection, and reward control—can be operated manually or in closed-loop mode. All control parameters (e.g., motor speeds, reward volumes) are set in Python code.</p>
+            <figure>
+                <img src="images/placeholder_software_diagram.png" alt="Diagram showing PC-Pi communication, sensors, motors, and game loop overview.">
+                <figcaption>System architecture diagram.</figcaption>
+            </figure>
 
-                    // Light
-                    const light = new BABYLON.HemisphericLight("headsetLight", 
-                      new BABYLON.Vector3(0, 1, 0), scene);
+            <h3>Limitations</h3>
+            <p>There’s no in-built calibration suite. Users must validate sensor alignment and reward timing manually. Some microcontroller firmwares might require tuning based on hardware tolerances.</p>
+        </section>
 
-                    // Load GLB/GLTF model
-                    BABYLON.SceneLoader.Append("./blender/", glbFiles[i], scene, function (scene) {
-                      console.log(glbFiles[i] + " model loaded successfully");
-                    });
+        <section id="results">
+            <h2>Results</h2>
+            <p>We validated the hardware and software setup up to the habituation phase. The rats stood calmly on the platform and tolerated the headset and feeder tube.</p>
+            <div class="video-placeholder">
+                 [VIDEO: Rat standing on platform with panoramic screen active.]
+            </div>
+            <p>Observed:</p>
+            <ul>
+                <li>Stable platform behavior for minutes</li>
+                <li>Responsive and accurate ball motion tracking</li>
+                <li>Reliable programmatic control of both ball driving and trigger actuation</li>
+                <li>Reliable feeder system dispensing small, precise water rewards</li>
+            </ul>
+            <h3>Limitations</h3>
+            <p>The rats did not interact with the trigger during tests. Full gameplay training was not completed. Behavioral validation remains pending for future trials with younger rats.</p>
+        </section>
+    </main>
 
-                    return scene;
-                  };
+    <footer>
+        <p>&copy; 2025 Rats Play Doom Project - Open Source Hardware & Software</p>
+        <!-- Add links to GitHub repo, etc. here later -->
+    </footer>
 
-                  const scene = createScene();
-                  engine.runRenderLoop(function () {
-                    scene.render();
-                  });
-
-                  window.addEventListener("resize", function () {
-                    engine.resize();
-                  });
-                }	})(); // End IIFE
-              
-              });
-              </script>
-            
-          </article>
-         
-          <article id="software">
-            <h2 class="major">Software</h2>
-            
-          </article>
- 						<!-- About -->
- 							<article id="results">
- 								<h2 class="major">Results</h2>
-                 <section>
-                  <h2>Milyen eredmenyek voltak</h2>
-                  
-                  
-                  <iframe width="560" height="315" 
-        src="https://www.youtube.com/embed/4RF9-efhHuE?si=X3pyakB9N7OLgilD" 
-        title="YouTube video player" 
-        frameborder="0" allowfullscreen>
-</iframe>
-                  <p>Pelda video.</p>
-                </section>
-                <section>
-                  <h2>Limitations</h2>
-                  
-                  </section>
- 							</article>
- 
- 						
- 
- 					</div>
- 
- 				<!-- Footer -->
- 					<footer id="footer">
- 						<p class="copyright"><a></a>.</p>
- 					</footer>
- 
- 			</div>
- 
- 		<!-- BG -->
- 			<div id="bg"></div>
- 
- 		<!-- Scripts -->
-     
-      <script src="assets/js/browser.min.js"></script>
-      <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/util.js"></script>
-      <script src="assets/js/breakpoints.min.js"></script>
-        
-        <script src="assets/js/main.js"></script>
- 
- 	</body>
- </html>
+</body>
+</html>

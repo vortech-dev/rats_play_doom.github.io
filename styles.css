@@ -1,56 +1,295 @@
-canvas {
-    display: block;
-}
-input {
-    position: absolute;
-    z-index: 1;
-    top: 1em;
-    left: 1em;
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Variables
+# Font Face
+# Global Styles
+# Typography
+# Layout & Structure
+# Header & Navigation
+# Main Content Sections
+# Hardware Section Specifics (Viewer)
+# Footer
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+:root {
+    --color-background: #1a1a1a; /* Dark background */
+    --color-text: #c0c0c0; /* Silver/Gray text */
+    --color-header: #9d1a0a; /* Dark Red like DOOM logo */
+    --color-accent: #d4750f; /* Orangey-brown accent */
+    --color-border: #444444; /* Dark gray borders */
+    --font-main: 'EZ Legyen Az Variable', sans-serif;
+    --font-weight-normal: 400;
+    --font-weight-bold: 700; 
+    /* Add variable settings if needed, e.g., 'wght' 400 */
+    --font-settings-normal: 'wght' 400;
+    --font-settings-bold: 'wght' 700;
+    --container-width: 960px;
 }
 
-*{
-    box-sizing: border-box;
+/*--------------------------------------------------------------
+# Font Face
+--------------------------------------------------------------*/
+@font-face {
+    font-family: 'EZ Legyen Az Variable';
+    src: url('assets/webfonts/ez_legyen_az.woff2') format('woff2-variations');
+    font-weight: 100 900; /* Define the range of weights available */
+    font-style: normal;
+    font-display: swap;
+}
+
+/*--------------------------------------------------------------
+# Global Styles
+--------------------------------------------------------------*/
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-main);
+    font-weight: var(--font-weight-normal);
+    font-variation-settings: var(--font-settings-normal);
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-}
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
+    /* Optional: Add a subtle repeating background texture */
+    /* background-image: url('images/metal_texture.png'); */
 }
 
-.contact-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+* {
+    box-sizing: border-box;
 }
 
-.contact-card {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
+/*--------------------------------------------------------------
+# Keyframe Animations
+--------------------------------------------------------------*/
+@keyframes funky-title-anim {
+    0% {
+        font-variation-settings: 'wght' 100;
+        text-shadow: 2px 2px 4px #000; 
+    }
+    50% {
+        font-variation-settings: 'wght' 900;
+        text-shadow: 3px 3px 6px var(--color-header); /* Brighter shadow at peak */
+    }
+    100% {
+        font-variation-settings: 'wght' 100;
+        text-shadow: 2px 2px 4px #000; 
+    }
+}
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+h1, h2, h3 {
+    font-family: var(--font-main);
+    color: var(--color-header);
+    font-weight: var(--font-weight-bold);
+    font-variation-settings: var(--font-settings-bold);
+    text-transform: uppercase; /* Classic DOOM feel */
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    letter-spacing: 1px; /* Slight spacing */
+}
+
+h1 {
+    font-size: 2.8em;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 250px;
+    margin-bottom: 1em;
+    text-shadow: 2px 2px 4px #000; /* Add shadow for depth */
+    /* Apply the funky animation */
+    animation: funky-title-anim 3s ease-in-out infinite;
 }
 
-.contact-card img {
+h2 {
+    font-size: 2em;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 0.3em;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: var(--color-accent);
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+    font-variation-settings: var(--font-settings-bold);
+}
+
+a:hover {
+    color: var(--color-header);
+    text-decoration: underline;
+}
+
+ul {
+    list-style: square; /* Retro list style */
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+code, pre {
+    background-color: #333;
+    border: 1px solid var(--color-border);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: monospace;
+    color: #aaffaa; /* Greenish tech text */
+}
+
+/*--------------------------------------------------------------
+# Layout & Structure
+--------------------------------------------------------------*/
+body > header, /* Target direct child header */
+main,
+body > footer { /* Target direct child footer */
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid var(--color-border);
+    background-color: rgba(0, 0, 0, 0.2); /* Slightly darker sections */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5); /* Inner shadow for depth */
+}
+
+article {
+     margin-bottom: 30px;
+}
+
+figure {
+    margin: 20px 0;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid var(--color-border);
+    background-color: #000; /* BG for transparent parts */
+}
+
+figcaption {
+    font-style: italic;
+    color: #aaa;
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+.video-placeholder {
     width: 100%;
-    border-radius: 50%;
-    height: 200px;
-    object-fit: cover;
+    height: 300px; /* Adjust as needed */
+    background-color: #000;
+    border: 2px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-style: italic;
+    margin: 20px 0;
 }
 
-.contact-card h3 {
+/*--------------------------------------------------------------
+# Header & Navigation
+--------------------------------------------------------------*/
+body > header {
+    background-color: #111; /* Darker header background */
+    border-bottom: 3px solid var(--color-header);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+nav {
+    text-align: center;
     margin-top: 10px;
-    font-size: 1.2em;
 }
 
-.contact-card p {
-    margin: 5px 0;
-    color: #555;
+nav a {
+    margin: 0 15px;
+    padding: 5px 10px;
+    border: 1px solid var(--color-accent);
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+# Main Content Sections
+--------------------------------------------------------------*/
+/* Add specific styles if needed */
+
+/*--------------------------------------------------------------
+# Hardware Section Specifics (Viewer)
+--------------------------------------------------------------*/
+.viewer-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    align-items: center;
+    gap: 20px; /* Space between canvas and image */
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px dashed var(--color-border);
+    background-color: rgba(0,0,0,0.3);
+}
+
+.viewer-container canvas {
+    width: 300px;  /* Fixed width for canvas */
+    height: 300px; /* Fixed height for canvas */
+    border: 2px solid var(--color-accent);
+    display: block; /* Ensure proper layout */
+    background-color: #050505; /* Dark background for viewer */
+}
+
+.viewer-container figure {
+    flex: 1; /* Allow figure to take remaining space */
+    min-width: 250px; /* Minimum width for the figure */
+    margin: 0; /* Reset figure margin */
+}
+
+.viewer-container img {
+    max-width: 100%; /* Ensure image scales within figure */
+    width: 250px;    /* Specific width for neben-canvas image */
+    height: auto;
+    border-color: var(--color-border); /* Standard border */
+}
+
+.model-label {
+    text-align: center;
+    margin-top: -10px; /* Adjust to position below container */
+    margin-bottom: 20px;
+    font-weight: var(--font-weight-bold);
+    font-variation-settings: var(--font-settings-bold);
+    color: var(--color-accent);
+}
+
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+body > footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    font-size: 0.9em;
+    color: #888;
 }

@@ -1,401 +1,133 @@
-/*
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
-(function($) {
-
-	var	$window = $(window),
-		$body = $('body'),
-		$wrapper = $('#wrapper'),
-		$header = $('#header'),
-		$footer = $('#footer'),
-		$main = $('#main'),
-		$main_articles = $main.children('article');
-
-	// Breakpoints.
-		breakpoints({
-			xlarge:   [ '1281px',  '1680px' ],
-			large:    [ '981px',   '1280px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ '361px',   '480px'  ],
-			xxsmall:  [ null,      '360px'  ]
-		});
-
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
-
-	// Fix: Flexbox min-height bug on IE.
-		if (browser.name == 'ie') {
-
-			var flexboxFixTimeoutId;
-
-			$window.on('resize.flexbox-fix', function() {
-
-				clearTimeout(flexboxFixTimeoutId);
-
-				flexboxFixTimeoutId = setTimeout(function() {
-
-					if ($wrapper.prop('scrollHeight') > $window.height())
-						$wrapper.css('height', 'auto');
-					else
-						$wrapper.css('height', '100vh');
-
-				}, 250);
-
-			}).triggerHandler('resize.flexbox-fix');
-
-		}
-
-	// Nav.
-		var $nav = $header.children('nav'),
-			$nav_li = $nav.find('li');
-
-		// Add "middle" alignment classes if we're dealing with an even number of items.
-			if ($nav_li.length % 2 == 0) {
-
-				$nav.addClass('use-middle');
-				$nav_li.eq( ($nav_li.length / 2) ).addClass('is-middle');
-
-			}
-
-	// Main.
-		var	delay = 325,
-			locked = false;
-
-		// Methods.
-			$main._show = function(id, initial) {
-
-				var $article = $main_articles.filter('#' + id);
-
-				// No such article? Bail.
-					if ($article.length == 0)
-						return;
-
-				// Handle lock.
-
-					// Already locked? Speed through "show" steps w/o delays.
-						if (locked || (typeof initial != 'undefined' && initial === true)) {
-
-							// Mark as switching.
-								$body.addClass('is-switching');
-
-							// Mark as visible.
-								$body.addClass('is-article-visible');
-
-							// Deactivate all articles (just in case one's already active).
-								$main_articles.removeClass('active');
-
-							// Hide header, footer.
-								$header.hide();
-								$footer.hide();
-
-							// Show main, article.
-								$main.show();
-								$article.show();
-
-							// Activate article.
-								$article.addClass('active');
-
-							// Unlock.
-								locked = false;
-
-							// Unmark as switching.
-								setTimeout(function() {
-									$body.removeClass('is-switching');
-								}, (initial ? 1000 : 0));
-
-							return;
-
-						}
-
-					// Lock.
-						locked = true;
-
-				// Article already visible? Just swap articles.
-					if ($body.hasClass('is-article-visible')) {
-
-						// Deactivate current article.
-							var $currentArticle = $main_articles.filter('.active');
-
-							$currentArticle.removeClass('active');
-
-						// Show article.
-							setTimeout(function() {
-
-								// Hide current article.
-									$currentArticle.hide();
-
-								// Show article.
-									$article.show();
-
-								// Activate article.
-									setTimeout(function() {
-
-										$article.addClass('active');
-
-										// Window stuff.
-											$window
-												.scrollTop(0)
-												.triggerHandler('resize.flexbox-fix');
-
-										// Unlock.
-											setTimeout(function() {
-												locked = false;
-											}, delay);
-
-									}, 25);
-
-							}, delay);
-
-					}
-
-				// Otherwise, handle as normal.
-					else {
-
-						// Mark as visible.
-							$body
-								.addClass('is-article-visible');
-
-						// Show article.
-							setTimeout(function() {
-
-								// Hide header, footer.
-									$header.hide();
-									$footer.hide();
-
-								// Show main, article.
-									$main.show();
-									$article.show();
-
-								// Activate article.
-									setTimeout(function() {
-
-										$article.addClass('active');
-
-										// Window stuff.
-											$window
-												.scrollTop(0)
-												.triggerHandler('resize.flexbox-fix');
-
-										// Unlock.
-											setTimeout(function() {
-												locked = false;
-											}, delay);
-
-									}, 25);
-
-							}, delay);
-
-					}
-
-			};
-
-			$main._hide = function(addState) {
-
-				var $article = $main_articles.filter('.active');
-
-				// Article not visible? Bail.
-					if (!$body.hasClass('is-article-visible'))
-						return;
-
-				// Add state?
-					if (typeof addState != 'undefined'
-					&&	addState === true)
-						history.pushState(null, null, '#');
-
-				// Handle lock.
-
-					// Already locked? Speed through "hide" steps w/o delays.
-						if (locked) {
-
-							// Mark as switching.
-								$body.addClass('is-switching');
-
-							// Deactivate article.
-								$article.removeClass('active');
-
-							// Hide article, main.
-								$article.hide();
-								$main.hide();
-
-							// Show footer, header.
-								$footer.show();
-								$header.show();
-
-							// Unmark as visible.
-								$body.removeClass('is-article-visible');
-
-							// Unlock.
-								locked = false;
-
-							// Unmark as switching.
-								$body.removeClass('is-switching');
-
-							// Window stuff.
-								$window
-									.scrollTop(0)
-									.triggerHandler('resize.flexbox-fix');
-
-							return;
-
-						}
-
-					// Lock.
-						locked = true;
-
-				// Deactivate article.
-					$article.removeClass('active');
-
-				// Hide article.
-					setTimeout(function() {
-
-						// Hide article, main.
-							$article.hide();
-							$main.hide();
-
-						// Show footer, header.
-							$footer.show();
-							$header.show();
-
-						// Unmark as visible.
-							setTimeout(function() {
-
-								$body.removeClass('is-article-visible');
-
-								// Window stuff.
-									$window
-										.scrollTop(0)
-										.triggerHandler('resize.flexbox-fix');
-
-								// Unlock.
-									setTimeout(function() {
-										locked = false;
-									}, delay);
-
-							}, 25);
-
-					}, delay);
-
-
-			};
-
-		// Articles.
-			$main_articles.each(function() {
-
-				var $this = $(this);
-
-				// Close.
-					$('<div class="close">Close</div>')
-						.appendTo($this)
-						.on('click', function() {
-							location.hash = '';
-						});
-
-				// Prevent clicks from inside article from bubbling.
-					$this.on('click', function(event) {
-						event.stopPropagation();
-					});
-
-			});
-
-		// Events.
-			$body.on('click', function(event) {
-
-				// Article visible? Hide.
-					if ($body.hasClass('is-article-visible'))
-						$main._hide(true);
-
-			});
-
-			$window.on('keyup', function(event) {
-
-				switch (event.keyCode) {
-
-					case 27:
-
-						// Article visible? Hide.
-							if ($body.hasClass('is-article-visible'))
-								$main._hide(true);
-
-						break;
-
-					default:
-						break;
-
-				}
-
-			});
-
-			$window.on('hashchange', function(event) {
-
-				// Empty hash?
-					if (location.hash == ''
-					||	location.hash == '#') {
-
-						// Prevent default.
-							event.preventDefault();
-							event.stopPropagation();
-
-						// Hide.
-							$main._hide();
-
-					}
-
-				// Otherwise, check for a matching article.
-					else if ($main_articles.filter(location.hash).length > 0) {
-
-						// Prevent default.
-							event.preventDefault();
-							event.stopPropagation();
-
-						// Show article.
-							$main._show(location.hash.substr(1));
-
-					}
-
-			});
-
-		// Scroll restoration.
-		// This prevents the page from scrolling back to the top on a hashchange.
-			if ('scrollRestoration' in history)
-				history.scrollRestoration = 'manual';
-			else {
-
-				var	oldScrollPos = 0,
-					scrollPos = 0,
-					$htmlbody = $('html,body');
-
-				$window
-					.on('scroll', function() {
-
-						oldScrollPos = scrollPos;
-						scrollPos = $htmlbody.scrollTop();
-
-					})
-					.on('hashchange', function() {
-						$window.scrollTop(oldScrollPos);
-					});
-
-			}
-
-		// Initialize.
-
-			// Hide main, articles.
-				$main.hide();
-				$main_articles.hide();
-
-			// Initial article.
-				if (location.hash != ''
-				&&	location.hash != '#')
-					$window.on('load', function() {
-						$main._show(location.hash.substr(1), true);
-					});
-
-})(jQuery);
+// Wait for the DOM to be fully loaded before initializing Babylon.js
+window.addEventListener('DOMContentLoaded', function () {
+    // Define the canvases and their corresponding model files
+    const viewers = [
+        { canvasId: "headsetCanvas", modelFile: "full_headset_guide.glb", modelPath: "./blender/" },
+        { canvasId: "triggerCanvas", modelFile: "trigger.glb", modelPath: "./blender/" },
+        { canvasId: "standCanvas", modelFile: "stand.glb", modelPath: "./blender/" }
+    ];
+
+    viewers.forEach(viewer => {
+        const canvas = document.getElementById(viewer.canvasId);
+        if (!canvas) {
+            console.error(`Canvas element with ID '${viewer.canvasId}' not found.`);
+            return; // Skip if canvas doesn't exist
+        }
+
+        // Prevent default scroll behavior on the canvas
+        canvas.addEventListener('wheel', function (event) {
+            event.preventDefault();
+        }, { passive: false });
+
+        // Initialize Babylon.js engine
+        const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true });
+        engine.setHardwareScalingLevel(0.75); // Adjust scaling for performance/quality trade-off
+
+        // Function to create the scene for a viewer
+        const createScene = function () {
+            const scene = new BABYLON.Scene(engine);
+            scene.clearColor = new BABYLON.Color4(0, 0, 0, 0); // Transparent background
+
+            // --- Camera Customization per Viewer ---
+            let initialAlpha = -Math.PI / 2; // Default horizontal angle
+            let initialBeta = Math.PI / 2.5;  // Default vertical angle
+            let initialRadius = 10;         // Default distance
+
+            if (viewer.canvasId === "headsetCanvas") {
+                initialAlpha += Math.PI; // Rotate 180 deg horizontally
+                initialRadius = 4;       // Zoom in closer
+                initialBeta -= (350 * Math.PI / 180); // Tilt UP by 350 degrees (Subtract)
+            }
+            // Zoom in and tilt Trigger as well
+            if (viewer.canvasId === "triggerCanvas"){
+                 initialRadius = 4;       // Zoom in closer
+                 initialBeta -= (140 * Math.PI / 180); // Tilt UP by 140 degrees (Subtract)
+            }
+            // Zoom in Locomotion as well
+            if (viewer.canvasId === "standCanvas"){
+                 initialRadius = 4;       // Zoom in closer
+            }
+            // --- End Customization ---
+
+            // Create ArcRotateCamera
+            const camera = new BABYLON.ArcRotateCamera(
+                viewer.canvasId + "Camera",
+                initialAlpha,   // Use customized alpha
+                initialBeta,    // Use customized beta
+                initialRadius,  // Use customized radius
+                BABYLON.Vector3.Zero(), // Target
+                scene
+            );
+
+            // Attach camera controls to the canvas
+            camera.attachControl(canvas, true); // Allow user control
+            camera.wheelPrecision = 50; // Adjust zoom speed
+            camera.lowerRadiusLimit = 2; // Prevent zooming too close
+            camera.upperRadiusLimit = 50; // Prevent zooming too far
+
+            // Create HemisphericLight
+            const light = new BABYLON.HemisphericLight(
+                viewer.canvasId + "Light",
+                new BABYLON.Vector3(0, 1, 0), // Light pointing straight down
+                scene
+            );
+            light.intensity = 0.9; // Adjust light intensity
+
+            // Load the GLB model
+            BABYLON.SceneLoader.ImportMeshAsync("", viewer.modelPath, viewer.modelFile, scene)
+                .then((result) => {
+                    console.log(`${viewer.modelFile} loaded successfully for canvas ${viewer.canvasId}`);
+
+                    // Optional: Auto-center and frame the loaded meshes
+                    if (result.meshes.length > 0) {
+                        // Calculate bounding box of all loaded meshes
+                        let min = result.meshes[0].getBoundingInfo().boundingBox.minimumWorld;
+                        let max = result.meshes[0].getBoundingInfo().boundingBox.maximumWorld;
+                        for(let i=1; i<result.meshes.length; i++){
+                            let meshMin = result.meshes[i].getBoundingInfo().boundingBox.minimumWorld;
+                            let meshMax = result.meshes[i].getBoundingInfo().boundingBox.maximumWorld;
+                            min = BABYLON.Vector3.Minimize(min, meshMin);
+                            max = BABYLON.Vector3.Maximize(max, meshMax);
+                        }
+                        const center = BABYLON.Vector3.Center(min, max);
+                        const extents = max.subtract(min);
+                        const size = Math.max(extents.x, extents.y, extents.z);
+                        const distance = size / Math.tan(camera.fov / 2);
+
+                        camera.setTarget(center); // Point camera at the center of the model
+                        // Adjust final radius - keep headset & trigger zoomed
+                        if (viewer.canvasId === "headsetCanvas") {
+                             camera.radius = distance * 0.7; // Keep headset closer
+                        } else if (viewer.canvasId === "standCanvas") {
+                             camera.radius = distance * 0.6; // Keep stand even closer
+                        } else if (viewer.canvasId === "triggerCanvas") {
+                             camera.radius = distance * 0.8; // Keep trigger closer than default
+                        } else {
+                             camera.radius = distance * 1.5; // Default fit with padding
+                        }
+                    }
+
+                })
+                .catch((error) => {
+                    console.error(`Error loading ${viewer.modelFile} for canvas ${viewer.canvasId}:`, error);
+                });
+
+            return scene;
+        };
+
+        // Create the scene
+        const scene = createScene();
+
+        // Run the render loop
+        engine.runRenderLoop(function () {
+            if (scene && scene.activeCamera) {
+                scene.render();
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
+    });
+});
