@@ -130,4 +130,40 @@ window.addEventListener('DOMContentLoaded', function () {
             engine.resize();
         });
     });
+
+    // --- Contact Link Clipboard Copy ---
+    const emailLink = document.getElementById('contact-email');
+
+    if (emailLink) {
+        const originalText = emailLink.textContent;
+
+        emailLink.addEventListener('click', (event) => {
+            event.preventDefault(); // Good practice, though href is void
+            const email = emailLink.dataset.email;
+
+            if (!email) {
+                console.error('No email address found in data-email attribute.');
+                return;
+            }
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email).then(() => {
+                    // Success: Provide visual feedback
+                    emailLink.textContent = 'Copied!';
+                    // Revert text after a delay
+                    setTimeout(() => {
+                        emailLink.textContent = originalText;
+                    }, 750); // 0.75 seconds
+                }).catch(err => {
+                    console.error('Failed to copy email to clipboard:', err);
+                    // Optionally provide error feedback to the user
+                    // emailLink.textContent = 'Copy Failed!';
+                    // setTimeout(() => { emailLink.textContent = originalText; }, 2000);
+                });
+            } else {
+                console.error('Clipboard API not available.');
+                // Fallback or error message if needed
+            }
+        });
+    }
 });
