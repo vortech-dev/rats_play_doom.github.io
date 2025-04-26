@@ -468,3 +468,24 @@ body > footer {
     0% { background-position: 0% 50%; }
     100% { background-position: 200% 50%; }
 }
+
+/*--------------------------------------------------------------
+# Media Queries (Responsive Design)
+--------------------------------------------------------------*/
+
+@media (max-width: 480px) { /* Breakpoint for small screens */
+    nav {
+        display: flex;         /* Enable flexbox */
+        flex-wrap: wrap;       /* Allow items to wrap */
+        justify-content: center; /* Center items horizontally */
+        gap: 10px;             /* Add spacing between wrapped links */
+    }
+
+    nav a {
+        margin: 0; /* Remove default margin if any, rely on gap */
+    }
+}
+
+/*--------------------------------------------------------------
+# Animations (Optional)
+--------------------------------------------------------------*/
