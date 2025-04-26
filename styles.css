@@ -258,7 +258,7 @@ nav {
 }
 
 nav a {
-    margin: 0 15px;
+    margin: 0 4px; /* Further reduced horizontal margin */
     padding: 5px 10px;
     border: 1px solid var(--color-accent);
     border-radius: 4px;
@@ -303,15 +303,15 @@ nav a:hover {
 }
 
 /* Specific positioning for each contact link */
-#contact-x { top: 15%; left: 20%; }
-#contact-email { top: 10%; left: 75%; }
+#contact-x { top: 5%; left: 20%; } /* Moved higher */
+#contact-email { top: 90%; left: 75%; } /* Moved lower, same height as pcgamer */
 
 #contact-yolorun { top: 50%; right: 15%; transform: translateY(-50%); /* Center vertically */ }
 
-#contact-vice { top: 90%; left: 10%; }
-#contact-medium { top: 85%; left: 40%; }
-#contact-pcgamer { top: 90%; left: 65%; }
-#contact-github { top: 85%; left: 85%; }
+#contact-vice { top: 90%; left: 5%; } /* Moved more left */
+#contact-medium { top: 80%; left: 25%; } /* Moved slightly higher */
+#contact-pcgamer { top: 90%; left: 60%; } /* Moved slightly left */
+#contact-github { top: 85%; left: 80%; } /* Moved slightly left */
 
 /*--------------------------------------------------------------
 # Main Content Sections
