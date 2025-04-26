@@ -310,6 +310,10 @@ nav a:hover {
     margin-bottom: 10px; /* Space below top links */
 }
 
+.header-top-links {
+    margin-top: 15px; /* Add space above this group (below nav) */
+}
+
 .header-bottom-links {
     margin-top: 15px; /* Space above bottom links (below nav) */
     margin-bottom: 0; /* Reset bottom margin if needed */
