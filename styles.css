@@ -430,21 +430,42 @@ body > footer {
 
 @media (max-width: 480px) { /* Breakpoint for small screens */
     h1 {
-        font-size: 2em; /* Reduce title size on smaller screens */
+        font-size: 2.5em; /* Smaller title on mobile */
     }
-
-    nav {
-        display: flex;         /* Enable flexbox */
-        flex-wrap: wrap;       /* Allow items to wrap */
-        justify-content: center; /* Center items horizontally */
-        gap: 10px;             /* Add spacing between wrapped links */
-    }
-
     nav a {
-        margin: 0; /* Remove default margin if any, rely on gap */
+        margin: 5px 2px; /* Tighter spacing on mobile */
+        padding: 3px 6px;
+        font-size: 0.9em;
+    }
+
+    /* --- Mobile Header Link Adjustments --- */
+    body > header {
+        /* Optional: Adjust padding/min-height for mobile if needed */
+        padding-top: 10px;
+        padding-bottom: 10px;
+        min-height: auto; /* Let height be determined by content */
+    }
+    .contact-link {
+        position: static; /* Override absolute positioning */
+        display: block; /* Stack vertically */
+        text-align: center; /* Center text */
+        margin: 10px auto; /* Add vertical spacing and center block */
+        font-size: 0.9em; /* Slightly smaller font for mobile */
+        /* Reset absolute positioning properties */
+        top: auto;
+        left: auto;
+        right: auto;
+        transform: none; /* Reset any transform */
+        width: auto; /* Let width be natural */
+    }
+    /* Ensure logos still look okay */
+    .contact-link img.contact-logo {
+        height: 1em;
+        vertical-align: middle; /* Adjust alignment if needed */
+    }
+    /* --- End Mobile Header Link Adjustments --- */
+
+    section {
+        padding: 15px;
     }
 }
-
-/*--------------------------------------------------------------
-# Animations (Optional)
---------------------------------------------------------------*/
