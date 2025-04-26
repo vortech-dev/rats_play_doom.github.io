@@ -474,6 +474,10 @@ body > footer {
 --------------------------------------------------------------*/
 
 @media (max-width: 480px) { /* Breakpoint for small screens */
+    h1 {
+        font-size: 2em; /* Reduce title size on smaller screens */
+    }
+
     nav {
         display: flex;         /* Enable flexbox */
         flex-wrap: wrap;       /* Allow items to wrap */
