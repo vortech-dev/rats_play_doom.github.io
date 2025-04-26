@@ -103,44 +103,6 @@ h1 {
     animation: funky-title-anim 3s ease-in-out infinite;
 }
 
-/* Style for the links moved outside the absolute container */
-.header-info-link {
-    display: block; /* Ensure they stack vertically */
-    text-align: center; /* Center align the text */
-    margin: 5px auto; /* Add some vertical spacing and center block */
-    color: var(--color-text); /* Match general text color or choose another */
-    font-size: 0.9em;
-    text-decoration: none;
-    /* Add hover effect if desired */
-}
-
-.header-info-link:hover {
-    color: var(--color-accent);
-    text-decoration: underline;
-}
-
-/* Apply logo sizing and styling within header-info-links */
-.header-info-link img.contact-logo {
-    height: 1em; /* Match original logo size */
-    vertical-align: text-bottom; /* Align nicely with text */
-    margin-right: 0.3em; /* Add a little space before text */
-    /* Resetting properties potentially inherited or interfering */
-    border: none;
-    background-color: transparent;
-    padding: 0;
-}
-
-.header-info-link img.contact-logo.invert-logo {
-    background-color: white; /* Match original invert style */
-    padding: 1px; /* Match original invert style */
-}
-
-/* Adjustments for specific header-info-links if needed */
-#contact-email.header-info-link,
-#contact-vice.header-info-link {
-    margin-top: 10px; /* Add a bit more space above email/vice */
-}
-
 h2 {
     font-size: 2em;
     border-bottom: 2px solid var(--color-border);
@@ -199,9 +161,12 @@ body > footer { /* Target direct child footer */
 
 /* Add background opacity specifically to the header */
 body > header {
+    position: relative; /* Establish positioning context for absolute links */
+    min-height: 150px; /* Give header some height to contain links, adjust as needed */
     background-color: rgba(0, 0, 0, 0.95); /* 95% opaque black background */
     border: 1px solid var(--color-border); /* Optional: Add border like sections */
     margin-bottom: 20px; /* Optional: Add some space below header */
+    padding: 20px; /* Keep existing padding */
 }
 
 section {
@@ -306,15 +271,6 @@ nav a:hover {
     text-decoration: none;
 }
 
-.contact-links {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Allow clicks on elements below */
-}
-
 .contact-link {
     position: absolute;
     color: #aaaaaa;
@@ -346,55 +302,16 @@ nav a:hover {
     /* Optional: Pause animation on hover? animation-play-state: paused; */
 }
 
-/* Positioning - scattered */
-#contact-email { top: 85%; left: 5%; }
-#contact-yolorun { top: 30%; right: 5%; } /* Moved further right */
-#contact-medium { bottom: 5%; left: 40%; transform: translateX(-50%); }
-#contact-vice { top: 60%; left: 80%; } /* Moved further right */
-#contact-pcgamer { bottom: 15%; right: 5%; }
-#contact-github { top: 90%; right: 25%; }
-#contact-x { top: 25%; left: 5%; }
+/* Specific positioning for each contact link */
+#contact-x { top: 15%; left: 20%; }
+#contact-email { top: 10%; left: 75%; }
 
-/* Animations */
-@keyframes float-1 {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-6px); }
-}
-@keyframes float-2 {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(5px); }
-}
-@keyframes rotate-1 {
-    0% { transform: rotate(-1deg); }
-    100% { transform: rotate(2deg); }
-}
-@keyframes rotate-2 {
-    0% { transform: rotate(1deg); }
-    100% { transform: rotate(-1.5deg); }
-}
-@keyframes pulse-1 {
-    0% { opacity: 0.8; border-color: #444;}
-    50% { opacity: 1; border-color: #777;}
-    100% { opacity: 0.8; border-color: #444;}
-}
-@keyframes pulse-2 {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.04); }
-    100% { transform: scale(1); }
-}
-@keyframes color-shift-1 {
-    0% { color: #aaa; }
-    50% { color: #ccc; }
-    100% { color: #aaa; }
-}
+#contact-yolorun { top: 50%; right: 15%; transform: translateY(-50%); /* Center vertically */ }
 
-.anim-float-1 { animation: float-1 5s ease-in-out infinite alternate; }
-.anim-float-2 { animation: float-2 6s ease-in-out infinite alternate; }
-.anim-rotate-1 { animation: rotate-1 8s linear infinite alternate; }
-.anim-rotate-2 { animation: rotate-2 7s ease-in-out infinite alternate; }
-.anim-pulse-1 { animation: pulse-1 3s ease-in-out infinite; }
-.anim-pulse-2 { animation: pulse-2 4s ease-in-out infinite; }
-.anim-color-shift-1 { animation: color-shift-1 10s linear infinite; }
+#contact-vice { top: 90%; left: 10%; }
+#contact-medium { top: 85%; left: 40%; }
+#contact-pcgamer { top: 90%; left: 65%; }
+#contact-github { top: 85%; left: 85%; }
 
 /*--------------------------------------------------------------
 # Main Content Sections
