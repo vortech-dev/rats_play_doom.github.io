@@ -62,7 +62,7 @@
         <section id="intro">
             <h2>Intro</h2>
             <p>We built a complete VR setup from scratch to let rats play DOOM. The system includes a motion-tracked treadmill ball, a panoramic headset, an input trigger, and a reward circuit. All hardware and software components are open sourced, including 3D-printable designs, circuit diagrams, firmware, and control software.</p>
-            <p>The first version (v1) was built in New York by Viktor, who trained rats to walk through a corridor in DOOM using a simpler rig. That version was featured on Vice and PC Gamer. After moving back home, the project was paused. Public interest reignited development, leading to v2, a more advanced and modular version built in collaboration with electrical engineer Sándor Makra. Akos Blaschek later assisted significantly in documenting the project for open-sourcing, aiming to enable others to replicate and build upon this work.</p>
+            <p>The first version (v1) was built in New York by <a href="#team">Viktor</a>, who trained rats to walk through a corridor in DOOM using a simpler rig. That version was featured on Vice and PC Gamer. After moving back home, the project was paused. Public interest reignited development, leading to v2, a more advanced and modular version built in collaboration with electrical engineer <a href="#team">Sándor Makra</a>. <a href="#team">Akos Blaschek</a> later assisted significantly in documenting the project for open-sourcing, aiming to enable others to replicate and build upon this work. Key metallic components were designed and sourced in collaboration with <a href="https://szurwinkft.hu/" target="_blank" rel="noopener noreferrer">SZURWIN KFT</a>.</p>
 
             <h3>V1</h3>
             <ul>
@@ -168,7 +168,7 @@
                 <p>This setup ensures accurate, repeatable reward delivery with minimal delay. The reward is synchronized with game events to reinforce desired behaviors.</p>
                 <figure>
                     <a href="images/reward_circuit.jpg" target="_blank" rel="noopener noreferrer"><img src="images/reward_circuit.jpg" alt="Reward circuit with labeled mixer, pump, valve, and dispenser." class="content-image-small"></a>
-                    <figcaption>Reward circuit diagram.</figcaption>
+                    <figcaption>The messy but functional reward circuit from behind.</figcaption>
                 </figure>
             </article>
 
@@ -203,20 +203,57 @@
 
         <section id="results">
             <h2>Results</h2>
-            <p>We validated the hardware and software setup up to the habituation phase. The rats stood calmly on the platform and tolerated the headset and feeder tube.</p>
-            <div class="video-container">
-                 <iframe src="https://www.youtube.com/embed/Fu5kbEJic7Y?autoplay=1&mute=1&controls=0&loop=1&playlist=Fu5kbEJic7Y&modestbranding=1" title="YouTube video player - WASD and Trigger playing DOOM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <p>Observed:</p>
-            <ul>
-                <li>Stable platform behavior for minutes</li>
-                <li>Responsive and accurate ball motion tracking</li>
-                <li>Reliable programmatic control of both ball driving and trigger actuation</li>
-                <li>Reliable feeder system dispensing small, precise water rewards</li>
-            </ul>
+            <p>The rats successfully learned to navigate the virtual environment and trigger the shooting mechanism. Habituation took approximately two weeks per rat. While advanced training wasn't completed due to time constraints, initial data showed promising engagement with the system.</p>
+            <figure>
+                <img src="images/placeholder_rat_playing.png" alt="Rat engaging with the VR setup during a session.">
+                <figcaption>Rat interacting with the VR setup.</figcaption>
+            </figure>
             <h3>Limitations</h3>
-            <p>The rats did not interact with the trigger during tests. Full gameplay training was not completed. Behavioral validation remains pending for future trials with younger rats.</p>
+            <p>Full behavioral validation requires longer training periods. Cross-subject variability wasn't extensively studied. The impact of prolonged VR exposure on rat well-being needs further research.</p>
         </section>
+
+        <section id="what-now">
+            <h2>What Now?</h2>
+            <p>Interested in building your own animal VR setup? Feel free to reach out for guidance. We're also compiling a comprehensive <strong>[Rat VR Build Guide (link coming soon)]</strong>.</p>
+            <p>At <a href="https://yolorun.capital" target="_blank" rel="noopener noreferrer">YoloRun.Capital</a>, we invest in ambitious, boundary-pushing projects like this, even the beautifully impractical ones. Have a wild idea? Let's talk.</p>
+            <figure>
+                <img src="images/christmas_rat_600w.jpg" alt="A rat wearing a tiny Santa hat.">
+
+            </figure>
+        </section>
+
+        <section id="team">
+            <h2>Team</h2>
+            <div class="team-container">
+                <div class="team-member">
+                    <img src="assets/images/team/viktor.jpg" alt="Viktor Tóth" class="profile-pic">
+                    <h3 class="name">Viktor Tóth</h3>
+                    <p class="role">Gamer Rat Coach</p>
+                    <div class="social-links">
+                        <p><a href="https://www.linkedin.com/in/viktor-t%C3%B3th-92580395/" target="_blank"><img src="assets/images/logos/LinkedIn_logo.svg" alt="LinkedIn Logo" class="social-icon"> LinkedIn</a></p>
+                        <p><a href="https://github.com/csiki" target="_blank" class="team-contact-link">💻 GitHub</a></p>
+                        <p><a href="javascript:void(0);" class="team-contact-link copy-email-link" data-email="viktor@yolorun.capital">📧 viktor@yolorun.capital</a></p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="assets/images/team/sandor.jpg" alt="Sándor Makra" class="profile-pic">
+                    <h3 class="name">Sándor Makra</h3>
+                    <p class="role">Electrical Engineer</p>
+                     <div class="social-links">
+                        <p><a href="https://www.linkedin.com/in/s%C3%A1ndor-makra-333166126/" target="_blank"><img src="assets/images/logos/LinkedIn_logo.svg" alt="LinkedIn Logo" class="social-icon"> LinkedIn</a></p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="assets/images/team/akos.jpg" alt="Ákos Blaschek" class="profile-pic">
+                    <h3 class="name">Ákos Blaschek</h3>
+                    <p class="role">Documentation Lead</p>
+                     <div class="social-links">
+                        <p><a href="https://www.linkedin.com/in/%C3%A1kos-blaschek-5ab4771a4/" target="_blank"><img src="assets/images/logos/LinkedIn_logo.svg" alt="LinkedIn Logo" class="social-icon"> LinkedIn</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer>

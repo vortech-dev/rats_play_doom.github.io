@@ -10,6 +10,8 @@
 # Main Content Sections
 # Hardware Section Specifics (Viewer)
 # Video Embedding Styles
+# Team Section
+# What Now Section
 # Footer
 --------------------------------------------------------------*/
 
@@ -393,13 +395,108 @@ nav a:hover {
 }
 
 /*--------------------------------------------------------------
+# What Now Section
+--------------------------------------------------------------*/
+#what-now h2 {
+    text-align: center; /* Center the heading */
+    border-bottom: none; /* Remove border if different style desired */
+}
+
+/*--------------------------------------------------------------
+# Team Section
+--------------------------------------------------------------*/
+#team h2 {
+    text-align: center; /* Center the Team heading */
+    border-bottom: none; /* Remove border if desired, or style differently */
+}
+
+.team-container {
+    display: flex;
+    justify-content: space-around; /* Distribute space between members */
+    align-items: flex-start; /* Align items at the top */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    margin-top: 30px;
+}
+
+.team-member {
+    text-align: center;
+    margin: 20px;
+    flex-basis: 30%; /* Aim for 3 members per row, adjust as needed */
+    min-width: 200px; /* Prevent members from becoming too narrow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 150px; /* Adjust size as needed */
+    height: 150px;
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover; /* Ensure the image covers the area well */
+    margin-bottom: 15px;
+    border: 3px solid var(--color-accent); /* Accent border */
+}
+
+.team-member .name {
+    font-size: 1.3em;
+    font-weight: var(--font-weight-bold);
+    font-variation-settings: var(--font-settings-bold);
+    color: var(--color-text); /* Use standard text color or a slightly brighter one */
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.team-member .role {
+    font-style: italic;
+    color: var(--color-accent);
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+.social-links p {
+    margin-bottom: 8px; /* Space between links */
+}
+
+.social-icon {
+    width: 18px; /* Adjust size */
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 6px;
+    border: none; /* Remove default image border */
+    background: none; /* Remove default image background */
+}
+
+.team-contact-link {
+    display: inline-block; /* Better alignment and spacing */
+    color: var(--color-text); /* Match other links or use accent */
+    font-size: 0.95em;
+}
+
+.team-contact-link:hover {
+    color: var(--color-header);
+}
+
+/* Responsive adjustments for team section if needed */
+@media (max-width: 768px) {
+    .team-member {
+        flex-basis: 45%; /* Two members per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .team-member {
+        flex-basis: 100%; /* One member per row */
+    }
+}
+
+/*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-body > footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--color-border);
+footer {
     text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid var(--color-border);
     font-size: 0.9em;
     color: #888;
 }

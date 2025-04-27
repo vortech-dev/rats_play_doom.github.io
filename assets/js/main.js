@@ -132,38 +132,43 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     // --- Contact Link Clipboard Copy ---
-    const emailLink = document.getElementById('contact-email');
+    // Select all elements with the class 'copy-email-link'
+    const emailLinks = document.querySelectorAll('.copy-email-link');
 
-    if (emailLink) {
-        const originalText = emailLink.textContent;
+    // Add event listener to each link
+    emailLinks.forEach(link => {
+        const originalText = link.textContent;
 
-        emailLink.addEventListener('click', (event) => {
-            event.preventDefault(); // Good practice, though href is void
-            const email = emailLink.dataset.email;
+        link.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default anchor behavior
+            const email = link.dataset.email; // Get email from data attribute
 
             if (!email) {
-                console.error('No email address found in data-email attribute.');
+                console.error('No email address found in data-email attribute for link:', link);
                 return;
             }
 
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(email).then(() => {
                     // Success: Provide visual feedback
-                    emailLink.textContent = 'Copied!';
+                    link.textContent = 'Copied!';
+                    link.style.opacity = 0.7; // Optional: Dim slightly
                     // Revert text after a delay
                     setTimeout(() => {
-                        emailLink.textContent = originalText;
-                    }, 750); // 0.75 seconds
+                        link.textContent = originalText;
+                        link.style.opacity = 1;
+                    }, 900); // Increased delay slightly
                 }).catch(err => {
                     console.error('Failed to copy email to clipboard:', err);
                     // Optionally provide error feedback to the user
-                    // emailLink.textContent = 'Copy Failed!';
-                    // setTimeout(() => { emailLink.textContent = originalText; }, 2000);
+                    link.textContent = 'Copy Failed!';
+                    setTimeout(() => { link.textContent = originalText; }, 2000);
                 });
             } else {
                 console.error('Clipboard API not available.');
                 // Fallback or error message if needed
+                alert('Clipboard API not available. Cannot copy email.');
             }
         });
-    }
+    });
 });
