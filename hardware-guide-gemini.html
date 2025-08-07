@@ -162,7 +162,7 @@
         <h1>Rats Play Doom: Hardware Assembly Guide</h1>
         <p>A single-page, print-friendly, and accessible guide for assembling the open-source hardware used to let rats play DOOM. This guide covers the complete build from the frame to the final harness.</p>
         <figure>
-            <img src="images/rat_vr_setup.png" alt="Diagram of the final hardware assembly. Shows the rat on the ball, surrounded by the VR screen, with the trigger mechanism and harness system in place.">
+            <img src="images/guide/full_setup.jpeg" alt="The complete Rat VR System, showing the frame, locomotion ball, harness, and display.">
             <figcaption>What you'll build: The complete Rat VR System.</figcaption>
         </figure>
     </header>
@@ -217,8 +217,8 @@
                 <li><strong>Harness Mounts:</strong> 1 × 80cm (40x20mm), 1 × 30cm (40x20mm)</li>
             </ul>
             <figure>
-                <img src="images/placeholder_frame.png" alt="Placeholder diagram of the assembled aluminum frame.">
-                <figcaption>Frame assembly diagram.</figcaption>
+                <img src="images/guide/locomotion_zoomed_out.jpeg" alt="The assembled aluminum frame with the locomotion system mounted.">
+                <figcaption>Overview of the assembled frame with the locomotion system installed.</figcaption>
                 <a href="assets/blender/frame.blend" class="download-link">Download frame.blend</a>
             </figure>
             <h4>QA Checks</h4>
@@ -262,10 +262,22 @@
                 <li><strong>Place Ball:</strong> Gently place the coated styrofoam ball on top of the three omni-wheels.</li>
             </ol>
             <figure>
-                <img src="images/placeholder_locomotion.png" alt="Placeholder diagram of the locomotion system assembly.">
-                <figcaption>Locomotion system overview.</figcaption>
+                <img src="images/guide/locomotion.jpeg" alt="The assembled locomotion system with motors and omni-wheels.">
+                <figcaption>Assembled locomotion system, top-down view.</figcaption>
                 <a href="assets/blender/spawn_base_ver3_18a.blend" class="download-link">Download spawn_base_ver3_18a.blend</a>
                 <a href="assets/kicad/raspby_to_hw95.zip" class="download-link">Download KiCad Files (raspby_to_hw95, motor, hwstohdr)</a>
+            </figure>
+            <figure>
+                <img src="images/guide/locomotion_circuit.png" alt="Circuit diagram for the locomotion system's motor driver connections.">
+                <figcaption>Locomotion circuit: Motor driver wiring.</figcaption>
+            </figure>
+            <figure>
+                <img src="images/guide/locomotion_circuit2.png" alt="Circuit diagram for the locomotion system's power input.">
+                <figcaption>Locomotion circuit: Power input.</figcaption>
+            </figure>
+            <figure>
+                <img src="images/guide/locomotion_circuit3.png" alt="Circuit diagram for the locomotion system's encoder connections.">
+                <figcaption>Locomotion circuit: Encoder wiring.</figcaption>
             </figure>
             <h4>QA Checks</h4>
             <ul>
@@ -299,10 +311,14 @@
                 <li><strong>Wire to Pi:</strong> Connect the sensors to the Raspberry Pi according to the `sensors` KiCad diagram.</li>
             </ol>
             <figure>
-                <img src="images/placeholder_sensors.png" alt="Placeholder diagram showing sensor placement relative to the ball.">
-                <figcaption>Sensor positioning.</figcaption>
+                <img src="images/guide/ball_sensor.jpeg" alt="Close-up of the PAA5100JE optical sensor mounted in its 3D-printed housing.">
+                <figcaption>The PAA5100JE optical flow sensor in its mount.</figcaption>
                 <a href="assets/blender/motion_sensor_mount.blend" class="download-link">Download motion_sensor_mount.blend</a>
                 <a href="assets/kicad/sensors.zip" class="download-link">Download KiCad Files (sensors)</a>
+            </figure>
+            <figure>
+                <img src="images/guide/ball_sensor_circuit.png" alt="Circuit diagram for the PAA5100JE optical sensor.">
+                <figcaption>Ball sensor circuit diagram.</figcaption>
             </figure>
             <h4>QA Checks</h4>
             <ul>
@@ -342,10 +358,38 @@
                 <li><strong>Wire Electronics:</strong> Connect the pumps, sensor, valve, and servo to the control board as per the KiCad diagrams.</li>
             </ol>
             <figure>
-                <img src="images/placeholder_reward.png" alt="Placeholder diagram of the reward circuit components.">
-                <figcaption>Reward and feedback system schematic.</figcaption>
+                <img src="images/guide/reward_diagram.png" alt="Diagram of the complete reward and feedback system, including water and air puff components.">
+                <figcaption>Complete reward and feedback system schematic.</figcaption>
                 <a href="assets/blender/mixer_cap.blend" class="download-link">Download mixer_cap.blend</a>
                 <a href="assets/kicad/reward_circuit.zip" class="download-link">Download KiCad Files (valve, waterpump, etc.)</a>
+            </figure>
+            <figure>
+                <img src="images/guide/reward_reservoir.jpeg" alt="Water reservoir for the reward system.">
+                <figcaption>The water reservoir for the reward system.</figcaption>
+            </figure>
+            <figure>
+                <img src="images/guide/tube_adapter.jpeg" alt="3D-printed tube adapter.">
+                <figcaption>3D-printed tube adapter.</figcaption>
+            </figure>
+            <figure>
+                <img src="images/guide/water_t_junction.jpeg" alt="T-junction for splitting the water line.">
+                <figcaption>T-junction for splitting the water line.</figcaption>
+            </figure>
+            <figure>
+                <img src="images/guide/reward_water_pump_circuit.png" alt="Circuit diagram for the water pump.">
+                <figcaption>Reward circuit: Water pump wiring.</figcaption>
+            </figure>
+            <figure>
+                <img src="images/guide/reward_water_valve_circuit.png" alt="Circuit diagram for the water valve.">
+                <figcaption>Reward circuit: Water valve wiring.</figcaption>
+            </figure>
+            <figure>
+                <img src="images/guide/reward_water_pressure_circuit.png" alt="Circuit diagram for the water pressure sensor.">
+                <figcaption>Reward circuit: Water pressure sensor wiring.</figcaption>
+            </figure>
+            <figure>
+                <img src="images/guide/reward_face_puff_circuit.png" alt="Circuit diagram for the air puff system.">
+                <figcaption>Feedback circuit: Air puff wiring.</figcaption>
             </figure>
             <h4>QA Checks</h4>
             <ul>
@@ -383,11 +427,15 @@
                 <li><strong>Mount Assembly:</strong> Attach the trigger assembly to an adjustable arm on the frame. Position it within easy reach of the rat.</li>
             </ol>
             <figure>
-                <img src="images/placeholder_trigger.png" alt="Placeholder diagram of the trigger mechanism.">
-                <figcaption>Exploded view of the trigger assembly.</figcaption>
+                <img src="images/guide/trigger.jpeg" alt="The assembled trigger mechanism, showing the lever and servo.">
+                <figcaption>Assembled trigger mechanism.</figcaption>
                 <a href="assets/blender/vr_headset6_rev15_lever3_a8.blend" class="download-link">Download vr_headset6_rev15_lever3_a8.blend</a>
-                <a href="assets/kicad/trigger.zip" class="download-link">Download KiCad Files (trigger)</a>
             </figure>
+            <figure>
+                <img src="images/guide/trigger_circuit.png" alt="Circuit diagram for the trigger mechanism.">
+                <figcaption>Trigger circuit diagram.</figcaption>
+            </figure>
+            <a href="assets/kicad/trigger.zip" class="download-link">Download KiCad Files (trigger)</a>
             <h4>QA Checks</h4>
             <ul>
                 <li>The lever moves smoothly and returns to the neutral position.</li>
@@ -419,8 +467,8 @@
                 <li><strong>Position Screen:</strong> Adjust the arm to place the screen at the rat's eye level, ensuring a clear and panoramic field of view.</li>
             </ol>
             <figure>
-                <img src="images/placeholder_display.png" alt="Placeholder diagram of the display system mounted on the frame.">
-                <figcaption>Display system and headset.</figcaption>
+                <img src="images/guide/display.jpeg" alt="The curved OLED display mounted in its 3D-printed holder.">
+                <figcaption>The curved OLED display and its 3D-printed holder.</figcaption>
                 <a href="assets/blender/full_headset_guide.blend" class="download-link">Download full_headset_guide.blend</a>
             </figure>
             <h4>QA Checks</h4>
@@ -454,8 +502,8 @@
                 <li><strong>Adjust Height:</strong> Adjust the height so the rat is comfortably supported with its paws resting naturally on the ball. The rat should be able to move slightly vertically but not be able to climb out.</li>
             </ol>
             <figure>
-                <img src="images/placeholder_harness.png" alt="Placeholder diagram of the rat harness.">
-                <figcaption>Harness design and placement.</figcaption>
+                <img src="images/guide/harness.jpeg" alt="The 3D-printed harness for the rat.">
+                <figcaption>The 3D-printed rat harness.</figcaption>
                 <a href="assets/blender/harness.blend" class="download-link">Download harness.blend</a>
             </figure>
             <h4>QA Checks</h4>
