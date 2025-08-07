@@ -141,6 +141,40 @@
             font-weight: bold;
         }
 
+        /* 3D Viewer and Video Container Styling */
+        .viewer-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .viewer-container canvas {
+            width: 600px;
+            height: 600px;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .model-label {
+            font-weight: bold;
+            color: var(--color-secondary);
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .video-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .video-container iframe {
+            width: 800px;
+            height: 450px;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+        }
+
         @media print {
             body {
                 max-width: 100%;
@@ -288,7 +322,7 @@
                 <figcaption>Locomotion circuit: Encoder wiring.</figcaption>
             </figure>
             <div class="viewer-container">
-                <canvas id="standCanvas"></canvas>
+                <canvas id="standCanvas" class="renderCanvas"></canvas>
             </div>
             <p class="model-label">3D Model: Stand/Ball</p>
             <div class="video-container">
@@ -452,7 +486,7 @@
                 <figcaption>Trigger circuit diagram.</figcaption>
             </figure>
             <div class="viewer-container">
-                <canvas id="triggerCanvas"></canvas>
+                <canvas id="triggerCanvas" class="renderCanvas"></canvas>
             </div>
             <p class="model-label">3D Model: Trigger</p>
             <div class="video-container">
@@ -495,7 +529,7 @@
                 <a href="assets/blender/full_headset_guide.blend" class="download-link">Download full_headset_guide.blend</a>
             </figure>
             <div class="viewer-container">
-                <canvas id="headsetCanvas"></canvas>
+                <canvas id="headsetCanvas" class="renderCanvas"></canvas>
             </div>
             <p class="model-label">3D Model: Headset</p>
             <div class="video-container">
