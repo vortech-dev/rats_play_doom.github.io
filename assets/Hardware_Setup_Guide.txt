@@ -1,0 +1,194 @@
+Rats Play Doom
+Hardware Setup Guide
+This guide explains how to build the full system, as far as the hardware goes. Each section includes a Blender file for 3D visualization and 3D printing of custom parts. Blender is used to design and position components, so you can see how everything fits together.
+KiCad files are included for electronics. KiCad is a tool for designing circuit boards and wiring diagrams. Use these files to connect sensors, motors, encoders, pumps, and other components correctly.
+Follow each section step-by-step. Always refer to the listed files when assembling mechanical or electronic parts.
+1. Frame Assembly
+Blender file: frame.blend
+The frame is built from aluminum profiles. This material makes it easy to attach all modules and adjust their positions.
+Parts list (number × dimensions in cm):
+Pillars: 4 × 100×4×4
+Crossbeams: 10 × 70×4×2
+Motor mount: 2 × 80×4×2
+Sensor mounts: 2 × 10×2×2
+VR mount: 1 × 60×4×2
+Harness mounts: 1 × 80×4×2 and 1 × 30×4×2
+Frame levels:
+Bottom: holds the locomotion system
+Middle: holds sensors and reward circuit
+Top: holds the VR and harness system
+
+
+
+
+
+2. Locomotion
+Blender file: spawn_base_ver3_18a.blend
+ KiCad files: raspby_to_hw95, motor, hwstohdr
+Install the locomotion system on the bottom level of the frame. It lets the rat move a ball in two modes:
+Active Mode: motors move the ball based on software commands.
+Passive Mode: the rat moves the ball directly; motors are off.
+Parts:
+Bottom and top locomotion bases
+3 × linear motor encasing tubes
+3 × support arms
+Round housing for ball bearings
+3 × 100 mm omnidirectional wheels
+3 × 8 mm shaft universal mounting hubs
+3 × Pololu 99:1 gearmotors (25Dx69L mm, 12V, with 48 CPR encoders)
+1 × mini electric linear actuator (4" stroke, 12V, high speed)
+1 × 40 cm (16”) styrofoam ball
+Assembly steps:
+Place linear actuator into the bottom base, moving leg upwards.
+Attach the top base.
+Slide motor tubes into the bottom plate; mount shaft enlarger to the motor shafts. [TODO NEED LINK FOR HOW TO MAKE THIS]
+Mount wheels onto the enlarged motor shafts.
+Insert arms into the base. [TODO NEED LIST OF CSAVAROK]
+Fit the ball bearing housing into the arms.
+Insert ball bearings.
+[3D ANIMATION OF BASE ASSEMBLY]
+Electronics:
+Use 2 × HW95 motor drivers, 1 × HDR-100-12N power supply, linear actuators, and encoders.
+Connect HW95s to the Raspberry Pi and power using the KiCad wiring maps. Then connect actuators and encoders.
+Final step:
+Coat the styrofoam ball with a single layer of transparent Flex Seal Liquid. [TODO NEED MORE DESCRIPTION HERE]
+Mount it on top of the locomotion unit, centered in the frame.
+The ball must be light and easy for the rat to move with its paws.
+
+
+
+The styrofoam ball has to be placed onto the locomotion after it was covered with flex steal liquid.
+3. Ball sensors
+Blender file: motion_sensor_mount.blend
+KiCad file: sensors
+Install the sensors to track how the rat moves the ball. Use two optical motion sensors and their frame mounting custom 3D part.
+Parts:
+2 × sensor mounts
+2 × PAA5100JE optical motion sensors
+Instructions:
+Mount the sensors onto the frame at 90° angles to each other. [TODO SHOOT AN IMAGE OF THIS]
+Make sure both have a clear view of the ball from different sides.
+Fix them securely so they don’t shift during use.
+
+
+These sensors detect ball movement and send signals to the system for input tracking.
+
+
+4. Reward Circuit Installation
+Blender file: mixer_cap.blend
+ KiCad files: valve, waterpump, stepmotor+pressuresensor, blowsystem
+The reward system gives sugar water when the rat does the right action. It also uses an air puff to signal when the rat hits a wall.
+Parts:
+2 × 12V water pumps
+1 × water pressure sensor (MPX5700AP)
+1 × capacitor (16V, 100μF)
+1 × valve [TODO WHAT VALVE]
+1 × 2.2kΩ resistor
+Pipe: 10/6 mm and 4/2 mm (outer/inner diameters)
+1 × servo motor [TODO WHAT SERVO MOTOR]
+2 × air blower (2 high-pressure pumps)
+3D printed parts: reservoir holder, mixer, water_tube_adapter_6to2
+Assembly steps:
+Print and mount the reward reservoir near the rat.
+Fill a jar with sugar water and place it in the holder.
+Attach a servo motor to stir the mix using the mixer cap.
+Connect the large pipe to the pump, then reduce it to small pipe using the adapter.
+Add a T-junction after the pump. One branch goes to the pressure sensor.
+Mount the valve after the pressure sensor. It ensures fast reward delivery.
+Air puff system:
+Place the air blower near the VR headset to aim air at the rat’s face.
+Connect the blowers to a HW95 driver and an Arduino.
+This setup reinforces correct actions with reward and gives negative feedback with air puffs.
+
+
+
+
+
+
+
+
+
+ 
+5. Trigger Mechanism
+Blender file: vr_headset6_rev15_lever3_a8.blend
+ KiCad file: trigger
+This part lets the rat "shoot" in the game using a lever.
+Parts:
+Lever
+Bottom and top housing
+Spring holder
+Servo motor (SG90)
+Rotary encoder (Keyestudio)
+2 × springs (E0063-007-0380S)
+Assembly steps:
+Mount the encoder to the side with holes in the housing.
+Attach the servo motor to the opposite side.
+Place the lever into the bottom housing. One end connects to the encoder, the other to the motor.
+Add the top housing.
+Screw the spring holder to the top housing.
+Attach springs between the holder and the lever arm.
+Mount the whole trigger unit on an adjustable arm. Place it so the rat can reach it easily without moving far from the ball.
+The lever sits in a small platform. A container sits on top of the lever.
+
+
+
+6. Display System
+Blender file: full_headset_guide.blend
+This part shows the DOOM gameplay to the rat.
+Steps:
+3D print the screen holder.
+Mount the LED screen inside the holder.
+Attach the holder to an adjustable arm.
+Position the screen at the rat’s eye level and angle it for clear visibility.
+The screen gives real-time visual feedback during the game.
+[TODO ELABORATE, HAVE VR HEADSET 3D ANIMATION HERE]
+
+
+7. Rat Harness System
+Blender file: harness.blend
+The harness holds the rat above the ball, letting it move freely without walking away.
+Steps:
+Mount the harness to the top level of the frame.
+Adjust it so the rat hangs comfortably, with its paws resting on the ball.
+Allow slight vertical movement but prevent full body movement or escape.
+The harness must support the rat without causing stress.
+
+Links for the hardware used:
+T-junctions: https://www.terkowebaruhaz.hu/Mikro-idom-T-idom-4-mm
+Fuse holder: https://hu.rs-online.com/web/p/din-sinre-szerelheto-sorkapcsok/7684611?searchId=376146d0-f38a-4a21-bc80-250320de0ab5&gb=s
+Fuses: 
+https://hu.rs-online.com/web/p/uveg-biztositekok/6686029?searchId=45b5a2f8-5920-46b4-90a5-ca815e91c9f5&gb=s
+https://hu.rs-online.com/web/p/uveg-biztositekok/6686082?searchId=97986449-ef2e-4fb4-b201-0e98ca752ec0&gb=s
+https://hu.rs-online.com/web/p/uveg-biztositekok/0412223?searchId=59e0979b-0863-40fc-a4b9-eccc364db66c&gb=s
+https://hu.rs-online.com/web/p/uveg-biztositekok/6686032?searchId=dc225008-39bb-4b1b-a3e9-5d648ff40430&gb=s
+Springs:
+https://biotek.hu/termek/asp06120-e0063-007-0380s
+https://biotek.hu/termek/asp06168-e0094-010-0380s
+https://rugobolt.hu/Huzorugo-07x64x58-mm-A-69-horganyzott
+https://rugobolt.hu/Huzorugo-07x60x14-mm-A-25-horganyzott
+https://rugobolt.hu/Huzorugo-08x7x35-mm-A49-mm-horganyzott
+Power supplies:
+https://www.elektrobot.hu/termek.php?filename=7386.html&i=7386
+https://www.hestore.hu/prod_10038317.html
+https://www.hestore.hu/prod_10040292.html
+https://www.hestore.hu/prod_10040837.html
+https://www.hestore.hu/prod_10041317.html
+https://www.hestore.hu/prod_10042653.html
+https://www.hestore.hu/prod_10040955.html
+
+
+Air pump: https://www.hestore.hu/prod_10041524.html
+Pipe: https://www.hestore.hu/prod_10042175.html
+Loudspeaker: https://www.hestore.hu/prod_10029791.html
+Servo motor: https://www.hestore.hu/prod_10031188.html
+Flex seal: https://www.amazon.co.uk/dp/B019PFO4MA/ref=pe_27063361_485629781_TE_item
+Pressure sensor: https://wiki.seeedstudio.com/Grove-Integrated-Pressure-Sensor-Kit/
+OLED display: https://www.aliexpress.com/item/1005003546051861.html?spm=a2g0o.order_detail.order_detail_item.3.2aecf19crKoEf1
+For the screws: 
+https://www.tme.eu/en/details/b4x8_bn3/bolts/bossard/1003909/
+https://www.tme.eu/hu/details/fa-096214/profil-kellekek/fath/096214/
+https://www.tme.eu/hu/details/m4x14_d912-a2/csavarok-anyaval/kraftberg/
+Encoder: https://www.pololu.com/product/4867
+Omniwheel: https://eu.robotshop.com/products/100mm-omnidirectional-wheel-brass-bearing-rollers
+Mounting hub: https://eu.robotshop.com/products/8mm-shaft-universal-aluminum-mounting-hub
+L298N: https://www.hestore.hu/prod_10036621.html?lang=en&srsltid=AfmBOoo-VflyRqYeY5S0FqXZIgyECYAzuXvi8KFoRXqIp_KPFMFRFzex
