@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rats Play Doom - Hardware Assembly Guide</title>
+    <!-- Babylon.js for 3D viewer -->
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+
+    <!-- Local JS for 3D viewer -->
+    <script defer src="assets/js/util.js"></script>
+    <script defer src="assets/js/main.js"></script>
+
     <style>
         :root {
             --color-bg: #ffffff;
@@ -279,6 +287,13 @@
                 <img src="images/guide/locomotion_circuit3.png" alt="Circuit diagram for the locomotion system's encoder connections.">
                 <figcaption>Locomotion circuit: Encoder wiring.</figcaption>
             </figure>
+            <div class="viewer-container">
+                <canvas id="standCanvas"></canvas>
+            </div>
+            <p class="model-label">3D Model: Stand/Ball</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/Si52Hq2ywFA?autoplay=1&mute=1&controls=0&loop=1&playlist=Si52Hq2ywFA&modestbranding=1" title="YouTube video player - Locomotion Exploded View" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
             <h4>QA Checks</h4>
             <ul>
                 <li>The ball spins freely in all directions when moved by hand.</li>
@@ -320,6 +335,7 @@
                 <img src="images/guide/ball_sensor_circuit.png" alt="Circuit diagram for the PAA5100JE optical sensor.">
                 <figcaption>Ball sensor circuit diagram.</figcaption>
             </figure>
+
             <h4>QA Checks</h4>
             <ul>
                 <li>Sensors have a clear, unobstructed line-of-sight to the ball.</li>
@@ -435,6 +451,13 @@
                 <img src="images/guide/trigger_circuit.png" alt="Circuit diagram for the trigger mechanism.">
                 <figcaption>Trigger circuit diagram.</figcaption>
             </figure>
+            <div class="viewer-container">
+                <canvas id="triggerCanvas"></canvas>
+            </div>
+            <p class="model-label">3D Model: Trigger</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/vIzxP3GrOaw?autoplay=1&mute=1&controls=0&loop=1&playlist=vIzxP3GrOaw&modestbranding=1" title="YouTube video player - Trigger Manual Testing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
             <a href="assets/kicad/trigger.zip" class="download-link">Download KiCad Files (trigger)</a>
             <h4>QA Checks</h4>
             <ul>
@@ -471,6 +494,13 @@
                 <figcaption>The curved OLED display and its 3D-printed holder.</figcaption>
                 <a href="assets/blender/full_headset_guide.blend" class="download-link">Download full_headset_guide.blend</a>
             </figure>
+            <div class="viewer-container">
+                <canvas id="headsetCanvas"></canvas>
+            </div>
+            <p class="model-label">3D Model: Headset</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/P9gwOoqymwU?autoplay=1&mute=1&controls=0&loop=1&playlist=P9gwOoqymwU&modestbranding=1" title="YouTube video player - Headset Exploded View" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
             <h4>QA Checks</h4>
             <ul>
                 <li>The screen is securely mounted and stable.</li>
