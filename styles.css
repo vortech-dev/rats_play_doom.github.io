@@ -330,22 +330,17 @@ nav a:hover {
 # Hardware Section Specifics (Viewer)
 --------------------------------------------------------------*/
 .viewer-container {
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    align-items: center;
-    gap: 20px; /* Space between canvas and image */
-    margin: 20px 0;
+    max-width: 600px; /* Set a max-width to make it larger but contained */
+    margin: 20px auto; /* Center the container */
     padding: 10px;
     border: 1px dashed var(--color-border);
     background-color: rgba(0,0,0,0.3);
 }
 
 .viewer-container canvas {
-    width: 300px;  /* Fixed width for canvas */
-    height: 300px; /* Fixed height for canvas */
-    border: 2px solid var(--color-accent);
-    display: block; /* Ensure proper layout */
-    background-color: #050505; /* Dark background for viewer */
+    width: 100%; /* Make canvas fill the container */
+    height: 400px; /* Give it a larger, fixed height */
+    display: block; /* Ensure it's a block element */
 }
 
 .viewer-container figure {
@@ -363,8 +358,10 @@ nav a:hover {
 
 .model-label {
     text-align: center;
-    margin-top: -10px; /* Adjust to position below container */
+    width: 100%;
+    margin-top: 10px; /* Adjusted margin */
     margin-bottom: 20px;
+    font-size: 0.9em;
     font-weight: var(--font-weight-bold);
     font-variation-settings: var(--font-settings-bold);
     color: var(--color-accent);
@@ -378,10 +375,10 @@ nav a:hover {
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
     height: 0;
     overflow: hidden;
-    max-width: 100%;
+    max-width: 600px; /* Match the viewer container width */
     background: #000;
-    margin: 20px 0; /* Add some spacing around the video */
-    border: 1px solid var(--color-border);
+    margin: 20px auto; /* Center the container */
+    border: 2px solid var(--color-border);
 }
 
 .video-container iframe,
