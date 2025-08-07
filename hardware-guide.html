@@ -1,633 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rats Play Doom - Hardware Assembly Guide</title>
-    <style>
-        :root {
-            --color-bg: #ffffff;
-            --color-text: #212121;
-            --color-primary: #3d5afe;
-            --color-secondary: #6c757d;
-            --color-accent: #ff4081;
-            --color-border: #e0e0e0;
-            --color-code-bg: #f5f5f5;
-            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            color: var(--color-text);
-            background-color: var(--color-bg);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header, section, footer {
-            margin-bottom: 3rem;
-        }
-
-        h1, h2, h3, h4 {
-            line-height: 1.2;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; }
-        h3 { font-size: 1.5rem; }
-        h4 { font-size: 1.2rem; color: var(--color-secondary); }
-
-        a { color: var(--color-primary); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-
-        .xref {
-            font-size: 0.8em;
-            vertical-align: super;
-            margin-left: 2px;
-            font-weight: bold;
-        }
-
-        ol, ul {
-            padding-left: 1.5rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        code, kbd {
-            font-family: var(--font-mono);
-            background-color: var(--color-code-bg);
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
-            font-size: 0.9em;
-        }
-
-        kbd {
-            border: 1px solid var(--color-border);
-            box-shadow: 1px 1px 1px #ccc;
-        }
-
-        figure {
-            margin: 2rem 0;
-            padding: 0;
-            text-align: center;
-        }
-
-        figure img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid var(--color-border);
-        }
-
-        figcaption {
-            font-size: 0.9em;
-            color: var(--color-secondary);
-            margin-top: 0.5rem;
-        }
-
-        .download-link {
-            display: block;
-            margin-top: 1rem;
-            font-weight: bold;
-        }
-
-        aside {
-            padding: 1rem;
-            margin: 2rem 0;
-            border-left: 4px solid;
-        }
-
-        aside[role="note"] {
-            background-color: #e3f2fd;
-            border-color: #2196f3;
-        }
-
-        aside[role="alert"] {
-            background-color: #fff3e0;
-            border-color: #ff9800;
-        }
-        
-        .bom-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 2rem;
-        }
-
-        .bom-table th, .bom-table td {
-            border: 1px solid var(--color-border);
-            padding: 0.75rem;
-            text-align: left;
-        }
-
-        .bom-table th {
-            background-color: var(--color-code-bg);
-        }
-
-        .bom-table td:first-child { 
-            font-weight: bold;
-        }
-
-        @media print {
-            body {
-                max-width: 100%;
-                font-size: 10pt;
-            }
-
-            header, footer, .download-link {
-                display: none;
-            }
-
-            section {
-                page-break-after: always;
-            }
-
-            a { text-decoration: none; color: var(--color-text); }
-            .xref { display: none; }
-
-            figure img {
-                max-width: 50% !important;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rats Play Doom — Hardware Assembly Guide</title>
+<meta name="description" content="Single-page, print-friendly assembly guide for the Rats Play Doom open hardware rig.">
+<style>
+  :root{--fg:#111;--bg:#fff;--mut:#555;--acc:#0a66c2;--bd:#ddd;--max:920px}
+  *{box-sizing:border-box}
+  body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--fg);background:var(--bg)}
+  a{color:var(--acc)} a:visited{color:#084a8a}
+  .wrap{max-width:var(--max);margin:0 auto;padding:16px}
+  header{border-bottom:1px solid var(--bd);background:#fafafa}
+  h1{margin:.2rem 0 .4rem;font-size:clamp(1.4rem,2.8vw,2.1rem)}
+  h2{margin:1.6rem 0 .4rem;border-bottom:1px solid var(--bd);padding-bottom:.25rem}
+  h3{margin:1rem 0 .25rem}
+  figure{margin:12px 0}
+  .ph{width:100%;aspect-ratio:16/9;background:#eaeaea;border:1px dashed #bbb}
+  figcaption{color:var(--mut);font-size:.95rem}
+  ul,ol{padding-left:1.25rem}
+  kbd,code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95em}
+  aside[role=note],aside[role=alert]{margin:.75rem 0;padding:.6rem .8rem;border:1px solid var(--bd);background:#f6f8fa}
+  aside[role=alert]{background:#fff3f3;border-color:#f1c1c1}
+  .grid{display:grid;gap:12px;grid-template-columns:1fr}
+  @media(min-width:840px){.grid{grid-template-columns:1fr 1fr}}
+  .xref{font-size:.85em;white-space:nowrap}
+  .bom{border:1px solid var(--bd);padding:.6rem}
+  .bom .part{padding:.5rem 0;border-top:1px solid var(--bd)}
+  .bom .part:first-child{border-top:0}
+  .meta{color:var(--mut);font-size:.95rem}
+  .pagebreak{break-before:page}
+  @media print{a{color:inherit;text-decoration:underline} header{background:none} .wrap{padding:0} .pagebreak{break-before:page}}
+</style>
 </head>
 <body>
+<header>
+  <div class="wrap">
+    <h1>Rats Play Doom — Hardware Assembly Guide</h1>
+    <p class="meta">Open-source VR treadmill rig for rats. Mechanical + electrical build. Static HTML, print-friendly.</p>
+    <figure>
+      <div class="ph" role="img" aria-label="What you'll build: frame, ball, headset display arc, trigger lever, reward tubing, sensors, harness."></div>
+      <figcaption>What you’ll build (placeholder). Replace with photo/diagram.</figcaption>
+    </figure>
+    <p class="meta">Source refs: <a href="assets/Hardware_Setup_Guide.pdf">Hardware_Setup_Guide.pdf</a>, <a href="assets/Hardware_Setup_Guide.txt">Hardware_Setup_Guide.txt</a></p>
+    <aside role="note"><strong>Preflight checklist</strong>
+      <ul>
+        <li>Read guide once. Stage parts by section.</li>
+        <li>Tools: hex keys, drivers, calipers, soldering iron, stripper, crimper, multimeter, hot glue, zip ties.</li>
+        <li>12 V PSU with fusing; check polarity; strain relief.</li>
+        <li>3D prints test-fit; sand if tight.</li>
+        <li>Cut/deburr aluminum; protect edges.</li>
+        <li>Follow part cross-links like <a href="#part-omniwheel-100mm" class="xref">[omniwheel-100mm]</a>.</li>
+      </ul>
+    </aside>
+    <aside role="alert"><strong>Safety & handling</strong>
+      <ul>
+        <li>Wear eye/hand PPE while cutting; beware pinch points (actuator, lever).</li>
+        <li>Fuse near source; insulate splices; verify polarity before power-up.</li>
+        <li>Keep liquids away from electronics; add drip loops; secure tubing.</li>
+      </ul>
+    </aside>
+  </div>
+</header>
 
-    <header>
-        <h1>Rats Play Doom: Hardware Assembly Guide</h1>
-        <p>A single-page, print-friendly, and accessible guide for assembling the open-source hardware used to let rats play DOOM. This guide covers the complete build from the frame to the final harness.</p>
-        <figure>
-            <img src="images/rat_vr_setup.png" alt="Diagram of the final hardware assembly. Shows the rat on the ball, surrounded by the VR screen, with the trigger mechanism and harness system in place.">
-            <figcaption>What you'll build: The complete Rat VR System.</figcaption>
-        </figure>
-    </header>
+<main>
+  <div class="wrap">
 
-    <main>
-        <section id="preflight">
-            <h2>Pre-flight Checklist</h2>
-            <ul>
-                <li><strong>Review the full guide:</strong> Read all sections before starting to understand the overall assembly flow.</li>
-                <li><strong>Check the Bill of Materials (BOM):</strong> Ensure you have all parts listed in the <a href="#bom">BOM section</a>.</li>
-                <li><strong>Prepare your workspace:</strong> Set up a clean, well-lit area with enough space for assembly.</li>
-                <li><strong>Gather your tools:</strong> Have all required tools ready. See tool lists in each section.</li>
-                <li><strong>Download digital files:</strong> Download all linked <code>.blend</code> and <code>KiCad</code> files.</li>
-            </ul>
-            <aside role="alert">
-                <h4>Safety & Handling</h4>
-                <p>Always wear appropriate personal protective equipment (PPE), such as safety glasses. Be mindful of pinch points when assembling the frame and mechanical parts. The system uses 12V DC power; ensure all wiring is correct and insulated to prevent shorts. Always use the specified fuses to protect components.</p>
-            </aside>
-        </section>
+    <section id="frame-assembly" aria-labelledby="h2-frame">
+      <h2 id="h2-frame">1) Frame Assembly</h2>
+      <p>Aluminum profiles. Levels: bottom (locomotion), middle (sensors & reward), top (VR & harness).</p>
+      <div class="grid">
+        <div>
+          <h3>Required parts</h3>
+          <ul>
+            <li>Pillars/crossbeams/mounts per cut list.</li>
+            <li>Fasteners: <a href="#part-m4x8" class="xref">[m4x8]</a>, <a href="#part-m4-t-slot-nut" class="xref">[m4-t-slot-nut]</a>, <a href="#part-m4x14" class="xref">[m4x14]</a>.</li>
+          </ul>
+          <h3>Tools</h3>
+          <ul><li>Saw, deburr tool, square, hex keys, tape measure.</li></ul>
+          <h3>Cut list</h3>
+          <ul>
+            <li>Pillars: 4 × 100×4×4 cm</li>
+            <li>Crossbeams: 10 × 70×4×2 cm</li>
+            <li>Motor mounts: 2 × 80×4×2 cm</li>
+            <li>Sensor mounts: 2 × 10×2×2 cm</li>
+            <li>VR mount: 1 × 60×4×2 cm</li>
+            <li>Harness mounts: 1 × 80×4×2; 1 × 30×4×2 cm</li>
+          </ul>
+        </div>
+        <div>
+          <figure>
+            <div class="ph" role="img" aria-label="Exploded frame, three levels."></div>
+            <figcaption>Blender: frame.blend — <a href="blender/frame.blend" download>Download</a> (TODO)</figcaption>
+          </figure>
+        </div>
+      </div>
+      <h3>Steps</h3>
+      <ol>
+        <li>Cut per list; deburr.</li>
+        <li>Assemble bottom rectangle; square.</li>
+        <li>Install pillars; check vertical.</li>
+        <li>Add middle and top rectangles; keep spacing.</li>
+        <li>Add crossbeams at module points; snug all.</li>
+      </ol>
+      <h3>QA checks</h3>
+      <ul>
+        <li>Square, no wobble.</li>
+        <li>40 cm ball clearance at bottom.</li>
+        <li>Free T-slots for cable clamps.</li>
+      </ul>
+      <aside role="note">Troubleshooting: Rack → loosen, re-square, tighten in criss-cross.</aside>
+    </section>
 
-        <section id="frame-assembly">
-            <h2>1. Frame Assembly</h2>
-            <p>The frame provides a rigid, modular structure for all components. It is built from standard aluminum profiles, allowing for easy adjustment.</p>
-            <h4>Required Parts</h4>
-            <ul>
-                <li>Aluminum Profile, 40x40mm (4 x 100cm for pillars)</li>
-                <li>Aluminum Profile, 40x20mm (10 x 70cm for crossbeams)</li>
-                <li><a href="#part-m4-8-screw">M4x8 Screws</a><a href="#part-m4-8-screw" class="xref">[m4-8-screw]</a></li>
-                <li><a href="#part-m4-tslot-nut">M4 T-slot Nuts</a><a href="#part-m4-tslot-nut" class="xref">[m4-tslot-nut]</a></li>
-            </ul>
-            <h4>Tools</h4>
-            <ul>
-                <li>Hex key set (for M4 screws)</li>
-                <li>Tape measure</li>
-                <li>Metal file (to deburr cut profile ends)</li>
-            </ul>
-            <h4>Instructions</h4>
-            <ol>
-                <li><strong>Cut Profiles:</strong> Cut aluminum profiles to the lengths specified in the cut list below. Ensure cuts are straight and deburred.</li>
-                <li><strong>Assemble Base:</strong> Construct the bottom level using four 70cm crossbeams and connect them to the four 100cm pillars at the base.</li>
-                <li><strong>Assemble Middle Level:</strong> Attach crossbeams to create the middle level, which will hold the sensors and reward system.</li>
-                <li><strong>Assemble Top Level:</strong> Add the final crossbeams for the top level, which supports the VR headset and harness.</li>
-                <li><strong>Check for Squareness:</strong> Ensure the frame is square and all connections are tight.</li>
-            </ol>
-            <h4>Frame Cut List</h4>
-            <ul>
-                <li><strong>Pillars:</strong> 4 × 100cm (40x40mm)</li>
-                <li><strong>Crossbeams:</strong> 10 × 70cm (40x20mm)</li>
-                <li><strong>Motor Mounts:</strong> 2 × 80cm (40x20mm)</li>
-                <li><strong>Sensor Mounts:</strong> 2 × 10cm (20x20mm)</li>
-                <li><strong>VR Mount:</strong> 1 × 60cm (40x20mm)</li>
-                <li><strong>Harness Mounts:</strong> 1 × 80cm (40x20mm), 1 × 30cm (40x20mm)</li>
-            </ul>
-            <figure>
-                <img src="images/placeholder_frame.png" alt="Placeholder diagram of the assembled aluminum frame.">
-                <figcaption>Frame assembly diagram.</figcaption>
-                <a href="assets/blender/frame.blend" class="download-link">Download frame.blend</a>
-            </figure>
-            <h4>QA Checks</h4>
-            <ul>
-                <li>The assembled frame is stable and does not wobble.</li>
-                <li>All profile ends are smooth and free of sharp edges.</li>
-            </ul>
-            <aside role="note">
-                <strong>Troubleshooting:</strong> If the frame is not square, loosen the connectors, adjust the alignment, and re-tighten.
-            </aside>
-        </section>
+    <section id="locomotion-system" class="pagebreak" aria-labelledby="h2-locomotion">
+      <h2 id="h2-locomotion">2) Locomotion System</h2>
+      <p>Three-wheel cradle; actuator tensions cradle. Active (driven) or passive (free) modes.</p>
+      <div class="grid">
+        <div>
+          <h3>Required parts</h3>
+          <ul>
+            <li>3 × <a href="#part-omniwheel-100mm" class="xref">[omniwheel-100mm]</a></li>
+            <li>3 × <a href="#part-mounting-hub-8mm" class="xref">[mounting-hub-8mm]</a></li>
+            <li>3 × <a href="#part-pololu-25d-99to1" class="xref">[pololu-25d-99to1]</a></li>
+            <li>Linear actuator 4" 12 V</li>
+            <li>40 cm styrofoam ball coated with <a href="#part-flex-seal" class="xref">[flex-seal]</a></li>
+            <li>2 × HW95 motor drivers; PSU HDR-100-12N; <a href="#part-fuse-holder" class="xref">[fuse-holder]</a>/<a href="#part-fuses" class="xref">[fuses]</a></li>
+            <li>Alt driver: <a href="#part-l298n" class="xref">[l298n]</a></li>
+          </ul>
+          <h3>Tools</h3>
+          <ul><li>Hex keys, threadlocker, soldering iron, crimper, multimeter.</li></ul>
+        </div>
+        <div>
+          <figure>
+            <div class="ph" role="img" aria-label="Locomotion base with actuator and 3 wheels."></div>
+            <figcaption>Blender: spawn_base_ver3_18a.blend — <a href="blender/spawn_base_ver3_18a.blend" download>Download</a> (TODO)</figcaption>
+          </figure>
+          <figure>
+            <div class="ph" role="img" aria-label="Motor/driver/encoder schematic placeholder."></div>
+            <figcaption>KiCad: raspby_to_hw95, motor, hwstohdr — <a href="kicad/raspby_to_hw95.zip" download>Download</a> (TODO)</figcaption>
+          </figure>
+        </div>
+      </div>
+      <h3>Steps</h3>
+      <ol>
+        <li>Mount actuator in bottom base; rod up.</li>
+        <li>Attach top base; align clevis.</li>
+        <li>Install motor tubes + motors; add shaft enlargers <em>TODO spec</em>.</li>
+        <li>Mount wheels; check concentricity.</li>
+        <li>Insert arms + bearing housings; seat bearings.</li>
+        <li>Wire 2× HW95 + encoders per KiCad; test spin.</li>
+        <li>Coat ball once; cure; place centered.</li>
+      </ol>
+      <h3>QA checks</h3>
+      <ul>
+        <li>Free spin; no rubbing.</li>
+        <li>Actuator travels smoothly.</li>
+        <li>Correct polarity; fuses installed.</li>
+      </ul>
+      <aside role="note">Troubleshooting: Vibration → re-seat bearings; balance ball; reduce shaft runout.</aside>
+    </section>
 
-        <section id="locomotion-system">
-            <h2>2. Locomotion System</h2>
-            <p>The locomotion system allows the rat to move in the virtual world. It consists of a large styrofoam ball that rests on three omni-directional wheels, each driven by a motor.</p>
-            <h4>Required Parts</h4>
-            <ul>
-                <li>3x <a href="#part-pololu-motor">Pololu 99:1 25D Motor</a><a href="#part-pololu-motor" class="xref">[pololu-motor]</a></li>
-                <li>3x <a href="#part-omniwheel">100mm Omni-directional Wheel</a><a href="#part-omniwheel" class="xref">[omniwheel]</a></li>
-                <li>3x <a href="#part-mounting-hub">8mm Universal Mounting Hub</a><a href="#part-mounting-hub" class="xref">[mounting-hub]</a></li>
-                <li>1x <a href="#part-styrofoam-ball">40cm Styrofoam Ball</a><a href="#part-styrofoam-ball" class="xref">[styrofoam-ball]</a></li>
-                <li>1x <a href="#part-flex-seal">Flex Seal (Clear)</a><a href="#part-flex-seal" class="xref">[flex-seal]</a></li>
-                <li>2x <a href="#part-l298n-driver">L298N Motor Driver</a><a href="#part-l298n-driver" class="xref">[l298n-driver]</a></li>
-                <li>1x <a href="#part-psu-12v">HDR-100-12N Power Supply</a><a href="#part-psu-12v" class="xref">[psu-12v]</a></li>
-                <li>[TODO: Add shaft enlarger part or fabrication details]</li>
-            </ul>
-            <h4>Tools</h4>
-            <ul>
-                <li>Soldering iron and solder</li>
-                <li>Wire stripper and cutter</li>
-                <li>Screwdriver set</li>
-            </ul>
-            <h4>Instructions</h4>
-            <ol>
-                <li><strong>Prepare Ball:</strong> Apply one thin, even coat of <a href="#part-flex-seal">Flex Seal</a><a href="#part-flex-seal" class="xref">[flex-seal]</a> to the <a href="#part-styrofoam-ball">styrofoam ball</a><a href="#part-styrofoam-ball" class="xref">[styrofoam-ball]</a>. Let it dry completely.</li>
-                <li><strong>Mount Motors:</strong> Attach the three <a href="#part-pololu-motor">Pololu motors</a><a href="#part-pololu-motor" class="xref">[pololu-motor]</a> to the 3D-printed locomotion base.</li>
-                <li><strong>Attach Hubs and Wheels:</strong> Secure the <a href="#part-mounting-hub">mounting hubs</a><a href="#part-mounting-hub" class="xref">[mounting-hub]</a> to the motor shafts. Then, mount the <a href="#part-omniwheel">omni-wheels</a><a href="#part-omniwheel" class="xref">[omniwheel]</a> to the hubs.</li>
-                <li><strong>Assemble Base:</strong> Follow the `spawn_base_ver3_18a.blend` file to assemble the 3D-printed base parts.</li>
-                <li><strong>Install in Frame:</strong> Mount the entire locomotion assembly onto the bottom level of the main frame.</li>
-                <li><strong>Wire Electronics:</strong> Connect the motors and their encoders to the <a href="#part-l298n-driver">L298N drivers</a><a href="#part-l298n-driver" class="xref">[l298n-driver]</a>. Connect the drivers to the Raspberry Pi and the <a href="#part-psu-12v">12V power supply</a><a href="#part-psu-12v" class="xref">[psu-12v]</a> according to the KiCad diagrams.</li>
-                <li><strong>Place Ball:</strong> Gently place the coated styrofoam ball on top of the three omni-wheels.</li>
-            </ol>
-            <figure>
-                <img src="images/placeholder_locomotion.png" alt="Placeholder diagram of the locomotion system assembly.">
-                <figcaption>Locomotion system overview.</figcaption>
-                <a href="assets/blender/spawn_base_ver3_18a.blend" class="download-link">Download spawn_base_ver3_18a.blend</a>
-                <a href="assets/kicad/raspby_to_hw95.zip" class="download-link">Download KiCad Files (raspby_to_hw95, motor, hwstohdr)</a>
-            </figure>
-            <h4>QA Checks</h4>
-            <ul>
-                <li>The ball spins freely in all directions when moved by hand.</li>
-                <li>Motors run smoothly when powered, turning the ball as expected.</li>
-                <li>Encoder signals are correctly read by the Raspberry Pi.</li>
-            </ul>
-            <aside role="note">
-                <strong>Troubleshooting:</strong> If the ball sticks, check for debris and ensure the wheels are perfectly aligned. If motors don't run, verify all wiring connections and check the power supply.
-            </aside>
-        </section>
+    <section id="ball-sensors" class="pagebreak" aria-labelledby="h2-sensors">
+      <h2 id="h2-sensors">3) Ball Sensors</h2>
+      <p>Two PAA5100JE sensors at 90°. Rigid mounts; clear view.</p>
+      <div class="grid">
+        <div>
+          <h3>Required parts</h3>
+          <ul>
+            <li>2 × PAA5100JE</li>
+            <li>2 × rigid mounts</li>
+            <li>Cables, ties</li>
+          </ul>
+          <h3>Tools</h3>
+          <ul><li>Screwdrivers, hot glue, clips.</li></ul>
+        </div>
+        <div>
+          <figure>
+            <div class="ph" role="img" aria-label="Sensors around ball at 90 degrees."></div>
+            <figcaption>Blender: motion_sensor_mount.blend — <a href="blender/motion_sensor_mount.blend" download>Download</a> (TODO)</figcaption>
+          </figure>
+          <figure>
+            <div class="ph" role="img" aria-label="Sensors KiCad schematic placeholder."></div>
+            <figcaption>KiCad: sensors — <a href="kicad/sensors.zip" download>Download</a> (TODO)</figcaption>
+          </figure>
+        </div>
+      </div>
+      <h3>Steps</h3>
+      <ol>
+        <li>Mount at 90° around ball; equal standoff.</li>
+        <li>Avoid glare; ensure clear view.</li>
+        <li>Secure wiring; avoid moving parts.</li>
+      </ol>
+      <h3>QA checks</h3>
+      <ul>
+        <li>Rigid; no flex.</li>
+        <li>Non-zero flow when ball moves.</li>
+        <li>No cable drag.</li>
+      </ul>
+      <aside role="note">Troubleshooting: Weak signal → reduce standoff; shield ambient IR; correct orientation.</aside>
+    </section>
 
-        <section id="ball-sensors">
-            <h2>3. Ball Sensors</h2>
-            <p>Two optical flow sensors track the ball's movement, providing the data needed to control the game.</p>
-            <h4>Required Parts</h4>
-            <ul>
-                <li>2x <a href="#part-paa5100je-sensor">PAA5100JE Optical Sensor</a><a href="#part-paa5100je-sensor" class="xref">[paa5100je-sensor]</a></li>
-                <li>3D-printed sensor mounts</li>
-            </ul>
-            <h4>Tools</h4>
-            <ul>
-                <li>Screwdriver</li>
-            </ul>
-            <h4>Instructions</h4>
-            <ol>
-                <li><strong>Print Mounts:</strong> 3D print the sensor mounts using `motion_sensor_mount.blend`.</li>
-                <li><strong>Install Sensors:</strong> Secure the <a href="#part-paa5100je-sensor">PAA5100JE sensors</a><a href="#part-paa5100je-sensor" class="xref">[paa5100je-sensor]</a> into the printed mounts.</li>
-                <li><strong>Mount on Frame:</strong> Attach the mounts to the middle frame level. Position them 90 degrees apart, facing the ball.</li>
-                <li><strong>Set Distance:</strong> Adjust the mounts so the sensors are at the optimal distance from the ball's surface for reliable tracking.</li>
-                <li><strong>Wire to Pi:</strong> Connect the sensors to the Raspberry Pi according to the `sensors` KiCad diagram.</li>
-            </ol>
-            <figure>
-                <img src="images/placeholder_sensors.png" alt="Placeholder diagram showing sensor placement relative to the ball.">
-                <figcaption>Sensor positioning.</figcaption>
-                <a href="assets/blender/motion_sensor_mount.blend" class="download-link">Download motion_sensor_mount.blend</a>
-                <a href="assets/kicad/sensors.zip" class="download-link">Download KiCad Files (sensors)</a>
-            </figure>
-            <h4>QA Checks</h4>
-            <ul>
-                <li>Sensors have a clear, unobstructed line-of-sight to the ball.</li>
-                <li>Mounts are rigid and do not vibrate during operation.</li>
-                <li>The system correctly reports ball movement when you spin it by hand.</li>
-            </ul>
-            <aside role="note">
-                <strong>Troubleshooting:</strong> If tracking is erratic, check sensor alignment and distance. Ensure the room's lighting is consistent, as drastic changes can affect optical sensor performance.
-            </aside>
-        </section>
+    <section id="reward-circuit" class="pagebreak" aria-labelledby="h2-reward">
+      <h2 id="h2-reward">4) Reward Circuit Installation</h2>
+      <p>Pressurized line; valve dosing; air puff feedback.</p>
+      <div class="grid">
+        <div>
+          <h3>Required parts</h3>
+          <ul>
+            <li>2 × <a href="#part-mini-air-pump" class="xref">[mini-air-pump]</a></li>
+            <li><a href="#part-mpx5700ap" class="xref">[mpx5700ap]</a>; 16 V 100 μF cap; 2.2 kΩ</li>
+            <li>Valve <em>TODO:model</em></li>
+            <li><a href="#part-t-junction-4mm" class="xref">[t-junction-4mm]</a>; <a href="#part-pvc-tubing" class="xref">[pvc-tubing]</a>; adapter 10/6 → 4/2</li>
+            <li>Blowers ×2 via HW95 + Arduino</li>
+          </ul>
+          <h3>Tools</h3>
+          <ul><li>Soldering iron, heatshrink, ties.</li></ul>
+        </div>
+        <div>
+          <figure>
+            <div class="ph" role="img" aria-label="Mixer cap and reservoir"></div>
+            <figcaption>Blender: mixer_cap.blend — <a href="blender/mixer_cap.blend" download>Download</a> (TODO)</figcaption>
+          </figure>
+          <figure>
+            <div class="ph" role="img" aria-label="Reward wiring/pneumatic schematic"></div>
+            <figcaption>KiCad: valve, waterpump, stepmotor+pressuresensor, blowsystem — <a href="kicad/reward.zip" download>Download</a> (TODO)</figcaption>
+          </figure>
+        </div>
+      </div>
+      <h3>Steps</h3>
+      <ol>
+        <li>Mount reservoir + mixer near headset.</li>
+        <li>Plumb pump → T → pressure sensor; main → valve → dispenser.</li>
+        <li>Add cap across pump; route/strain-relief.</li>
+        <li>Place blowers near whiskers; wire to HW95 + Arduino.</li>
+      </ol>
+      <h3>QA checks</h3>
+      <ul>
+        <li>Holds pressure; quick valve response.</li>
+        <li>No leaks; clean drips.</li>
+        <li>Air puff consistent, gentle.</li>
+      </ul>
+      <aside role="note">Troubleshooting: Slow dose → shorten tubing; pre-pressurize; verify valve orientation/voltage.</aside>
+    </section>
 
-        <section id="reward-circuit">
-            <h2>4. Reward Circuit Installation</h2>
-            <p>The reward circuit delivers sugar water for correct actions and an air puff for negative feedback.</p>
-            <h4>Required Parts</h4>
-            <ul>
-                <li>2x <a href="#part-air-pump">Mini Air Pump (12V)</a><a href="#part-air-pump" class="xref">[air-pump]</a></li>
-                <li>1x <a href="#part-pressure-sensor">Grove Pressure Sensor (MPX5700AP)</a><a href="#part-pressure-sensor" class="xref">[pressure-sensor]</a></li>
-                <li>1x <a href="#part-pvc-tubing">PVC Tubing (4/2mm & 10/6mm)</a><a href="#part-pvc-tubing" class="xref">[pvc-tubing]</a></li>
-                <li>1x <a href="#part-t-junction">T-junction (4mm)</a><a href="#part-t-junction" class="xref">[t-junction]</a></li>
-                <li>1x <a href="#part-sg90-servo">SG90 Micro Servo</a><a href="#part-sg90-servo" class="xref">[sg90-servo]</a> (for mixer)</li>
-                <li>[TODO: Add Solenoid Valve model and part entry]</li>
-            </ul>
-            <h4>Tools</h4>
-            <ul>
-                <li>Scissors or tube cutter</li>
-                <li>Screwdriver</li>
-            </ul>
-            <h4>Instructions</h4>
-            <ol>
-                <li><strong>Assemble Reservoir:</strong> 3D print the reservoir holder and mixer cap. Attach the <a href="#part-sg90-servo">SG90 servo</a><a href="#part-sg90-servo" class="xref">[sg90-servo]</a> to the cap to act as a mixer.</li>
-                <li><strong>Set up Water Line:</strong> Connect the 10/6mm <a href="#part-pvc-tubing">PVC tubing</a><a href="#part-pvc-tubing" class="xref">[pvc-tubing]</a> from the water reservoir to one of the pumps. Use a 3D-printed adapter to connect the 4/2mm tubing to the pump's outlet.</li>
-                <li><strong>Install Sensor and Valve:</strong> Insert a <a href="#part-t-junction">T-junction</a><a href="#part-t-junction" class="xref">[t-junction]</a> in the 4/2mm line. Connect one branch to the <a href="#part-pressure-sensor">pressure sensor</a><a href="#part-pressure-sensor" class="xref">[pressure-sensor]</a>. Install the solenoid valve downstream from the T-junction.</li>
-                <li><strong>Set up Air Puff System:</strong> Connect the second <a href="#part-air-pump">pump (blower)</a><a href="#part-air-pump" class="xref">[air-pump]</a> to tubing. Position the outlet near the headset to deliver a gentle air puff.</li>
-                <li><strong>Mount Components:</strong> Mount the entire assembly to the middle level of the frame. Run the final water delivery tube and air puff tube to the headset area.</li>
-                <li><strong>Wire Electronics:</strong> Connect the pumps, sensor, valve, and servo to the control board as per the KiCad diagrams.</li>
-            </ol>
-            <figure>
-                <img src="images/placeholder_reward.png" alt="Placeholder diagram of the reward circuit components.">
-                <figcaption>Reward and feedback system schematic.</figcaption>
-                <a href="assets/blender/mixer_cap.blend" class="download-link">Download mixer_cap.blend</a>
-                <a href="assets/kicad/reward_circuit.zip" class="download-link">Download KiCad Files (valve, waterpump, etc.)</a>
-            </figure>
-            <h4>QA Checks</h4>
-            <ul>
-                <li>The water line is free of leaks.</li>
-                <li>The pressure sensor provides a stable reading.</li>
-                <li>The solenoid valve opens and closes crisply on command, dispensing a single drop.</li>
-                <li>The air puff is noticeable but not stressful for the animal.</li>
-            </ul>
-            <aside role="note">
-                <strong>Troubleshooting:</strong> If the valve leaks, check for debris or incorrect pressure. If the pump fails to prime, ensure the reservoir is positioned above it.
-            </aside>
-        </section>
+    <section id="trigger-mechanism" class="pagebreak" aria-labelledby="h2-trigger">
+      <h2 id="h2-trigger">5) Trigger Mechanism</h2>
+      <p>Lever with SG90 actuation + rotary encoder; dual springs.</p>
+      <div class="grid">
+        <div>
+          <h3>Required parts</h3>
+          <ul>
+            <li>Lever, housings, spring holder</li>
+            <li><a href="#part-sg90-servo" class="xref">[sg90-servo]</a>; Keyestudio rotary encoder</li>
+            <li>2 × springs E0063-007-0380S <a href="#part-springs" class="xref">[springs]</a></li>
+            <li>Fasteners <a href="#part-m4x8" class="xref">[m4x8]</a></li>
+          </ul>
+          <h3>Tools</h3>
+          <ul><li>Hex keys, small Phillips, threadlocker.</li></ul>
+        </div>
+        <div>
+          <figure>
+            <div class="ph" role="img" aria-label="Trigger lever with springs"></div>
+            <figcaption>Blender: vr_headset6_rev15_lever3_a8.blend — <a href="blender/vr_headset6_rev15_lever3_a8.blend" download>Download</a> (TODO)</figcaption>
+          </figure>
+          <figure>
+            <div class="ph" role="img" aria-label="Trigger KiCad schematic"></div>
+            <figcaption>KiCad: trigger — <a href="kicad/trigger.zip" download>Download</a> (TODO)</figcaption>
+          </figure>
+        </div>
+      </div>
+      <h3>Steps</h3>
+      <ol>
+        <li>Mount encoder to housing.</li>
+        <li>Mount SG90 opposite.</li>
+        <li>Seat lever; couple to encoder + servo horn.</li>
+        <li>Close top; install spring holder; attach springs.</li>
+        <li>Mount on adjustable arm within paw reach.</li>
+      </ol>
+      <h3>QA checks</h3>
+      <ul>
+        <li>Lever returns to rest; no stall.</li>
+        <li>Encoder counts smooth.</li>
+        <li>Symmetric preload.</li>
+      </ul>
+      <aside role="note">Troubleshooting: Sticky → realign horn; lighter springs; lube pivots.</aside>
+    </section>
 
-        <section id="trigger-mechanism">
-            <h2>5. Trigger Mechanism</h2>
-            <p>The trigger allows the rat to perform the 'shoot' action in the game by pulling a lever.</p>
-            <h4>Required Parts</h4>
-            <ul>
-                <li>1x <a href="#part-sg90-servo">SG90 Micro Servo</a><a href="#part-sg90-servo" class="xref">[sg90-servo]</a></li>
-                <li>1x Rotary Encoder (Keyestudio) [TODO: Add part link]</li>
-                <li>2x <a href="#part-spring-e0063">Spring E0063-007-0380S</a><a href="#part-spring-e0063" class="xref">[spring-e0063]</a></li>
-                <li>3D-printed housing and lever</li>
-            </ul>
-            <h4>Tools</h4>
-            <ul>
-                <li>Small Phillips screwdriver</li>
-                <li>Pliers</li>
-            </ul>
-            <h4>Instructions</h4>
-            <ol>
-                <li><strong>Print Parts:</strong> 3D print the lever, housing, and spring holder from `vr_headset6_rev15_lever3_a8.blend`.</li>
-                <li><strong>Install Components:</strong> Mount the rotary encoder and <a href="#part-sg90-servo">SG90 servo</a><a href="#part-sg90-servo" class="xref">[sg90-servo]</a> inside the housing.</li>
-                <li><strong>Assemble Lever:</strong> Place the lever into the housing, connecting it to the encoder and servo.</li>
-                <li><strong>Attach Springs:</strong> Attach the two <a href="#part-spring-e0063">springs</a><a href="#part-spring-e0063" class="xref">[spring-e0063]</a> to the lever and spring holder to provide return tension.</li>
-                <li><strong>Mount Assembly:</strong> Attach the trigger assembly to an adjustable arm on the frame. Position it within easy reach of the rat.</li>
-            </ol>
-            <figure>
-                <img src="images/placeholder_trigger.png" alt="Placeholder diagram of the trigger mechanism.">
-                <figcaption>Exploded view of the trigger assembly.</figcaption>
-                <a href="assets/blender/vr_headset6_rev15_lever3_a8.blend" class="download-link">Download vr_headset6_rev15_lever3_a8.blend</a>
-                <a href="assets/kicad/trigger.zip" class="download-link">Download KiCad Files (trigger)</a>
-            </figure>
-            <h4>QA Checks</h4>
-            <ul>
-                <li>The lever moves smoothly and returns to the neutral position.</li>
-                <li>The encoder correctly registers lever movement.</li>
-                <li>The servo can actuate the lever programmatically.</li>
-            </ul>
-            <aside role="note">
-                <strong>Troubleshooting:</strong> If the lever feels stiff, check for friction in the assembly. If the encoder is unresponsive, verify the wiring.
-            </aside>
-        </section>
+    <section id="display-system" class="pagebreak" aria-labelledby="h2-display">
+      <h2 id="h2-display">6) Display System</h2>
+      <p>3D-printed holder for OLED at rat eye level.</p>
+      <div class="grid">
+        <div>
+          <h3>Required parts</h3>
+          <ul>
+            <li><a href="#part-oled-module" class="xref">[oled-module]</a></li>
+            <li>Printed holder + hardware</li>
+            <li>Optional <a href="#part-loudspeaker" class="xref">[loudspeaker]</a></li>
+          </ul>
+          <h3>Tools</h3>
+          <ul><li>3D printer, screwdrivers.</li></ul>
+        </div>
+        <div>
+          <figure>
+            <div class="ph" role="img" aria-label="Headset assembly render"></div>
+            <figcaption>Blender: full_headset_guide.blend — <a href="blender/full_headset_guide.blend" download>Download</a> (TODO)</figcaption>
+          </figure>
+        </div>
+      </div>
+      <h3>Steps</h3>
+      <ol>
+        <li>Print holder; deburr.</li>
+        <li>Mount OLED; route cable.</li>
+        <li>Attach to arm; align at eye height.</li>
+      </ol>
+      <h3>QA checks</h3>
+      <ul>
+        <li>Stable mount; no wobble.</li>
+        <li>Clear view; not occluded by harness.</li>
+      </ul>
+      <aside role="note">Troubleshooting: Glare → adjust angle; add visor; dim.</aside>
+    </section>
 
-        <section id="display-system">
-            <h2>6. Display System</h2>
-            <p>A curved display provides the rat with an immersive visual feed from the game.</p>
-            <h4>Required Parts</h4>
-            <ul>
-                <li>1x <a href="#part-oled-display">OLED Display Module</a><a href="#part-oled-display" class="xref">[oled-display]</a></li>
-                <li>3D-printed screen holder</li>
-            </ul>
-            <h4>Tools</h4>
-            <ul>
-                <li>Screwdriver</li>
-            </ul>
-            <h4>Instructions</h4>
-            <ol>
-                <li><strong>Print Holder:</strong> 3D print the screen holder using `full_headset_guide.blend`.</li>
-                <li><strong>Mount Display:</strong> Carefully secure the <a href="#part-oled-display">OLED display</a><a href="#part-oled-display" class="xref">[oled-display]</a> into the holder.</li>
-                <li><strong>Attach to Frame:</strong> Mount the holder onto an adjustable arm on the top level of the frame.</li>
-                <li><strong>Position Screen:</strong> Adjust the arm to place the screen at the rat's eye level, ensuring a clear and panoramic field of view.</li>
-            </ol>
-            <figure>
-                <img src="images/placeholder_display.png" alt="Placeholder diagram of the display system mounted on the frame.">
-                <figcaption>Display system and headset.</figcaption>
-                <a href="assets/blender/full_headset_guide.blend" class="download-link">Download full_headset_guide.blend</a>
-            </figure>
-            <h4>QA Checks</h4>
-            <ul>
-                <li>The screen is securely mounted and stable.</li>
-                <li>The display powers on and shows a clear image.</li>
-            </ul>
-            <aside role="note">
-                <strong>Troubleshooting:</strong> If the screen flickers, check the display cable and power connections.
-            </aside>
-        </section>
+    <section id="rat-harness" class="pagebreak" aria-labelledby="h2-harness">
+      <h2 id="h2-harness">7) Rat Harness System</h2>
+      <p>Suspends above ball; paws rest; slight vertical movement allowed.</p>
+      <div class="grid">
+        <div>
+          <h3>Required parts</h3>
+          <ul><li>Harness assembly and mounts; fasteners.</li></ul>
+          <h3>Tools</h3>
+          <ul><li>Hex keys; padding.</li></ul>
+        </div>
+        <div>
+          <figure>
+            <div class="ph" role="img" aria-label="Harness over ball"></div>
+            <figcaption>Blender: harness.blend — <a href="blender/harness.blend" download>Download</a> (TODO)</figcaption>
+          </figure>
+        </div>
+      </div>
+      <h3>Steps</h3>
+      <ol>
+        <li>Mount to top crossbeam.</li>
+        <li>Set height for natural paw contact.</li>
+        <li>Add padding; check chafing.</li>
+      </ol>
+      <h3>QA checks</h3>
+      <ul>
+        <li>Paws rest without strain.</li>
+        <li>Minor vertical give; no swing.</li>
+      </ul>
+      <aside role="note">Troubleshooting: Tense posture → lower a bit; add padding.</aside>
+    </section>
 
-        <section id="harness-system">
-            <h2>7. Rat Harness System</h2>
-            <p>The harness safely suspends the rat above the ball, allowing its paws to rest on the surface while preventing it from leaving the apparatus.</p>
-            <h4>Required Parts</h4>
-            <ul>
-                <li>3D-printed harness components</li>
-                <li>Soft fabric or padding material</li>
-            </ul>
-            <h4>Tools</h4>
-            <ul>
-                <li>Scissors</li>
-                <li>Fabric glue</li>
-            </ul>
-            <h4>Instructions</h4>
-            <ol>
-                <li><strong>Print Harness:</strong> 3D print the harness components from `harness.blend`.</li>
-                <li><strong>Assemble and Pad:</strong> Assemble the printed parts and line the interior with soft fabric for the rat's comfort.</li>
-                <li><strong>Mount to Frame:</strong> Attach the harness to the top level of the frame.</li>
-                <li><strong>Adjust Height:</strong> Adjust the height so the rat is comfortably supported with its paws resting naturally on the ball. The rat should be able to move slightly vertically but not be able to climb out.</li>
-            </ol>
-            <figure>
-                <img src="images/placeholder_harness.png" alt="Placeholder diagram of the rat harness.">
-                <figcaption>Harness design and placement.</figcaption>
-                <a href="assets/blender/harness.blend" class="download-link">Download harness.blend</a>
-            </figure>
-            <h4>QA Checks</h4>
-            <ul>
-                <li>The harness is secure and can safely support the rat's weight.</li>
-                <li>The rat can move the ball with its paws without significant restriction.</li>
-            </ul>
-            <aside role="note">
-                <strong>Troubleshooting:</strong> If the rat appears uncomfortable, adjust the harness height and check for any pressure points. The fit should be snug but not tight.
-            </aside>
-        </section>
+    <section id="bom" class="pagebreak" aria-labelledby="h2-bom">
+      <h2 id="h2-bom">8) Bill of Materials (BOM) and Links</h2>
+      <p class="meta">Global, deduped. Every bracket ID is stable and referenced above.</p>
+      <div class="bom" role="list">
+        <div class="part" id="part-pololu-25d-99to1" role="listitem"><strong>[pololu-25d-99to1]</strong> Pololu 99:1 25D motor w/ 48 CPR encoder — <a href="https://www.pololu.com/product/4867">pololu.com/product/4867</a></div>
+        <div class="part" id="part-omniwheel-100mm" role="listitem"><strong>[omniwheel-100mm]</strong> 100 mm omnidirectional wheel — <a href="https://eu.robotshop.com/products/100mm-omnidirectional-wheel-brass-bearing-rollers">RobotShop</a></div>
+        <div class="part" id="part-mounting-hub-8mm" role="listitem"><strong>[mounting-hub-8mm]</strong> 8 mm universal mounting hub — <a href="https://eu.robotshop.com/products/8mm-shaft-universal-aluminum-mounting-hub">RobotShop</a></div>
+        <div class="part" id="part-l298n" role="listitem"><strong>[l298n]</strong> L298N driver (alt) — <a href="https://www.hestore.hu/prod_10036621.html?lang=en">Hestore</a></div>
+        <div class="part" id="part-t-junction-4mm" role="listitem"><strong>[t-junction-4mm]</strong> T‑junction 4 mm — <a href="https://www.terkowebaruhaz.hu/Mikro-idom-T-idom-4-mm">terkowebaruhaz.hu</a></div>
+        <div class="part" id="part-flex-seal" role="listitem"><strong>[flex-seal]</strong> Flex Seal (clear) — <a href="https://www.amazon.co.uk/dp/B019PFO4MA">Amazon</a></div>
+        <div class="part" id="part-mpx5700ap" role="listitem"><strong>[mpx5700ap]</strong> Grove pressure sensor kit (MPX5700AP) — <a href="https://wiki.seeedstudio.com/Grove-Integrated-Pressure-Sensor-Kit/">Seeed</a></div>
+        <div class="part" id="part-mini-air-pump" role="listitem"><strong>[mini-air-pump]</strong> Mini air pump — <a href="https://www.hestore.hu/prod_10041524.html">Hestore</a></div>
+        <div class="part" id="part-pvc-tubing" role="listitem"><strong>[pvc-tubing]</strong> PVC tubing — <a href="https://www.hestore.hu/prod_10042175.html">Hestore</a></div>
+        <div class="part" id="part-loudspeaker" role="listitem"><strong>[loudspeaker]</strong> Loudspeaker — <a href="https://www.hestore.hu/prod_10029791.html">Hestore</a></div>
+        <div class="part" id="part-sg90-servo" role="listitem"><strong>[sg90-servo]</strong> SG90 micro servo — <a href="https://www.hestore.hu/prod_10031188.html">Hestore</a></div>
+        <div class="part" id="part-oled-module" role="listitem"><strong>[oled-module]</strong> OLED display module — <a href="https://www.aliexpress.com/item/1005003546051861.html">AliExpress</a></div>
+        <div class="part" id="part-fuse-holder" role="listitem"><strong>[fuse-holder]</strong> DIN rail fuse holder — <a href="https://hu.rs-online.com/web/p/din-sinre-szerelheto-sorkapcsok/7684611">RS</a></div>
+        <div class="part" id="part-fuses" role="listitem"><strong>[fuses]</strong> Fuses — <a href="https://hu.rs-online.com/web/p/uveg-biztositekok/6686029">6686029</a> · <a href="https://hu.rs-online.com/web/p/uveg-biztositekok/6686082">6686082</a> · <a href="https://hu.rs-online.com/web/p/uveg-biztositekok/0412223">0412223</a> · <a href="https://hu.rs-online.com/web/p/uveg-biztositekok/6686032">6686032</a></div>
+        <div class="part" id="part-springs" role="listitem"><strong>[springs]</strong> Springs — <a href="https://biotek.hu/termek/asp06120-e0063-007-0380s">E0063-007-0380S</a> · <a href="https://biotek.hu/termek/asp06168-e0094-010-0380s">E0094-010-0380S</a> · <a href="https://rugobolt.hu/Huzorugo-07x64x58-mm-A-69-horganyzott">A-69</a> · <a href="https://rugobolt.hu/Huzorugo-07x60x14-mm-A-25-horganyzott">A-25</a> · <a href="https://rugobolt.hu/Huzorugo-08x7x35-mm-A49-mm-horganyzott">A-49</a></div>
+        <div class="part" id="part-power-supplies" role="listitem"><strong>[power-supplies]</strong> Power supplies — <a href="https://www.elektrobot.hu/termek.php?filename=7386.html&i=7386">Elektrobot</a> · <a href="https://www.hestore.hu/prod_10038317.html">Hestore 1</a> · <a href="https://www.hestore.hu/prod_10040292.html">Hestore 2</a> · <a href="https://www.hestore.hu/prod_10040837.html">Hestore 3</a> · <a href="https://www.hestore.hu/prod_10041317.html">Hestore 4</a> · <a href="https://www.hestore.hu/prod_10042653.html">Hestore 5</a> · <a href="https://www.hestore.hu/prod_10040955.html">Hestore 6</a></div>
+      </div>
+    </section>
 
-        <section id="final-verification">
-            <h2>Final Verification</h2>
-            <ul>
-                <li><strong>Full System Check:</strong> Power on the entire system. Verify that all components (motors, sensors, display, etc.) are recognized by the software.</li>
-                <li><strong>Manual Control Test:</strong> Use the control software to manually test each component. Spin the motors, actuate the trigger servo, and dispense a drop of water.</li>
-                <li><strong>Secure All Connections:</strong> Double-check that all screws are tight and all electrical connections are secure and insulated.</li>
-                <li><strong>Clear Workspace:</strong> Remove all tools and debris from the assembly area.</li>
-            </ul>
-        </section>
+    <section id="final-verification" class="pagebreak" aria-labelledby="h2-final">
+      <h2 id="h2-final">Final verification</h2>
+      <ul>
+        <li>All modules mounted and secured. Cables tied; no chafe.</li>
+        <li>12 V rails fused; polarity checked; no overheating after 10 min run.</li>
+        <li>Ball spins freely; sensors report motion; trigger returns; reward doses repeatably.</li>
+      </ul>
+    </section>
 
-        <section id="bom">
-            <h2>8. Bill of Materials (BOM) and Links</h2>
-            <p>This section lists all required components for the project. Quantities are per the reference build.</p>
-            <table class="bom-table">
-                <thead>
-                    <tr>
-                        <th>Part</th>
-                        <th>ID / SKU</th>
-                        <th>Qty</th>
-                        <th>Link(s)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="part-pololu-motor">
-                        <td>Pololu 25D Motor</td>
-                        <td>4867</td>
-                        <td>3</td>
-                        <td><a href="https://www.pololu.com/product/4867" target="_blank">Pololu</a></td>
-                    </tr>
-                    <tr id="part-omniwheel">
-                        <td>Omni-directional Wheel</td>
-                        <td>100mm</td>
-                        <td>3</td>
-                        <td><a href="https://eu.robotshop.com/products/100mm-omnidirectional-wheel-brass-bearing-rollers" target="_blank">RobotShop</a></td>
-                    </tr>
-                    <tr id="part-mounting-hub">
-                        <td>Universal Mounting Hub</td>
-                        <td>8mm Shaft</td>
-                        <td>3</td>
-                        <td><a href="https://eu.robotshop.com/products/8mm-shaft-universal-aluminum-mounting-hub" target="_blank">RobotShop</a></td>
-                    </tr>
-                    <tr id="part-l298n-driver">
-                        <td>L298N Motor Driver</td>
-                        <td>-</td>
-                        <td>2</td>
-                        <td><a href="https://www.hestore.hu/prod_10036621.html?lang=en" target="_blank">Hestore</a></td>
-                    </tr>
-                    <tr id="part-t-junction">
-                        <td>T-junction</td>
-                        <td>4mm</td>
-                        <td>1</td>
-                        <td><a href="https://www.terkowebaruhaz.hu/Mikro-idom-T-idom-4-mm" target="_blank">Terkowebaruhaz</a></td>
-                    </tr>
-                    <tr id="part-flex-seal">
-                        <td>Flex Seal Liquid</td>
-                        <td>Clear</td>
-                        <td>1</td>
-                        <td><a href="https://www.amazon.co.uk/dp/B019PFO4MA" target="_blank">Amazon</a></td>
-                    </tr>
-                    <tr id="part-pressure-sensor">
-                        <td>Grove Pressure Sensor</td>
-                        <td>MPX5700AP</td>
-                        <td>1</td>
-                        <td><a href="https://wiki.seeedstudio.com/Grove-Integrated-Pressure-Sensor-Kit/" target="_blank">SeeedStudio</a></td>
-                    </tr>
-                    <tr id="part-air-pump">
-                        <td>Mini Air Pump</td>
-                        <td>12V</td>
-                        <td>2</td>
-                        <td><a href="https://www.hestore.hu/prod_10041524.html" target="_blank">Hestore</a></td>
-                    </tr>
-                    <tr id="part-pvc-tubing">
-                        <td>PVC Tubing</td>
-                        <td>-</td>
-                        <td>1</td>
-                        <td><a href="https://www.hestore.hu/prod_10042175.html" target="_blank">Hestore</a></td>
-                    </tr>
-                    <tr id="part-loudspeaker">
-                        <td>Loudspeaker</td>
-                        <td>-</td>
-                        <td>2</td>
-                        <td><a href="https://www.hestore.hu/prod_10029791.html" target="_blank">Hestore</a></td>
-                    </tr>
-                    <tr id="part-sg90-servo">
-                        <td>SG90 Micro Servo</td>
-                        <td>SG90</td>
-                        <td>2</td>
-                        <td><a href="https://www.hestore.hu/prod_10031188.html" target="_blank">Hestore</a></td>
-                    </tr>
-                    <tr id="part-oled-display">
-                        <td>OLED Display Module</td>
-                        <td>-</td>
-                        <td>1</td>
-                        <td><a href="https://www.aliexpress.com/item/1005003546051861.html" target="_blank">AliExpress</a></td>
-                    </tr>
-                    <tr id="part-fuse-holder">
-                        <td>Fuse Holder</td>
-                        <td>-</td>
-                        <td>1</td>
-                        <td><a href="https://hu.rs-online.com/web/p/din-sinre-szerelheto-sorkapcsok/7684611" target="_blank">RS</a></td>
-                    </tr>
-                    <tr id="part-fuses">
-                        <td>Fuses</td>
-                        <td>Multiple</td>
-                        <td>Set</td>
-                        <td><a href="https://hu.rs-online.com/web/p/uveg-biztositekok/6686029" target="_blank">RS1</a>, <a href="https://hu.rs-online.com/web/p/uveg-biztositekok/6686082" target="_blank">RS2</a>, <a href="https://hu.rs-online.com/web/p/uveg-biztositekok/0412223" target="_blank">RS3</a></td>
-                    </tr>
-                    <tr id="part-spring-e0063">
-                        <td>Spring</td>
-                        <td>E0063-007-0380S</td>
-                        <td>2</td>
-                        <td><a href="https://biotek.hu/termek/asp06120-e0063-007-0380s" target="_blank">Biotek</a></td>
-                    </tr>
-                    <tr id="part-psu-12v">
-                        <td>Power Supply</td>
-                        <td>HDR-100-12N</td>
-                        <td>1</td>
-                        <td><a href="https://www.hestore.hu/prod_10040292.html" target="_blank">Hestore</a></td>
-                    </tr>
-                    <tr id="part-m4-8-screw">
-                        <td>Screw</td>
-                        <td>M4x8</td>
-                        <td>Many</td>
-                        <td><a href="https://www.tme.eu/en/details/b4x8_bn3/bolts/bossard/1003909/" target="_blank">TME</a></td>
-                    </tr>
-                    <tr id="part-m4-14-screw">
-                        <td>Screw</td>
-                        <td>M4x14</td>
-                        <td>Many</td>
-                        <td><a href="https://www.tme.eu/hu/details/m4x14_d912-a2/csavarok-anyaval/kraftberg/" target="_blank">TME</a></td>
-                    </tr>
-                    <tr id="part-m4-tslot-nut">
-                        <td>T-Slot Nut</td>
-                        <td>M4</td>
-                        <td>Many</td>
-                        <td><a href="https://www.tme.eu/hu/details/fa-096214/profil-kellekek/fath/096214/" target="_blank">TME</a></td>
-                    </tr>
-                    <tr id="part-styrofoam-ball">
-                        <td>Styrofoam Ball</td>
-                        <td>40cm</td>
-                        <td>1</td>
-                        <td>[TODO: Source locally]</td>
-                    </tr>
-                     <tr id="part-paa5100je-sensor">
-                        <td>Optical Sensor</td>
-                        <td>PAA5100JE</td>
-                        <td>2</td>
-                        <td>[TODO: Add supplier link]</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+  </div>
+</main>
 
-    </main>
-
-    <footer>
-        <h4>Revision History</h4>
-        <p>v0.1 (2025-08-07): Initial draft of the hardware assembly guide.</p>
-        <p>&copy; 2025 Rats Play Doom Project. Open Source Hardware & Software.</p>
-    </footer>
-
+<footer>
+  <div class="wrap">
+    <p class="meta">Revision history: v0.1 — 2025-08-07</p>
+  </div>
+</footer>
 </body>
 </html>
