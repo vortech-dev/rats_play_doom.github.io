@@ -279,13 +279,13 @@
             <h4>Required Parts</h4>
             <ul>
                 <li>3x <a href="#part-pololu-motor">Pololu 99:1 25D Motor</a><a href="#part-pololu-motor" class="xref">[pololu-motor]</a></li>
-                <li>3x <a href="#part-omniwheel">100mm Omni-directional Wheel</a><a href="#part-omniwheel" class="xref">[omniwheel]</a></li>
+                <li>3x <a href="https://eu.robotshop.com/products/100mm-omnidirectional-wheel-brass-bearing-rollers" target="_blank">100mm Omni-directional Wheel</a><a href="#part-omniwheel" class="xref">[omniwheel]</a></li>
                 <li>3x <a href="#part-mounting-hub">8mm Universal Mounting Hub</a><a href="#part-mounting-hub" class="xref">[mounting-hub]</a></li>
                 <li>1x <a href="#part-styrofoam-ball">40cm Styrofoam Ball</a><a href="#part-styrofoam-ball" class="xref">[styrofoam-ball]</a></li>
                 <li>1x <a href="#part-flex-seal">Flex Seal (Clear)</a><a href="#part-flex-seal" class="xref">[flex-seal]</a></li>
                 <li>2x <a href="#part-l298n-driver">L298N Motor Driver</a><a href="#part-l298n-driver" class="xref">[l298n-driver]</a></li>
                 <li>1x <a href="#part-psu-12v">HDR-100-12N Power Supply</a><a href="#part-psu-12v" class="xref">[psu-12v]</a></li>
-                <li>3x <a href="#part-shaft-coupler">4mm to 8mm Set Screw Shaft Coupler</a><a href="#part-shaft-coupler" class="xref">[shaft-coupler]</a></li>
+                <li>3x <a href="#part-shaft-coupler">4mm to 8mm Set Screw Shaft Coupler</a><a href="#part-shaft-coupler" class="xref">[shaft-coupler]</a> (Note: This is a custom part, see BOM for details)</li>
             </ul>
             <h4>Tools</h4>
             <ul>
@@ -295,7 +295,25 @@
             </ul>
             <h4>Instructions</h4>
             <ol>
-                <li><strong>Prepare Ball:</strong> Apply one thin, even coat of <a href="#part-flex-seal">Flex Seal</a><a href="#part-flex-seal" class="xref">[flex-seal]</a> to the <a href="#part-styrofoam-ball">styrofoam ball</a><a href="#part-styrofoam-ball" class="xref">[styrofoam-ball]</a>. Let it dry completely.</li>
+                <li>
+                    <strong>Prepare Ball:</strong> This is an essential step to ensure the ball is durable and functions correctly. The raw styrofoam is easily damaged by the rat's claws and does not provide good traction. Coating it creates a tough, smooth surface that rolls much better on the bearings.
+                    <aside role="alert">
+                        <h4>Use Only Flex Seal Liquid</h4>
+                        <p>We have tried other similar products, but none worked as well as transparent <strong>Flex Seal Liquid</strong>. It provides the right combination of durability and a smooth surface for optimal performance.</p>
+                    </aside>
+
+                    <h5>Coating Process</h5>
+                    <ol>
+                        <li><strong>First Coat:</strong> Place the ball on a stand. Pour the Flex Seal Liquid on top and use a brush to smooth it out into a single, even layer covering most of the ball.</li>
+                        <li><strong>Drying:</strong> Let the ball dry for at least 24 hours. The bottom part will not be covered at this stage.</li>
+                        <li><strong>Second Coat:</strong> Once dry, mark the uncovered area with a marker. Carefully paint the remaining part with a brush, avoiding a thick overflow onto the already-covered areas.</li>
+                        <li><strong>Final Curing:</strong> Allow the ball to cure for another 24 hours before assembly.</li>
+                    </ol>
+                    <figure>
+                        <img src="images/guide/ball_cover.jpg" alt="Applying a liquid rubber coating to the styrofoam ball." style="width: 80%;">
+                        <figcaption>Applying the Flex Seal Liquid coating to the ball. This step is essential.</figcaption>
+                    </figure>
+                </li>
                 <li><strong>Mount Motors:</strong> Attach the three <a href="#part-pololu-motor">Pololu motors</a><a href="#part-pololu-motor" class="xref">[pololu-motor]</a> to the 3D-printed locomotion base.</li>
                 <li><strong>Attach Hubs and Wheels:</strong> Secure the <a href="#part-mounting-hub">mounting hubs</a><a href="#part-mounting-hub" class="xref">[mounting-hub]</a> to the motor shafts. Then, mount the <a href="#part-omniwheel">omni-wheels</a><a href="#part-omniwheel" class="xref">[omniwheel]</a> to the hubs.</li>
                 <li><strong>Assemble Base:</strong> Follow the `spawn_base_ver3_18a.blend` file to assemble the 3D-printed base parts.</li>
@@ -344,7 +362,7 @@
             <p>Two optical flow sensors track the ball's movement, providing the data needed to control the game.</p>
             <h4>Required Parts</h4>
             <ul>
-                <li>2x <a href="#part-paa5100je-sensor">PAA5100JE Optical Sensor</a><a href="#part-paa5100je-sensor" class="xref">[paa5100je-sensor]</a></li>
+                <li>2x <a href="https://shop.pimoroni.com/products/paa5100je-optical-tracking-spi-breakout?variant=39315330170963" target="_blank">PAA5100JE Optical Sensor</a><a href="#part-paa5100je-sensor" class="xref">[paa5100je-sensor]</a></li>
                 <li>3D-printed sensor mounts</li>
             </ul>
             <h4>Tools</h4>
@@ -592,7 +610,8 @@
 
         <section id="bom">
             <h2>8. Bill of Materials (BOM) and Links</h2>
-            <p>This section lists all required components for the project. Quantities are per the reference build.</p>
+            <p>This section lists all required components for the project. Quantities are per the reference build.
+                Most parts are sourced from the EU and Hungary, but you can often find equivalent parts in the US.</p>
             <table class="bom-table">
                 <thead>
                     <tr>
@@ -613,13 +632,6 @@
                         <td>Omni-directional Wheel</td>
                         <td>100mm</td>
                         <td>3</td>
-                    </tr>
-                    <tr id="part-shaft-coupler">
-                        <td>Shaft Coupler</td>
-                        <td>4mm to 8mm</td>
-                        <td>3</td>
-                        <td><a href="https://www.robotshop.com/products/4mm-to-8mm-set-screw-shaft-coupler" target="_blank">RobotShop</a></td>
-                    </tr>
                         <td><a href="https://eu.robotshop.com/products/100mm-omnidirectional-wheel-brass-bearing-rollers" target="_blank">RobotShop</a></td>
                     </tr>
                     <tr id="part-mounting-hub">
@@ -627,6 +639,12 @@
                         <td>8mm Shaft</td>
                         <td>3</td>
                         <td><a href="https://eu.robotshop.com/products/8mm-shaft-universal-aluminum-mounting-hub" target="_blank">RobotShop</a></td>
+                    </tr>
+                    <tr id="part-shaft-coupler">
+                        <td>4mm to 8mm Set Screw Shaft Coupler</td>
+                        <td>3</td>
+                        <td>Custom part to connect the 4mm motor shaft to the 8mm mounting hub. Fabricated by Szurwin Kft.</td>
+                        <td>[CAD file coming soon]</td>
                     </tr>
                     <tr id="part-l298n-driver">
                         <td>L298N Motor Driver</td>
@@ -740,13 +758,13 @@
                         <td>Styrofoam Ball</td>
                         <td>40cm</td>
                         <td>1</td>
-                        <td>[TODO: Source locally]</td>
+                        <td>Sourcing this part can be challenging. It must be a <strong>perfectly shaped 40cm sphere</strong>. Due to its size, shipping is difficult, so it's best to source it locally (EU/Hungary). You may need to check multiple suppliers.</td>
                     </tr>
                      <tr id="part-paa5100je-sensor">
                         <td>Optical Sensor</td>
                         <td>PAA5100JE</td>
                         <td>2</td>
-                        <td>[TODO: Add supplier link]</td>
+                        <td><a href="https://shop.pimoroni.com/products/paa5100je-optical-tracking-spi-breakout?variant=39315330170963" target="_blank">Pimoroni</a></td>
                     </tr>
                 </tbody>
             </table>
