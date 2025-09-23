@@ -91,7 +91,7 @@ h1, h2, h3 {
     font-weight: var(--font-weight-bold);
     font-variation-settings: var(--font-settings-bold);
     text-transform: uppercase; /* Classic DOOM feel */
-    margin-top: 1.5em;
+    margin-top: 0.75em;
     margin-bottom: 0.5em;
     letter-spacing: 1px; /* Slight spacing */
 }
