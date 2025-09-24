@@ -132,43 +132,180 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     // --- Contact Link Clipboard Copy ---
-    // Select all elements with the class 'copy-email-link'
-    const emailLinks = document.querySelectorAll('.copy-email-link');
+    // Handle both original and floating navbar copy email functionality
+    function setupEmailCopyLinks() {
+        const emailLinks = document.querySelectorAll('.copy-email-link');
 
-    // Add event listener to each link
-    emailLinks.forEach(link => {
-        const originalText = link.textContent;
+        emailLinks.forEach(link => {
+            const originalText = link.textContent;
 
-        link.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent default anchor behavior
-            const email = link.dataset.email; // Get email from data attribute
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default anchor behavior
+                const email = link.dataset.email; // Get email from data attribute
 
-            if (!email) {
-                console.error('No email address found in data-email attribute for link:', link);
-                return;
-            }
+                if (!email) {
+                    console.error('No email address found in data-email attribute for link:', link);
+                    return;
+                }
 
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(email).then(() => {
-                    // Success: Provide visual feedback
-                    link.textContent = 'Copied!';
-                    link.style.opacity = 0.7; // Optional: Dim slightly
-                    // Revert text after a delay
-                    setTimeout(() => {
-                        link.textContent = originalText;
-                        link.style.opacity = 1;
-                    }, 900); // Increased delay slightly
-                }).catch(err => {
-                    console.error('Failed to copy email to clipboard:', err);
-                    // Optionally provide error feedback to the user
-                    link.textContent = 'Copy Failed!';
-                    setTimeout(() => { link.textContent = originalText; }, 2000);
-                });
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(email).then(() => {
+                        // Success: Provide visual feedback
+                        link.textContent = 'Copied!';
+                        link.style.opacity = 0.7; // Optional: Dim slightly
+                        // Revert text after a delay
+                        setTimeout(() => {
+                            link.textContent = originalText;
+                            link.style.opacity = 1;
+                        }, 900); // Increased delay slightly
+                    }).catch(err => {
+                        console.error('Failed to copy email to clipboard:', err);
+                        // Optionally provide error feedback to the user
+                        link.textContent = 'Copy Failed!';
+                        setTimeout(() => { link.textContent = originalText; }, 2000);
+                    });
+                } else {
+                    console.error('Clipboard API not available.');
+                    // Fallback or error message if needed
+                    alert('Clipboard API not available. Cannot copy email.');
+                }
+            });
+        });
+    }
+
+    // Initialize email copy functionality
+    setupEmailCopyLinks();
+
+    // --- Floating Navigation Bar ---
+    const floatingNavbar = document.getElementById('floating-navbar');
+    const hamburgerToggle = document.getElementById('hamburger-toggle');
+    const hamburgerDropdown = document.getElementById('hamburger-dropdown');
+    let lastScrollTop = 0;
+    let scrollThreshold = 200; // Show navbar after scrolling 200px
+
+    // Mobile detection function
+    function isMobile() {
+        return window.innerWidth <= 768; // Match CSS mobile breakpoint
+    }
+
+    // Scroll detection for floating navbar
+    function handleScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const mobile = isMobile();
+        
+        // On mobile, CSS handles visibility (always visible)
+        // On desktop, JavaScript handles scroll-based visibility
+        if (!mobile) {
+            // Desktop only: show/hide based on scroll
+            if (scrollTop > scrollThreshold) {
+                floatingNavbar.classList.add('visible');
             } else {
-                console.error('Clipboard API not available.');
-                // Fallback or error message if needed
-                alert('Clipboard API not available. Cannot copy email.');
+                floatingNavbar.classList.remove('visible');
             }
+        }
+
+        // Update active section highlighting
+        updateActiveSection();
+
+        lastScrollTop = scrollTop;
+    }
+
+    // Throttled scroll listener for better performance
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (scrollTimeout) {
+            cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = requestAnimationFrame(handleScroll);
+    });
+
+    // Handle window resize to update mobile state
+    window.addEventListener('resize', () => {
+        handleScroll(); // Re-evaluate navbar visibility on resize
+    });
+
+    // Initial call to set correct navbar state on page load
+    handleScroll();
+
+    // Hamburger menu toggle
+    hamburgerToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        hamburgerToggle.classList.toggle('active');
+        hamburgerDropdown.classList.toggle('visible');
+    });
+
+    // Close hamburger menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburgerToggle.contains(e.target) && !hamburgerDropdown.contains(e.target)) {
+            hamburgerToggle.classList.remove('active');
+            hamburgerDropdown.classList.remove('visible');
+        }
+    });
+
+    // Smooth scroll navigation
+    function setupSmoothScroll() {
+        const navLinks = document.querySelectorAll('.floating-nav-link[data-section]');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('data-section');
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar height
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Close hamburger menu if open
+                hamburgerToggle.classList.remove('active');
+                hamburgerDropdown.classList.remove('visible');
+            });
+        });
+    }
+
+    // Active section detection
+    function updateActiveSection() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.floating-nav-link[data-section]');
+        const scrollPosition = window.pageYOffset + 150; // Offset for better detection
+
+        let currentSection = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        // Update active link styling
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-section') === currentSection) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Initialize smooth scroll functionality
+    setupSmoothScroll();
+
+    // Initial active section check
+    updateActiveSection();
+
+    // Handle logo click for clean navigation
+    const logoLinks = document.querySelectorAll('.logo-link');
+    logoLinks.forEach(logoLink => {
+        logoLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Navigate to home page without hash fragments
+            window.location.href = window.location.origin + '/';
         });
     });
 });

@@ -525,6 +525,428 @@ footer {
 }
 
 /*--------------------------------------------------------------
+# Floating Navigation Bar
+--------------------------------------------------------------*/
+.floating-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, rgba(17, 17, 17, 0.98) 0%, rgba(60, 60, 60, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--color-header);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    padding: 8px 0;
+}
+
+.floating-navbar.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.floating-nav-container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 50px;
+}
+
+/* Logo Section */
+.floating-nav-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border: none;
+    background: none;
+    transition: opacity 0.3s ease;
+}
+
+.logo-link:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.floating-logo {
+    width: 48px;  /* 20% bigger than previous 40px */
+    height: 48px;
+    border: none;
+    background: none;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover .floating-logo {
+    transform: scale(1.05);
+}
+
+/* Main Navigation */
+.floating-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex: 1;
+    justify-content: center;
+}
+
+.floating-nav-link {
+    text-decoration: none;
+    font-weight: var(--font-weight-normal);
+    font-size: 0.95em;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    border: 1px solid transparent; /* No visible border by default */
+    background: transparent;
+}
+
+/* Default state - unread chapters (white) */
+.floating-nav-link {
+    color: #ffffff;
+}
+
+/* Read chapters (grayish) */
+.floating-nav-link[data-section="intro"],
+.floating-nav-link[data-section="hardware"] {
+    color: #888888;
+}
+
+/* Hover state */
+.floating-nav-link:hover {
+    color: var(--color-header);
+    text-decoration: none;
+}
+
+/* Active/current section - stronger stroke and white title */
+.floating-nav-link.active {
+    color: #ffffff !important;
+    background-color: rgba(157, 26, 10, 0.3);
+    border: 2px solid var(--color-header); /* Stronger stroke */
+    text-decoration: none;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px 15px; /* Match nav button padding */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px; /* Align with nav button height */
+}
+
+.hamburger-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger-icon span {
+    width: 30px; /* Bigger hamburger lines */
+    height: 4px; /* Thicker lines */
+    background-color: #ffffff; /* White color to match nav links */
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-icon.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger-icon.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-icon.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Hamburger Dropdown */
+.hamburger-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: linear-gradient(135deg, rgba(17, 17, 17, 0.98) 0%, rgba(40, 40, 40, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+    min-width: 250px;
+    padding: 10px 0;
+    margin-top: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.hamburger-dropdown.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-link {
+    display: block;
+    padding: 12px 20px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-link:hover {
+    background-color: rgba(157, 26, 10, 0.1);
+    border-left-color: var(--color-header);
+    color: var(--color-header);
+    text-decoration: none;
+}
+
+/* No additional body styling needed - hardware guide has its own internal styles */
+
+/* Navigation text toggle - show full text by default */
+.nav-short {
+    display: none;
+}
+
+.nav-full {
+    display: inline;
+}
+
+/* Responsive Design for Floating Navbar */
+@media (max-width: 768px) {
+    /* FORCE navbar to be always visible on mobile */
+    .floating-navbar {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: fixed !important;
+        display: block !important;
+    }
+    
+    /* Remove ALL transitions on mobile to prevent animation conflicts */
+    .floating-navbar,
+    .floating-navbar.visible {
+        transition: none !important;
+    }
+    
+    .floating-nav-container {
+        height: 36px; /* Reduced height */
+        padding: 0 6px; /* Tighter padding */
+        justify-content: space-between;
+        width: 100%; /* Ensure full width */
+    }
+    
+    .floating-nav-menu {
+        gap: 2px; /* Tighter gap */
+        flex: 0 1 auto; /* Allow shrinking */
+        margin-left: 4px; /* Smaller gap after logo */
+        order: 1;
+        overflow: hidden; /* Prevent overflow */
+    }
+    
+    .floating-nav-link {
+        font-size: 0.55em; /* Smaller font */
+        letter-spacing: -0.2px;
+        padding: 2px 4px; /* Smaller padding */
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    .floating-nav-logo {
+        order: 0;
+        flex-shrink: 0;
+    }
+    
+    .floating-logo {
+        width: 28px; /* Smaller logo */
+        height: 28px;
+    }
+    
+    .hamburger-menu {
+        order: 2;
+        flex-shrink: 0;
+    }
+    
+    .hamburger-icon {
+        padding: 4px 6px; /* Smaller padding */
+        min-height: 28px; /* Smaller height */
+    }
+    
+    .hamburger-icon span {
+        width: 20px; /* Smaller lines */
+        height: 3px;
+        gap: 3px;
+    }
+    
+    .hamburger-dropdown {
+        min-width: 180px;
+        right: -5px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Continue forcing visibility on smaller screens */
+    .floating-navbar {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .floating-nav-container {
+        padding: 0 4px;
+        height: 32px; /* Even smaller */
+    }
+    
+    .floating-nav-menu {
+        gap: 1px; /* Minimal gap */
+        margin-left: 3px;
+    }
+    
+    .floating-nav-link {
+        font-size: 0.5em; /* Very small */
+        letter-spacing: -0.3px;
+        padding: 1px 3px;
+    }
+    
+    .floating-logo {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .hamburger-icon {
+        padding: 2px 3px;
+        min-height: 22px;
+    }
+    
+    .hamburger-icon span {
+        width: 16px;
+        height: 2px;
+    }
+    
+    .hamburger-icon.active span:nth-child(1) {
+        transform: rotate(45deg) translate(3px, 3px);
+    }
+    
+    .hamburger-icon.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(3px, -3px);
+    }
+}
+
+/* Extra small screens - ultra compact */
+@media (max-width: 320px) {
+    /* Continue forcing visibility */
+    .floating-navbar {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+    }
+    
+    .floating-nav-container {
+        height: 30px;
+        padding: 0 3px;
+    }
+    
+    .floating-nav-menu {
+        gap: 1px;
+        margin-left: 2px;
+    }
+    
+    .floating-nav-link {
+        font-size: 0.45em;
+        letter-spacing: -0.4px;
+        padding: 1px 2px;
+    }
+    
+    .floating-logo {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .hamburger-icon {
+        padding: 1px 2px;
+        min-height: 18px;
+    }
+    
+    .hamburger-icon span {
+        width: 14px;
+        height: 1px;
+    }
+}
+
+/* Switch to abbreviated text on small screens */
+@media (max-width: 360px) {
+    .nav-full {
+        display: none;
+    }
+    
+    .nav-short {
+        display: inline;
+    }
+}
+
+/* Emergency ultra compact for very narrow screens */
+@media (max-width: 280px) {
+    .floating-navbar {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+    }
+    
+    .floating-nav-container {
+        height: 28px;
+        padding: 0 2px;
+    }
+    
+    .floating-nav-menu {
+        gap: 0;
+        margin-left: 2px;
+    }
+    
+    .floating-nav-link {
+        font-size: 0.4em;
+        letter-spacing: -0.5px;
+        padding: 0 1px;
+    }
+    
+    .floating-logo {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .hamburger-icon {
+        padding: 1px 1px;
+        min-height: 16px;
+    }
+    
+    .hamburger-icon span {
+        width: 12px;
+        height: 1px;
+    }
+}
+
+/*--------------------------------------------------------------
 # Media Queries (Responsive Design)
 --------------------------------------------------------------*/
 

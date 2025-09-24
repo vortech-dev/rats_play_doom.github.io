@@ -217,10 +217,165 @@
             figure img {
                 max-width: 50% !important;
             }
+            
+            .floating-navbar {
+                display: none;
+            }
+        }
+
+        /* Minimal Floating Navigation for Hardware Guide */
+        .floating-navbar {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            padding: 10px 16px;
+            opacity: 1;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .floating-navbar:hover {
+            opacity: 1;
+        }
+
+        .floating-nav-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .floating-nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            border: none;
+            background: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.8;
+            text-decoration: none;
+        }
+
+        .floating-logo {
+            width: 24px;
+            height: 24px;
+            border: none;
+            background: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover .floating-logo {
+            transform: scale(1.1);
+        }
+
+        .back-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 18px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            color: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hide other navbar elements for hardware guide */
+        .floating-nav-menu,
+        .hamburger-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            /* Force navbar to always be visible on mobile */
+            .floating-navbar {
+                top: 12px;
+                right: 12px;
+                padding: 8px 14px;
+                border-radius: 25px;
+                opacity: 1 !important;
+                display: block !important;
+                visibility: visible !important;
+            }
+            
+            .floating-nav-container {
+                gap: 10px; /* Good spacing for mobile */
+            }
+            
+            .floating-logo {
+                width: 22px;
+                height: 22px;
+            }
+            
+            .back-link {
+                font-size: 0.85em;
+                padding: 5px 10px;
+                border-radius: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .floating-navbar {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                border-radius: 20px;
+                opacity: 1 !important;
+                display: block !important;
+                visibility: visible !important;
+            }
+            
+            .floating-nav-container {
+                gap: 8px; /* Balanced spacing for small mobile */
+            }
+            
+            .floating-logo {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .back-link {
+                font-size: 0.8em;
+                padding: 4px 8px;
+                border-radius: 12px;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Minimal Floating Navigation -->
+    <div id="floating-navbar" class="floating-navbar">
+        <div class="floating-nav-container">
+            <div class="floating-nav-logo">
+                <a href="/" class="logo-link">
+                    <img src="images/logo.png" alt="Logo" class="floating-logo">
+                </a>
+            </div>
+            <a href="/" class="back-link">← Back to Main</a>
+        </div>
+    </div>
 
     <header>
         <h1>Rats Play Doom: Hardware Assembly Guide</h1>
